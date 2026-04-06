@@ -7,7 +7,12 @@ How should RL model and leverage imperfect human feedback to achieve *human-defi
 **Learning Reward Functions...**
 <br>
 <div style="font-size: 0.8em;">
-Learn rewards and policies that accomplish *intended* objectives
+<!-- Learn rewards and policies that accomplish *intended* objectives -->
+Tractably learn rewards from humans
+
+1. Feedback types
+2. Aquisition Strategy
+3. Credit Assignment
 </div>
 
 <!-- 1. Inverse reward design
