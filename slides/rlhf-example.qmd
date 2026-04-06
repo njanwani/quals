@@ -1,0 +1,5 @@
+## {.center}
+
+<h2>An Example: <strong>Reinforcement Learning from Human Feedback</strong></h2>
+
+<p style="font-size: 0.7em;">Christiano, P.F., Leike, J., Brown, T., Martic, M., Legg, S. and Amodei, D., 2017. <em>Advances in Neural Information Processing Systems, 30</em></p>

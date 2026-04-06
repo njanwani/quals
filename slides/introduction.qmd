@@ -1,0 +1,7 @@
+## Introduction
+
+Reinforcement learning has enabled robots to become highly performant while retaining robustness.
+
+However, this process hinges on having a well-defined *reward function* that accurately describes the robot's intended goal.
+
+[*However, not all objectives are easily describable via rewards.*]{style="display: block; text-align: center; text-decoration: underline;"}

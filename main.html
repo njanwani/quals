@@ -144,14 +144,17 @@ Neil Janwani
 <h2>Introduction</h2>
 <p>Reinforcement learning has enabled robots to become highly performant while retaining robustness.</p>
 <p>However, this process hinges on having a well-defined <em>reward function</em> that accurately describes the robot’s intended goal.</p>
-<p>Not all objectives are easily describable via rewards.</p>
+<p><span style="display: block; text-align: center; text-decoration: underline;"><em>However, not all objectives are easily describable via rewards.</em></span></p>
 </section>
 <section id="defining-objectives-from-human-feedback" class="slide level2">
 <h2>Defining objectives from human feedback</h2>
 <ul>
-<li>Inverse reinforcement learning</li>
-<li>Preference-based learning</li>
-<li>Learning from demonstration</li>
+<li>Behavior Cloning: altering policy behavior <em>directly</em> without the use of a reward function</li>
+</ul>
+<p>Behavior cloning approaches are closer to <em>mimicry</em> than to true <em>imitation</em>, which encodes both a goal and fashion for achieving it.</p>
+<ul>
+<li>Inverse reinforcement learning: learning a reward function through iterative reward learning + policy synthesis procedures</li>
+<li>Preference-based learning: using pairwise comparisons, or other related feedback modes, to learn a reward or utility function</li>
 </ul>
 <p>However, human feedback is <strong>imperfect</strong>.</p>
 </section>
@@ -160,24 +163,36 @@ Neil Janwani
 <p>How should RL model and leverage imperfect human feedback to achieve <em>human-defined</em> objectives?</p>
 <div class="columns">
 <div class="column" style="width:50%;">
-<p><strong>Learning Reward Functions…</strong> <br> <span style="font-size: 0.8em;">How can we learn <em>well-shaped</em> rewards that accurately encode our intended objectives?</span></p>
+<strong>Learning Reward Functions…</strong> <br>
+<div style="font-size: 0.8em;">
+<p>Learn rewards and policies that accomplish <em>intended</em> objectives</p>
+</div>
 <!-- 1. Inverse reward design
 2. RLHF
 3. COACH -->
 </div><div class="column" style="width:50%;">
-<p><strong>from Imperfect Human Feedback</strong> <br> <span style="font-size: 0.8em;">How can we model the imperfections in human feedback, like <strong>inconsistency</strong>, <strong>suboptimality</strong>, and <strong>heterogeneity</strong>?</span></p>
+<strong>…from Imperfect Human Feedback</strong> <br>
+<div style="font-size: 0.8em;">
+<p>Model the imperfections in human feedback</p>
+<ol type="1">
+<li>Inconsistency</li>
+<li>Sub-optimality</li>
+<li>Heterogeneity</li>
+</ol>
+</div>
 <!-- 1. Inconsistency
 2. Suboptimality
 3. Heterogeneity -->
 </div></div>
 </section>
-<section id="slide-2-key-points" class="slide level2">
-<h2>Slide 2: Key Points</h2>
-<ul>
-<li>Quarto makes slides easy</li>
-<li>Write in Markdown</li>
-<li>Render to HTML</li>
-</ul>
+<section id="section" class="slide level2 center">
+<h2></h2>
+<h2>
+An Example: <strong>Reinforcement Learning from Human Feedback</strong>
+</h2>
+<p style="font-size: 0.7em;">
+Christiano, P.F., Leike, J., Brown, T., Martic, M., Legg, S. and Amodei, D., 2017. <em>Advances in Neural Information Processing Systems, 30</em>
+</p>
 </section>
 <section id="slide-3-conclusion" class="slide level2">
 <h2>Slide 3: Conclusion</h2>

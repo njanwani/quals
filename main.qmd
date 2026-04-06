@@ -1,59 +1,18 @@
 ---
 title: "Learning reward functions from imperfect human feedback for robotic decision making"
 author: "Neil Janwani"
-format: clean-revealjs
+format:
+  clean-revealjs:
+    slide-number: "c/t"
 subtitle: "<span style='font-size: 0.7em;'>Committee: Prof. Matthew Gombolay (Chair), Prof. Maegan Tucker (Advisor), Prof. Sonia Chernova</span>"
 ---
 
-## Introduction
+{{< include slides/introduction.qmd >}}
 
-Reinforcement learning has enabled robots to become highly performant while retaining robustness.
+{{< include slides/defining-objectives.qmd >}}
 
-However, this process hinges on having a well-defined *reward function* that accurately describes the robot's intended goal.
+{{< include slides/synthesizing.qmd >}}
 
-Not all objectives are easily describable via rewards.
+{{< include slides/rlhf-example.qmd >}}
 
-## Defining objectives from human feedback
-- Inverse reinforcement learning
-- Preference-based learning
-- Learning from demonstration
-
-However, human feedback is **imperfect**.
-
-## [Synthesizing ill-defined robotic control]{style="display: block; text-align: center;"}
-How should RL model and leverage imperfect human feedback to achieve *human-defined* objectives?
-
-:::: {.columns}
-
-::: {.column width="50%"}
-**Learning Reward Functions...**
-<br>
-[How can we learn *well-shaped* rewards that accurately encode our intended objectives?]{style="font-size: 0.8em;"}
-
-<!-- 1. Inverse reward design
-2. RLHF
-3. COACH -->
-:::
-
-::: {.column width="50%"}
-**from Imperfect Human Feedback**
-<br>
-[How can we model the imperfections in human feedback, like **inconsistency**, **suboptimality**, and **heterogeneity**?]{style="font-size: 0.8em;"}
-
-<!-- 1. Inconsistency
-2. Suboptimality
-3. Heterogeneity -->
-:::
-
-::::
-
-## Slide 2: Key Points
-
-- Quarto makes slides easy
-- Write in Markdown
-- Render to HTML
-
-## Slide 3: Conclusion
-
-- Thanks for watching!
-- Questions?
+{{< include slides/conclusion.qmd >}}

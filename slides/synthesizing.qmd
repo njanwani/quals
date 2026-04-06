@@ -1,0 +1,34 @@
+## [Synthesizing ill-defined robotic control]{style="display: block; text-align: center;"}
+How should RL model and leverage imperfect human feedback to achieve *human-defined* objectives?
+
+:::: {.columns}
+
+::: {.column width="50%"}
+**Learning Reward Functions...**
+<br>
+<div style="font-size: 0.8em;">
+Learn rewards and policies that accomplish *intended* objectives
+</div>
+
+<!-- 1. Inverse reward design
+2. RLHF
+3. COACH -->
+:::
+
+::: {.column width="50%"}
+**...from Imperfect Human Feedback**
+<br>
+<div style="font-size: 0.8em;">
+Model the imperfections in human feedback
+
+1. Inconsistency
+2. Sub-optimality
+3. Heterogeneity
+</div>
+
+<!-- 1. Inconsistency
+2. Suboptimality
+3. Heterogeneity -->
+:::
+
+::::
