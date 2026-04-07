@@ -1,4 +1,4 @@
-## Defining objectives from human feedback
+## The canonical paradigms: IRL and PBL
 - Behavior Cloning: altering policy behavior *directly* without the use of a reward function
 
 Behavior cloning approaches are closer to *mimicry* than to true *imitation*, which encodes both a goal and fashion for achieving it.

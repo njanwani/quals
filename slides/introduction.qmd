@@ -1,4 +1,4 @@
-## Introduction
+## Introduction: why learn rewards?
 
 Reinforcement learning has enabled robots to become highly performant while retaining robustness.
 
