@@ -8,29 +8,19 @@ subtitle: "<span style='font-size: 0.7em;'>Committee: Prof. Matthew Gombolay (Ch
 ---
 
 {{< include slides/introduction.qmd >}}
-
-{{< include slides/defining-objectives.qmd >}}
-
+{{< include slides/paradigms.qmd >}}
+{{< include slides/my-example.qmd >}}
 {{< include slides/outline.qmd >}}
 
-{{< include slides/rlhf-example.qmd >}}
+{{< include slides/inconsistency-1.qmd >}}
+{{< include slides/inconsistency-2.qmd >}}
+{{< include slides/subopt-hetero-1.qmd >}}
+{{< include slides/sample-efficiency-1.qmd >}}
 
 {{< include slides/rlhf-2.qmd >}}
-
 {{< include slides/rlhf-3.qmd >}}
-
-{{< include slides/feedback-issues.qmd >}}
-
-{{< include slides/ignorant-inconsistent.qmd >}}
-
-{{< include slides/occams-razor.qmd >}}
-
 {{< include slides/ird.qmd >}}
-
 {{< include slides/coach.qmd >}}
 
-{{< include slides/active-sampling.qmd >}}
-
 {{< include slides/open-problems.qmd >}}
-
 {{< include slides/mo-methodology.qmd >}}

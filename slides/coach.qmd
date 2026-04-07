@@ -1,5 +1,3 @@
 ## COACH
 
-Not sure what category this belongs to yet...
-
-This is about feedback interpretation.
+Like PBL but over a temporal scale

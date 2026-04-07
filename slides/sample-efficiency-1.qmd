@@ -1,0 +1,8 @@
+## Imperfect Human Feedback: Sample Efficiency
+
+Humans can only provide limited responses. Moreover, the noisier feedback is the more careful we need to be about asking questions.
+
+Several approaches exist to combat this
+1. Information Gain
+2. Thompson Sampling
+3. Differentiability

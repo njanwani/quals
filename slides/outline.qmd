@@ -1,29 +1,25 @@
 ## [Outline]{style="display: block; text-align: center;"}
-How should RL model and leverage imperfect human feedback to achieve *human-defined* objectives?
-
+<!-- **Topic**: How should RL model and leverage imperfect human feedback to achieve *human-defined* objectives? -->
+$$ $$
 <div style="display: flex; gap: 1em; font-size: 0.8em;">
 <div style="flex: 1; border-right: 2px solid #282626; padding-right: 1em;">
 
-**Learning Reward Functions...**
+**Using Imperfect Human Feedback...**
 
 <!-- Learning *ill-defined* rewards from humans -->
 
-1. Feedback Types
-2. Aquisition Strategies
-3. Tractable Learning
+Highlight and validate the characteristics of human feedback in real human-robot systems.
 
 </div>
 <div style="flex: 1; padding-left: 1em;">
 
-**...from Imperfect Human Feedback**
+**...to Learn Reward Functions**
 
 <!-- Model the imperfections in human feedback -->
 
-1. Inconsistency
-2. Suboptimality
-3. Heterogeneity
+Examine how human data is tractably used to synthesize rewards and robotic decision-making with ill-defined objectives.
 
 </div>
 </div>
 
-Preference-based deep RL $\rightarrow$ Imperfect human feedback $\rightarrow$ Approaches that address these concerns $\rightarrow$ Active sampling $\rightarrow$ Open problem(s) $\rightarrow$ A proposed solution
+Lastly, we'll examine open problems in the field along with a possible methodology.

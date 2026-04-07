@@ -1,0 +1,10 @@
+## An Example: PBL on Exoskeletons
+
+Preference feedback is collected from the user as they operate the device, which is then used to update robot behavior.
+
+However, several unexpected failures could manifest
+
+1. **Inconsistency**: A user may occasionally change their priorities, or simply answer incorrectly.
+2. **Suboptimality**: Despite being interested in rehabilitation or a clinician's wishes, users might opt for less performant options to avoid pain.
+3. **Heterogeneity**: Different users, often with similar physical parameters, might prefer different gaits
+4. **Tractability**: Users could tire from being asked questions that are difficult to answer, or redundant

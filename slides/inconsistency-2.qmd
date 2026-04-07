@@ -1,0 +1,7 @@
+## Imperfect Human Feedback: Inconsistency
+
+The paper demonstrated their results by collecting human explanations and comparing them to the model explanations.
+
+Explain the study parameters.
+
+The paper was somewhat unclear about the experimental setup.

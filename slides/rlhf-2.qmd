@@ -1,4 +1,4 @@
-## Overview: Combining Preference with Deep RL
+## Combining Preference with Deep RL
 
 **Insight**: Explain preferences over trajectories via reward $R: \mathcal{S} \times \mathcal{A} \rightarrow \mathbb{R}$
 

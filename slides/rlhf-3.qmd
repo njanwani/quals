@@ -1,4 +1,4 @@
-## Overview: Reward Learning from Preference Over Trajectories
+## Reward Learning from Preference Over Trajectories
 
 ::: {.callout-tip title="Definition: Bradley-Terry Preference Model"}
 \begin{align}
