@@ -1,6 +1,4 @@
 ## [Outline]{style="display: block; text-align: center;"}
-<!-- **Topic**: How should RL model and leverage imperfect human feedback to achieve *human-defined* objectives? -->
-$$ $$
 <div style="display: flex; gap: 1em; font-size: 0.8em;">
 <div style="flex: 1; border-right: 2px solid #282626; padding-right: 1em;">
 
@@ -10,6 +8,10 @@ $$ $$
 
 Highlight and validate the characteristics of human feedback in real human-robot systems.
 
+[@inconsistent]{style="font-size: 0.8em;"}.
+
+[@occam]{style="font-size: 0.8em;"}.
+
 </div>
 <div style="flex: 1; padding-left: 1em;">
 
@@ -17,9 +19,15 @@ Highlight and validate the characteristics of human feedback in real human-robot
 
 <!-- Model the imperfections in human feedback -->
 
-Examine how human data is tractably used to synthesize rewards and robotic decision-making with ill-defined objectives.
+Examine how human data is tractably used to synthesize rewards and robotic decision-making with ill-defined objectives 
+
+[@rlhf]{style="font-size: 0.8em;"}.
+
+[@ird]{style="font-size: 0.8em;"}.
+
+[@coach]{style="font-size: 0.8em;"}.
 
 </div>
 </div>
 
-Lastly, we'll examine open problems in the field along with a possible methodology.
+[Lastly, we'll examine open problems in the field and propose a methodology to address some of these.]{style="display: block; text-align: center;"}

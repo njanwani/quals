@@ -1,6 +1,8 @@
 ---
 title: "Learning reward functions from imperfect human feedback for robotic decision making"
 author: "Neil Janwani"
+bibliography: references.bib
+csl: custom.csl
 format:
   clean-revealjs:
     slide-number: "c/t"
@@ -24,3 +26,5 @@ subtitle: "<span style='font-size: 0.7em;'>Committee: Prof. Matthew Gombolay (Ch
 
 {{< include slides/open-problems.qmd >}}
 {{< include slides/mo-methodology.qmd >}}
+
+{{< include slides/references.qmd >}}
