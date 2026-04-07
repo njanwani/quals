@@ -1,0 +1,13 @@
+## Overview: Reward Learning from Preference Over Trajectories
+
+::: {.callout-tip title="Definition: Bradley-Terry Preference Model"}
+\begin{align}
+P(\sigma_1 \succ \sigma_2) = \frac{\exp \sum \hat{r}(s_t^1, a_t^1)}{\exp \sum \hat{r}(s_t^1, a_t^1) + \exp \sum \hat{r}(s_t^2, a_t^2)}
+\end{align}
+:::
+
+$$\text{loss}(\hat{r}) = -\sum_{(\sigma^1, \sigma^2, \mu) \in \mathcal{D}} \mu(1) \log \hat{P}[\sigma^1 \succ \sigma^2] + \mu(2) \log \hat{P}[\sigma^2 \succ \sigma^1].$$
+
+Learn an ensemble of predictors, and ask human queries based on disagreement of the ensemble.
+
+Model noise in preferences **HOW** (10% thing??)

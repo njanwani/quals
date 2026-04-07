@@ -6,8 +6,8 @@
 <script src="main_files/libs/quarto-html/tippy.umd.min.js"></script>
 <link href="main_files/libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="main_files/libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="main_files/libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.8.27">
+<link href="main_files/libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.9.36">
 
   <meta name="author" content="Neil Janwani">
   <title>Learning reward functions from imperfect human feedback for robotic decision making</title>
@@ -17,6 +17,9 @@
   <link rel="stylesheet" href="main_files/libs/revealjs/dist/reset.css">
   <link rel="stylesheet" href="main_files/libs/revealjs/dist/reveal.css">
   <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
     div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -29,7 +32,7 @@
       vertical-align: middle;
     }
   </style>
-  <link rel="stylesheet" href="main_files/libs/revealjs/dist/theme/quarto-5ae9c59b2727fcd5357d4f034d95f9e0.css">
+  <link rel="stylesheet" href="main_files/libs/revealjs/dist/theme/quarto-b2736e9fcda83c748fd63b6e579550ef.css">
   <link href="main_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="main_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="main_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -144,7 +147,7 @@ Neil Janwani
 <h2>Introduction</h2>
 <p>Reinforcement learning has enabled robots to become highly performant while retaining robustness.</p>
 <p>However, this process hinges on having a well-defined <em>reward function</em> that accurately describes the robot’s intended goal.</p>
-<p><span style="display: block; text-align: center; text-decoration: underline;"><em>However, not all objectives are easily describable via rewards.</em></span></p>
+<p><span style="display: block; text-align: center; text-decoration: underline;"><em>Importantly, not all objectives are easily describable via rewards.</em></span></p>
 </section>
 <section id="defining-objectives-from-human-feedback" class="slide level2">
 <h2>Defining objectives from human feedback</h2>
@@ -189,23 +192,86 @@ Neil Janwani
 <!-- 1. Inconsistency
 2. Suboptimality
 3. Heterogeneity -->
-</div></div>
+</div><p>hello</p>
+</div>
 </section>
 <section id="section" class="slide level2 center">
 <h2></h2>
 <h2>
-An Example: <strong>Reinforcement Learning from Human Feedback</strong>
+<strong>An Example:</strong> Reinforcement Learning from Human Feedback
 </h2>
 <p style="font-size: 0.7em;">
-Christiano, P.F., Leike, J., Brown, T., Martic, M., Legg, S. and Amodei, D., 2017. <em>Advances in Neural Information Processing Systems, 30</em>
+Christiano, P.F., Leike, J., Brown, T., Martic, M., Legg, S. and Amodei, D., 2017. <br><em>Advances in Neural Information Processing Systems, 30</em>
 </p>
 </section>
-<section id="slide-3-conclusion" class="slide level2">
-<h2>Slide 3: Conclusion</h2>
-<ul>
-<li>Thanks for watching!</li>
-<li>Questions?</li>
-</ul>
+<section id="overview-combining-preference-with-deep-rl" class="slide level2">
+<h2>Overview: Combining Preference with Deep RL</h2>
+<p><strong>Insight</strong>: Explain preferences over trajectories via reward <span class="math inline">\(R: \mathcal{S} \times \mathcal{A} \rightarrow \mathbb{R}\)</span></p>
+
+<img data-src="images/rlhf.png" class="r-stretch"></section>
+<section id="overview-reward-learning-from-preference-over-trajectories" class="slide level2">
+<h2>Overview: Reward Learning from Preference Over Trajectories</h2>
+<div title="Definition: Bradley-Terry Preference Model">
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Definition: Bradley-Terry Preference Model</strong></p>
+</div>
+<div class="callout-content">
+<p><span class="math display">\[\begin{align}
+P(\sigma_1 \succ \sigma_2) = \frac{\exp \sum \hat{r}(s_t^1, a_t^1)}{\exp \sum \hat{r}(s_t^1, a_t^1) + \exp \sum \hat{r}(s_t^2, a_t^2)}
+\end{align}\]</span></p>
+</div>
+</div>
+</div>
+</div>
+<p><span class="math display">\[\text{loss}(\hat{r}) = -\sum_{(\sigma^1, \sigma^2, \mu) \in \mathcal{D}} \mu(1) \log \hat{P}[\sigma^1 \succ \sigma^2] + \mu(2) \log \hat{P}[\sigma^2 \succ \sigma^1].\]</span></p>
+<p>Learn an ensemble of predictors, and ask human queries based on disagreement of the ensemble.</p>
+<p>Model noise in preferences <strong>HOW</strong> (10% thing??)</p>
+</section>
+<section id="canonical-rlhf-idealized-feedback" class="slide level2">
+<h2>Canonical RLHF Idealized Feedback</h2>
+<p>RLHF on its own does not account for the imperfections that exist in human feedback.</p>
+<p><strong>Inconsistency</strong></p>
+<ol type="1">
+<li>False beliefs</li>
+<li>Hyperbolic discounting</li>
+</ol>
+<p><strong>Sub-optimality</strong></p>
+<ol type="1">
+<li>Humans have <em>bounded rationality</em></li>
+</ol>
+<p><strong>Heterogeneity</strong></p>
+<ol type="1">
+<li>Different individuals might consider different objectives, styles, or interpretations, leading to heterogenous feedback. Plans are more complex than the ‘average’ of feedback responses.</li>
+</ol>
+</section>
+<section id="ignorant-inconsistent-paper" class="slide level2">
+<h2>Ignorant Inconsistent Paper</h2>
+<p>Explain paper</p>
+</section>
+<section id="occams-razor" class="slide level2">
+<h2>Occam’s Razor</h2>
+<p>Explain paper</p>
+</section>
+<section id="dealing-with-sub-optimality-of-human-feedback" class="slide level2">
+<h2>Dealing with Sub-Optimality of Human Feedback</h2>
+<p>Inverse Reward Design</p>
+</section>
+<section id="coach" class="slide level2">
+<h2>COACH</h2>
+<p>Not sure what category this belongs to yet…</p>
+</section>
+<section id="aquisition-strategies" class="slide level2">
+<h2>Aquisition Strategies</h2>
+<p>explain active PBL.</p>
+</section>
+<section id="proposed-methodology" class="slide level2">
+<h2>Proposed methodology</h2>
+<p>explain active PBL.</p>
 
 </section>
     </div>
