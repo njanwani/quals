@@ -161,39 +161,30 @@ Neil Janwani
 </ul>
 <p>However, human feedback is <strong>imperfect</strong>.</p>
 </section>
-<section id="synthesizing-ill-defined-robotic-control" class="slide level2">
-<h2><span style="display: block; text-align: center;">Synthesizing ill-defined robotic control</span></h2>
+<section id="outline" class="slide level2">
+<h2><span style="display: block; text-align: center;">Outline</span></h2>
 <p>How should RL model and leverage imperfect human feedback to achieve <em>human-defined</em> objectives?</p>
-<div class="columns">
-<div class="column" style="width:50%;">
-<strong>Learning Reward Functions…</strong> <br>
-<div style="font-size: 0.8em;">
-<!-- Learn rewards and policies that accomplish *intended* objectives -->
-<p>Tractably learn rewards from humans</p>
+<div style="display: flex; gap: 1em; font-size: 0.8em;">
+<div style="flex: 1; border-right: 2px solid #282626; padding-right: 1em;">
+<p><strong>Learning Reward Functions…</strong></p>
+<!-- Learning *ill-defined* rewards from humans -->
 <ol type="1">
-<li>Feedback types</li>
-<li>Aquisition Strategy</li>
-<li>Credit Assignment</li>
+<li>Feedback Types</li>
+<li>Aquisition Strategies</li>
+<li>Tractable Learning</li>
 </ol>
 </div>
-<!-- 1. Inverse reward design
-2. RLHF
-3. COACH -->
-</div><div class="column" style="width:50%;">
-<strong>…from Imperfect Human Feedback</strong> <br>
-<div style="font-size: 0.8em;">
-<p>Model the imperfections in human feedback</p>
+<div style="flex: 1; padding-left: 1em;">
+<p><strong>…from Imperfect Human Feedback</strong></p>
+<!-- Model the imperfections in human feedback -->
 <ol type="1">
 <li>Inconsistency</li>
-<li>Sub-optimality</li>
+<li>Suboptimality</li>
 <li>Heterogeneity</li>
 </ol>
 </div>
-<!-- 1. Inconsistency
-2. Suboptimality
-3. Heterogeneity -->
-</div><p>hello</p>
 </div>
+<p>Preference-based deep RL <span class="math inline">\(\rightarrow\)</span> Imperfect human feedback <span class="math inline">\(\rightarrow\)</span> Approaches that address these concerns <span class="math inline">\(\rightarrow\)</span> Active sampling <span class="math inline">\(\rightarrow\)</span> Open problem(s) <span class="math inline">\(\rightarrow\)</span> A proposed solution</p>
 </section>
 <section id="section" class="slide level2 center">
 <h2></h2>
@@ -264,10 +255,14 @@ P(\sigma_1 \succ \sigma_2) = \frac{\exp \sum \hat{r}(s_t^1, a_t^1)}{\exp \sum \h
 <section id="coach" class="slide level2">
 <h2>COACH</h2>
 <p>Not sure what category this belongs to yet…</p>
+<p>This is about feedback interpretation.</p>
 </section>
 <section id="aquisition-strategies" class="slide level2">
 <h2>Aquisition Strategies</h2>
 <p>explain active PBL.</p>
+</section>
+<section id="open-problem-multi-objective-preferences" class="slide level2">
+<h2>Open Problem: Multi-Objective Preferences</h2>
 </section>
 <section id="proposed-methodology" class="slide level2">
 <h2>Proposed methodology</h2>
