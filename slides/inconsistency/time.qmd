@@ -12,9 +12,9 @@ $$\begin{aligned}
 </div>
 
 </div>
-<div style="flex: 1;">
+<div style="flex: 1; margin-top: -1.5em;">
 
-*Image placeholder*
+![](images/discounting.svg){width="100%"}
 
 </div>
 </div>

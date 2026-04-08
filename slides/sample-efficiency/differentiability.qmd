@@ -1,0 +1,3 @@
+3. [*Differentiability*]{.underline}: formulate the acquisition function as differentiable w.r.t. query parameters, enabling gradient-based optimization over the query space
+
+$$q^* = \arg\max_q \; \mathcal{A}(q; \theta), \qquad \nabla_q \mathcal{A}(q; \theta) \neq 0$$

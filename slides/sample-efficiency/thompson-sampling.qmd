@@ -1,0 +1,3 @@
+2. [*Thompson Sampling*]{.underline}: sample a reward function from the posterior and select the query that is optimal under that sample
+
+$$\theta^* \sim p(\theta \mid \mathcal{D}), \qquad a^*(q) = \arg\max_q \; V(\theta^*, q)$$

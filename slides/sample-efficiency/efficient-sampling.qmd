@@ -1,0 +1,5 @@
+Efficient sampling can help mitigate systematic, non-random biases
+
+1. User fatigue
+2. Indescribability
+3. Ordering

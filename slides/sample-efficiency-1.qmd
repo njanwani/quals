@@ -1,12 +1,19 @@
 ## Imperfect Human Feedback: Sample Efficiency
 
-Humans can only provide limited responses. Moreover, the noisier feedback is the more careful we need to be about asking questions.
+{{< include slides/sample-efficiency/preamble.qmd >}}
+{{< include slides/sample-efficiency/efficient-sampling.qmd >}}
 
-Several approaches exist to combat this
+## Imperfect Human Feedback: Sample Efficiency
 
-1. Information Gain
-2. Thompson Sampling
-3. Differentiability
+{{< include slides/sample-efficiency/preamble.qmd >}}
+{{< include slides/sample-efficiency/information-gain.qmd >}}
 
-Instantaenous regret vs Cummulative regret
-Thompson sampling: drug delivery
+## Imperfect Human Feedback: Sample Efficiency
+
+{{< include slides/sample-efficiency/preamble.qmd >}}
+{{< include slides/sample-efficiency/thompson-sampling.qmd >}}
+
+## Imperfect Human Feedback: Sample Efficiency
+
+{{< include slides/sample-efficiency/preamble.qmd >}}
+{{< include slides/sample-efficiency/differentiability.qmd >}}

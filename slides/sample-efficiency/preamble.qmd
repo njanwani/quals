@@ -1,0 +1,5 @@
+PBL (and IRL) can be made *active* from a well-tuned *acquisition function*.
+
+::: {.callout-tip title="Definition: Acquisition Function"}
+An acquisition function is a strategy for selecting what queries to provide to the human to collect feedback. It is the central mechanism of **active learning**, enabling the learner to optimize data collection rather than passively collect feedback.
+:::
