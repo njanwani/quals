@@ -6,8 +6,8 @@
 <script src="main_files/libs/quarto-html/tippy.umd.min.js"></script>
 <link href="main_files/libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="main_files/libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="main_files/libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.8.27">
+<link href="main_files/libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.9.36">
 
   <meta name="author" content="Neil Janwani">
   <title>Learning reward functions from imperfect human feedback for robotic decision making</title>
@@ -17,6 +17,9 @@
   <link rel="stylesheet" href="main_files/libs/revealjs/dist/reset.css">
   <link rel="stylesheet" href="main_files/libs/revealjs/dist/reveal.css">
   <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
     div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -48,7 +51,7 @@
     div.csl-indent {
       margin-left: 2em;
     }  </style>
-  <link rel="stylesheet" href="main_files/libs/revealjs/dist/theme/quarto-5ae9c59b2727fcd5357d4f034d95f9e0.css">
+  <link rel="stylesheet" href="main_files/libs/revealjs/dist/theme/quarto-b2736e9fcda83c748fd63b6e579550ef.css">
   <link href="main_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="main_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="main_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -199,6 +202,8 @@ Neil Janwani
 <section id="the-canonical-paradigms-irl-and-pbl" class="slide level2">
 <h2>The canonical paradigms: IRL and PBL</h2>
 <!-- **Inverse reinforcement learning** (IRL) learns a reward function consistent with provided demonstrations or other forms of feedback -->
+<div style="display: flex; gap: 1em;">
+<div style="flex: 1;">
 <div title="Definition: Inverse Reinforcement Learning (IRL)">
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
@@ -214,6 +219,8 @@ Neil Janwani
 </div>
 </div>
 </div>
+</div>
+<div style="flex: 1;">
 <div title="Definition: Preference-Based Learning (PBL)">
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
@@ -225,6 +232,8 @@ Neil Janwani
 </div>
 <div class="callout-content">
 <p>PBL infers a reward <span class="math inline">\(R\)</span> that is <em>consistent</em> with human preferences over pairs or sets of trajectories, actions, or outcomes, rather than from demonstrations or explicit feedback.</p>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -266,18 +275,48 @@ Neil Janwani
 <p><span style="font-size: 0.8em;"><span class="citation" data-cites="coach">MacGlashan et al. (<a href="#/references" role="doc-biblioref" onclick="">2017, <em>Interactive learning from policy-dependent human feedback</em></a>)</span></span>.</p>
 </div>
 </div>
-<p><span style="display: block; text-align: center;">Lastly, we’ll examine open problems in the field and propose a methodology to address some of these.</span></p>
+<p><span style="display: block; text-align: center;">We’ll end by examining open problems in the field and proposing a new methodology to address some of these.</span></p>
 </section>
 <section id="imperfect-human-feedback-inconsistency" class="slide level2">
 <h2>Imperfect Human Feedback: Inconsistency</h2>
-<p>PAPER noted that inconsistency can arise in human-robot systems through at least two means</p>
+<p>Assume agents take actions <em>approximately optimally</em> <span class="math display">\[\begin{align}
+P(a' \mid s) \propto \exp(\alpha EU_s[a']), \qquad EU_s[a] = U(s,a) + \underset{s',~a'}{\mathbb{E}}[EU_{s'}[a']]
+\end{align}\]</span></p>
+<p>Rather than account for imperfections by scaling <span class="math inline">\(\alpha\)</span>, we can encode <em>systematic</em> sources of inconsistency and sub-optimality:</p>
 <ol type="1">
-<li><strong>False beliefs</strong> about state: agents may not always have perfect system knowledge</li>
-<li><strong>Hyperbolic discounting</strong> can result in agents preferring less optimal solutions if they can be achieved in the short term</li>
+<li><u><em>Time inconsistency</em></u>: apply <strong>hyperbolic discounting</strong> to model the prioritization of immediate rewards over long-term ones</li>
 </ol>
-<p>This enables their model to <em>explain</em> observed behavior as a function of its parameters.</p>
+<div style="display: flex; gap: 1em; margin-top: -0.5em;">
+<div style="flex: 1;">
+<div style="margin-bottom: -1.5em;">
+<p><span class="math display">\[\begin{aligned}
+&amp;P(a' \mid s, d) \propto \exp(\alpha EU_{s, d}[a']) \\
+&amp;EU_{s,d}[a] = \frac{1}{1 + kd}U(s,a) + \underset{s',~a'}{\mathbb{E}}[EU_{s', d + 1}[a']]
+\end{aligned}\]</span></p>
+</div>
+</div>
+<div style="flex: 1;">
+<p><em>Image placeholder</em></p>
+</div>
+</div>
+<p><span style="font-size: 0.8em;"><span class="citation" data-cites="inconsistent">Evans et al. (<a href="#/references" role="doc-biblioref" onclick="">2016, <em>Learning the preferences of ignorant, inconsistent agents</em></a>)</span></span>.</p>
 </section>
 <section id="imperfect-human-feedback-inconsistency-1" class="slide level2">
+<h2>Imperfect Human Feedback: Inconsistency</h2>
+<p>Assume agents take actions <em>approximately optimally</em> <span class="math display">\[\begin{align}
+P(a' \mid s) \propto \exp(\alpha EU_s[a']), \qquad EU_s[a] = U(s,a) + \underset{s',~a'}{\mathbb{E}}[EU_{s'}[a']]
+\end{align}\]</span></p>
+<p>Rather than account for imperfections by scaling <span class="math inline">\(\alpha\)</span>, we can encode <em>systematic</em> sources of inconsistency and sub-optimality:</p>
+<ol start="2" type="1">
+<li><u><em>False beliefs</em></u>: draw the expected future state from a prior <em>belief</em> <span class="math inline">\(p(s)\)</span> over state <span class="math display">\[\begin{aligned}
+&amp;P(a' \mid p(s), o, d) \propto \exp(\alpha EU_{p(s), o, d}[a']) \qquad p(s \mid o) \propto p(s)p(o \mid s) \\
+&amp;EU_{p(s),o,d}[a] = \underset{s \sim p(s | o)}{\mathbb{E}} \left[ \frac{1}{1 + kd}U(s,a) + \underset{s',~o',~a'}{\mathbb{E}}[EU_{p(s | o), o', d + 1}[a']] \right]
+\end{aligned}\]</span></li>
+</ol>
+<p><span style="font-size: 0.8em;"><span class="citation" data-cites="inconsistent">Evans et al. (<a href="#/references" role="doc-biblioref" onclick="">2016, <em>Learning the preferences of ignorant, inconsistent agents</em></a>)</span></span>.</p>
+<!-- This enables their model to *explain* observed behavior as a function of its parameters. -->
+</section>
+<section id="imperfect-human-feedback-inconsistency-2" class="slide level2">
 <h2>Imperfect Human Feedback: Inconsistency</h2>
 <p>The paper demonstrated their results by collecting human explanations and comparing them to the model explanations.</p>
 <p>Explain the study parameters.</p>

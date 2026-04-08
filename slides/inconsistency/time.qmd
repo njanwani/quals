@@ -1,0 +1,20 @@
+1. [*Time inconsistency*]{.underline}: apply **hyperbolic discounting** to model the prioritization of immediate rewards over long-term ones
+
+<div style="display: flex; gap: 1em; margin-top: -0.5em;">
+<div style="flex: 1;">
+<div style="margin-bottom: -1.5em;">
+
+$$\begin{aligned}
+&P(a' \mid s, d) \propto \exp(\alpha EU_{s, d}[a']) \\
+&EU_{s,d}[a] = \frac{1}{1 + kd}U(s,a) + \underset{s',~a'}{\mathbb{E}}[EU_{s', d + 1}[a']]
+\end{aligned}$$
+
+</div>
+
+</div>
+<div style="flex: 1;">
+
+*Image placeholder*
+
+</div>
+</div>

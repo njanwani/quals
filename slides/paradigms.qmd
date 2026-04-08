@@ -2,14 +2,22 @@
 
 <!-- **Inverse reinforcement learning** (IRL) learns a reward function consistent with provided demonstrations or other forms of feedback -->
 
+<div style="display: flex; gap: 1em;">
+<div style="flex: 1;">
+
 ::: {.callout-tip title="Definition: Inverse Reinforcement Learning (IRL)"}
 IRL infers the underlying reward $R$ that explains observed expert behavior, typically by assuming the expert acts (approximately) optimally to $R$.
 :::
 
+</div>
+<div style="flex: 1;">
 
 ::: {.callout-tip title="Definition: Preference-Based Learning (PBL)"}
 PBL infers a reward $R$ that is *consistent* with human preferences over pairs or sets of trajectories, actions, or outcomes, rather than from demonstrations or explicit feedback.
 :::
+
+</div>
+</div>
 
 <!-- **Preference-based learning** (PBL) learns a reward function that is consistent with preferences collected from humans. -->
 

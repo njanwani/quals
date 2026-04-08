@@ -1,8 +1,15 @@
 ## Imperfect Human Feedback: Inconsistency
 
-PAPER noted that inconsistency can arise in human-robot systems through at least two means
+{{< include slides/inconsistency/preamble.qmd >}}
+{{< include slides/inconsistency/time.qmd >}}
 
-1. **False beliefs** about state: agents may not always have perfect system knowledge
-2. **Hyperbolic discounting** can result in agents preferring less optimal solutions if they can be achieved in the short term
+[@inconsistent]{style="font-size: 0.8em;"}.
 
-This enables their model to *explain* observed behavior as a function of its parameters.
+## Imperfect Human Feedback: Inconsistency
+
+{{< include slides/inconsistency/preamble.qmd >}}
+{{< include slides/inconsistency/false-beliefs.qmd >}}
+
+[@inconsistent]{style="font-size: 0.8em;"}.
+
+<!-- This enables their model to *explain* observed behavior as a function of its parameters. -->

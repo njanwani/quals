@@ -30,4 +30,4 @@ Examine how human data is tractably used to synthesize rewards and robotic decis
 </div>
 </div>
 
-[Lastly, we'll examine open problems in the field and propose a methodology to address some of these.]{style="display: block; text-align: center;"}
+[We'll end by examining open problems in the field and proposing a new methodology to address some of these.]{style="display: block; text-align: center;"}
