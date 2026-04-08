@@ -1,13 +1,16 @@
-## Reward Learning from Preference Over Trajectories
+## Results and Discussion
 
-::: {.callout-tip title="Definition: Bradley-Terry Preference Model"}
-\begin{align}
-P(\sigma_1 \succ \sigma_2) = \frac{\exp \sum \hat{r}(s_t^1, a_t^1)}{\exp \sum \hat{r}(s_t^1, a_t^1) + \exp \sum \hat{r}(s_t^2, a_t^2)}
-\end{align}
-:::
+<div style="display: flex; gap: 1em;">
+<div style="flex: 1;">
 
-$$\text{loss}(\hat{r}) = -\sum_{(\sigma^1, \sigma^2, \mu) \in \mathcal{D}} \mu(1) \log \hat{P}[\sigma^1 \succ \sigma^2] + \mu(2) \log \hat{P}[\sigma^2 \succ \sigma^1].$$
+*Figure placeholder*
 
-Learn an ensemble of predictors, and ask human queries based on disagreement of the ensemble.
+</div>
+<div style="flex: 1;">
+This approach works varyingly well. Occasionally better *or* worse than idealized reward. 
+</div>
+</div>
 
-Model noise in preferences **HOW** (10% thing??)
+**Assumptions and Sources of Failure**
+1. Assume humans respond approximately optimaly 
+2. Assume annotators 

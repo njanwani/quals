@@ -8,4 +8,4 @@ They find empircally that there was some match in the probability distributions.
 
 **Takeaways**: time-inconsistency and false beliefs are real, systematic ways humans are biased when providing demonstrations. Including these in reward learning models could improve the accuracy of the recovered reward.
 
-[@inconsistent]{style="font-size: 0.8em;"}
+[@inconsistent]{style="font-size: 0.6em;"}

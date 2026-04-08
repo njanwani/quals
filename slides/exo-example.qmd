@@ -6,9 +6,9 @@ However, several systematic deviations from ideal feedback can occur.
 
 - A user may have **false beliefs** about what the exoskeleton is capable of.
 - Despite being interested in rehabilitation or a clinician's wishes, users might exhibit **hyperbolic discounting**, opting for less performant options to avoid pain.
-- Users may inaccurately articulate their preferences, exhibiting **systematic biases** to ordering, demonstration length or query complexity.
+- The process by which desires are translated into preferences can be flawed, yielding **irrational**, **systematic** biases to ordering, demonstration length or query complexity.
 
 
-Different users, often with similar physical parameters, might simply prefer different gaits.
+<!-- Different users, often with similar physical parameters, might simply prefer different gaits. -->
 
-**Sample efficiency**: Users could tire from being asked questions that are difficult to answer, or redundant
+<!-- **Sample efficiency**: Users could tire from being asked questions that are difficult to answer, or redundant -->

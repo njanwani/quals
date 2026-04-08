@@ -1,11 +1,11 @@
 ## Imperfect Human Feedback: Suboptimality and Heterogeneity
 
-Humans exhibit **bounded rationality** and **complex behavior**, and can deviate from uniqueness and optimality in *biased*, non-random ways.
+Humans deviate from optimal behavior $\pi^*$ due to *bounded-rationality* and *complex decision-making*: [Boltzmann rationality is not necessarily correct]{.underline}.
 
 <div style="margin-bottom: -1.8em;">
 
 ::: {.callout-tip title="Definition: Policy Decomposition"}
-A human policy $\dot{\pi}$ can be decomposed into a *planner-reward* pair $(p, R)$ via $p(R) = \dot{\pi}$. Planner $p$ encodes the (ir)rationality, biases, and style of the human, while reward $R$ describes the human's goal.
+Human policy $\pi^{.}$ can be decomposed into a *planner-reward* pair $(p, R)$ via $p(R) = \pi^.$. Planner $p$ encodes the (ir)rationality, biases, and style of the human, while reward $R$ describes the human's goal.
 :::
 
 Policy decomposition is an underdetermined problem--additional constraints are needed to find *unique* solutions.
@@ -14,4 +14,4 @@ Policy decomposition is an underdetermined problem--additional constraints are n
 2. Simpler is not always better--degenerate decompositions have lower complexity than "reasonable" ones.
 </div>
 
-[@occam]{style="font-size: 0.75em;"}
+[@occam]{style="font-size: 0.6em;"}

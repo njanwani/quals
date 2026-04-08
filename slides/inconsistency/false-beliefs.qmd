@@ -1,7 +1,9 @@
-2. [*False beliefs*]{.underline}: draw the expected future state from a prior *belief* $p(s)$ over state 
-<div style="margin-bottom: -2.0em;">
-$$\begin{aligned}
-&P(a' \mid p(s), o, d) \propto \exp(\alpha EU_{p(s), o, d}[a']) \qquad p(s \mid o) \propto p(s)p(o \mid s) \\
-&EU_{p(s),o,d}[a] = \underset{s \sim p(s | o)}{\mathbb{E}} \left[ \frac{1}{1 + kd}U(s,a) + \underset{s',~o',~a'}{\mathbb{E}}[EU_{p(s | o), o', d + 1}[a']] \right]
-\end{aligned}$$
-</div>
+[*False beliefs*]{.underline}: draw the expected future state from a prior *belief* $p(s)$ over state 
+$$p(s \mid o) \propto p(s)p(o \mid s)$$
+
+Then, we can redefine our agent's behavior in terms of belief $p(s)$.
+
+\begin{aligned}
+&P(a' \mid p(s), o, d) \propto \exp(\alpha EU_{p(s), o, d}[a']), \\
+&EU_{p(s),o,d}[a] = \underset{s \sim p(s | o)}{\mathbb{E}} \left[ \frac{1}{1 + kd}U(s,a) + \underset{s',~o',~a'}{\mathbb{E}}[EU_{p(s | o), o', d + 1}[a']] \right].
+\end{aligned}

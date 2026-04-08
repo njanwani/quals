@@ -14,6 +14,7 @@ subtitle: "<span style='font-size: 0.7em;'>Committee: Prof. Matthew Gombolay (Ch
 {{< include slides/outline.qmd >}}
 
 {{< include slides/transition-imperfect.qmd >}}
+{{< include slides/inconsistency-prelim.qmd >}}
 {{< include slides/inconsistency-1.qmd >}}
 {{< include slides/inconsistency-2.qmd >}}
 {{< include slides/subopt-hetero-1.qmd >}}
@@ -21,6 +22,7 @@ subtitle: "<span style='font-size: 0.7em;'>Committee: Prof. Matthew Gombolay (Ch
 {{< include slides/exo-example.qmd >}}
 
 {{< include slides/transition-rewards.qmd >}}
+{{< include slides/rlhf-1.qmd >}}
 {{< include slides/rlhf-2.qmd >}}
 {{< include slides/rlhf-3.qmd >}}
 {{< include slides/ird.qmd >}}

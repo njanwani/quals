@@ -1,0 +1,23 @@
+## Leveraging Preferences in Deep RL
+
+How can we tractably learn a reward $\hat{R_{\theta}}$ *consistent with preferences* over robot behaviors.
+\begin{align}
+\sum_{(s,~a)~\in~\tau_1} \hat{R}_{\theta}(s,a) > \sum_{(s,~a)~\in~\tau_2} \hat{R}_{\theta}(s,a) \implies \tau_1 \succ \tau_2 
+\end{align}
+
+<div style="display: flex; gap: 1em; margin-bottom: -1.0em;">
+<div style="flex: 1; font-size: 0.85em;">
+
+1. Optimize $\pi$ for $\hat{R}$ using deep RL
+2. Rollout $\pi$ to produce trajectory set $\{\tau_1, \dots, \tau_i\}$.
+3. Select trajectory segments $(\sigma_1, \sigma_2)$ and query human for preference.
+4. Optimize $\hat{R}$ to be consistent with those preferences.
+</div>
+<div style="flex: 1;">
+
+![](images/rlhf.png){width="100%"}
+
+</div>
+</div>
+
+[@rlhf]{style="font-size: 0.6em;"}.

@@ -1,4 +1,4 @@
-## The canonical paradigms: IRL and PBL
+## The canonical paradigms to learn rewards
 
 <!-- **Inverse reinforcement learning** (IRL) learns a reward function consistent with provided demonstrations or other forms of feedback -->
 

@@ -1,6 +1,29 @@
-## Combining Preference with Deep RL
+## Extracting a Reward from Preferences
 
-**Insight**: Explain preferences over trajectories via reward $R: \mathcal{S} \times \mathcal{A} \rightarrow \mathbb{R}$
+::: {.callout-tip title="Definition: Bradley-Terry Preference Model"}
+\begin{align}
+P(\sigma^1 \succ \sigma^2) = \frac{\exp \sum_{t} \hat{R}(s_t^1, a_t^1)}{\exp \sum_t \hat{R}(s_t^1, a_t^1) + \exp \sum_t \hat{R}(s_t^2, a_t^2)}, \qquad (s^i_t, a^i_t) \in \sigma_i
+\end{align}
+:::
 
+<div style="display: flex; gap: 1em;">
+<div style="flex: 1;">
+<div style="text-align: center;">**Querying**</div>
 
-![](images/rlhf.png)
+1. Learn an *ensemble* $\hat{R}_i$.
+2. Query the human over $\sigma^1$, $\sigma^2$ that elicit the most disagreement over $\hat{R}_i$.
+3. $\mathcal{D} \leftarrow (\sigma^1, \sigma^2, \mu)$
+
+$\mu$ is a distribution over $\{1, 2\}$
+
+</div>
+<div style="flex: 1;">
+<div style="text-align: center;">**Optimizing**</div>
+\begin{align}
+\text{loss}(\hat{r}) = -\sum_\mathcal{D}~\biggl[~&\mu(1) \log \hat{P}[\sigma^1 \succ \sigma^2] 
+\\+ &\mu(2) \log \hat{P}[\sigma^2 \succ \sigma^1]\biggr].
+\end{align}
+
+$\mu$ can represent absolute and uniform preference, as well as incomparable.
+</div>
+</div>

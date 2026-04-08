@@ -1,4 +1,4 @@
-## Imperfect Human Feedback: Sample Efficiency
+## Collecting Imperfect Human Feedback
 
 {{< include slides/sample-efficiency/preamble.qmd >}}
 {{< include slides/sample-efficiency/efficient-sampling.qmd >}}
