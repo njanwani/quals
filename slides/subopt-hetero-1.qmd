@@ -1,7 +1,17 @@
 ## Imperfect Human Feedback: Suboptimality and Heterogeneity
 
-The paper examined human decision making as decomposable to a reward and planner.
+Humans exhibit **bounded rationality** and **complex behavior**, and can deviate from uniqueness and optimality in *biased*, non-random ways.
 
-In this case, the planner can exhibit **bounded rationality** and **complex behavior**.
+<div style="margin-bottom: -1.8em;">
 
-This was achieved through simple thought experiments (simplicity test + degenerate pairs).
+::: {.callout-tip title="Definition: Policy Decomposition"}
+A human policy $\dot{\pi}$ can be decomposed into a *planner-reward* pair $(p, R)$ via $p(R) = \dot{\pi}$. Planner $p$ encodes the (ir)rationality, biases, and style of the human, while reward $R$ describes the human's goal.
+:::
+
+Policy decomposition is an underdetermined problem--additional constraints are needed to find *unique* solutions.
+
+1. **Heterogeneity** and **suboptimality** can be modeled via a planner.
+2. Simpler is not always better--degenerate decompositions have lower complexity than "reasonable" ones.
+</div>
+
+[@occam]{style="font-size: 0.75em;"}

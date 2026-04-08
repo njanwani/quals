@@ -1,7 +1,11 @@
 ## Imperfect Human Feedback: Inconsistency
 
-The paper demonstrated their results by collecting human explanations and comparing them to the model explanations.
+The paper demonstrated that systematic integration of time-inconsistency and false beliefs aligned with humans.
 
-Explain the study parameters.
+They asked humans $(n=130)$ to explain observed behaviors, as well as predicted them with their model.
 
-The paper was somewhat unclear about the experimental setup.
+They find empircally that there was some match in the probability distributions.
+
+**Takeaways**: time-inconsistency and false beliefs are real, systematic ways humans are biased when providing demonstrations. Including these in reward learning models could improve the accuracy of the recovered reward.
+
+[@inconsistent]{style="font-size: 0.8em;"}

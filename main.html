@@ -239,22 +239,11 @@ Neil Janwani
 </div>
 </div>
 <!-- **Preference-based learning** (PBL) learns a reward function that is consistent with preferences collected from humans. -->
-<p>ADD MORE TO THIS SLIDE LATER</p>
+<p>ADD MORE TO THIS SLIDE LATER: add in each (broad) type of feedback imperfection</p>
 <ul>
 <li>However, human feedback is <strong>imperfect</strong>.</li>
 <li>Even pairwise comparisons, one of the most reliable sources of human data, can vary wildly over experimental runs and individuals</li>
 </ul>
-</section>
-<section id="an-example-pbl-on-exoskeletons" class="slide level2">
-<h2>An Example: PBL on Exoskeletons</h2>
-<p>Preference feedback is collected from the user as they operate the device, which is then used to update robot behavior.</p>
-<p>However, several unexpected failures could manifest</p>
-<ol type="1">
-<li><strong>Inconsistency</strong>: A user may occasionally change their priorities, or simply answer incorrectly.</li>
-<li><strong>Suboptimality</strong>: Despite being interested in rehabilitation or a clinician’s wishes, users might opt for less performant options to avoid pain.</li>
-<li><strong>Heterogeneity</strong>: Different users, often with similar physical parameters, might prefer different gaits</li>
-<li><strong>Tractability</strong>: Users could tire from being asked questions that are difficult to answer, or redundant</li>
-</ol>
 </section>
 <section id="outline" class="slide level2">
 <h2><span style="display: block; text-align: center;">Outline</span></h2>
@@ -276,6 +265,11 @@ Neil Janwani
 </div>
 </div>
 <p><span style="display: block; text-align: center;">We’ll end by examining open problems in the field and proposing a new methodology to address some of these.</span></p>
+</section>
+<section>
+<section id="imperfect-human-feedback" class="title-slide slide level1 center">
+<h1>Imperfect Human Feedback</h1>
+
 </section>
 <section id="imperfect-human-feedback-inconsistency" class="slide level2">
 <h2>Imperfect Human Feedback: Inconsistency</h2>
@@ -308,25 +302,51 @@ P(a' \mid s) \propto \exp(\alpha EU_s[a']), \qquad EU_s[a] = U(s,a) + \underset{
 \end{align}\]</span></p>
 <p>Rather than account for imperfections by scaling <span class="math inline">\(\alpha\)</span>, we can encode <em>systematic</em> sources of inconsistency and sub-optimality:</p>
 <ol start="2" type="1">
-<li><u><em>False beliefs</em></u>: draw the expected future state from a prior <em>belief</em> <span class="math inline">\(p(s)\)</span> over state <span class="math display">\[\begin{aligned}
+<li><u><em>False beliefs</em></u>: draw the expected future state from a prior <em>belief</em> <span class="math inline">\(p(s)\)</span> over state
+<div style="margin-bottom: -2.0em;">
+<p><span class="math display">\[\begin{aligned}
 &amp;P(a' \mid p(s), o, d) \propto \exp(\alpha EU_{p(s), o, d}[a']) \qquad p(s \mid o) \propto p(s)p(o \mid s) \\
 &amp;EU_{p(s),o,d}[a] = \underset{s \sim p(s | o)}{\mathbb{E}} \left[ \frac{1}{1 + kd}U(s,a) + \underset{s',~o',~a'}{\mathbb{E}}[EU_{p(s | o), o', d + 1}[a']] \right]
-\end{aligned}\]</span></li>
+\end{aligned}\]</span></p>
+</div></li>
 </ol>
 <p><span style="font-size: 0.8em;"><span class="citation" data-cites="inconsistent">Evans et al. (<a href="#/references" role="doc-biblioref" onclick="">2016, <em>Learning the preferences of ignorant, inconsistent agents</em></a>)</span></span>.</p>
 <!-- This enables their model to *explain* observed behavior as a function of its parameters. -->
 </section>
 <section id="imperfect-human-feedback-inconsistency-2" class="slide level2">
 <h2>Imperfect Human Feedback: Inconsistency</h2>
-<p>The paper demonstrated their results by collecting human explanations and comparing them to the model explanations.</p>
-<p>Explain the study parameters.</p>
-<p>The paper was somewhat unclear about the experimental setup.</p>
+<p>The paper demonstrated that systematic integration of time-inconsistency and false beliefs aligned with humans.</p>
+<p>They asked humans <span class="math inline">\((n=130)\)</span> to explain observed behaviors, as well as predicted them with their model.</p>
+<p>They find empircally that there was some match in the probability distributions.</p>
+<p><strong>Takeaways</strong>: time-inconsistency and false beliefs are real, systematic ways humans are biased when providing demonstrations. Including these in reward learning models could improve the accuracy of the recovered reward.</p>
+<p><span style="font-size: 0.8em;"><span class="citation" data-cites="inconsistent">Evans et al. (<a href="#/references" role="doc-biblioref" onclick="">2016, <em>Learning the preferences of ignorant, inconsistent agents</em></a>)</span></span></p>
 </section>
 <section id="imperfect-human-feedback-suboptimality-and-heterogeneity" class="slide level2">
 <h2>Imperfect Human Feedback: Suboptimality and Heterogeneity</h2>
-<p>The paper examined human decision making as decomposable to a reward and planner.</p>
-<p>In this case, the planner can exhibit <strong>bounded rationality</strong> and <strong>complex behavior</strong>.</p>
-<p>This was achieved through simple thought experiments (simplicity test + degenerate pairs).</p>
+<p>Humans exhibit <strong>bounded rationality</strong> and <strong>complex behavior</strong>, and can deviate from uniqueness and optimality in <em>biased</em>, non-random ways.</p>
+<div style="margin-bottom: -1.8em;">
+<div title="Definition: Policy Decomposition">
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Definition: Policy Decomposition</strong></p>
+</div>
+<div class="callout-content">
+<p>A human policy <span class="math inline">\(\dot{\pi}\)</span> can be decomposed into a <em>planner-reward</em> pair <span class="math inline">\((p, R)\)</span> via <span class="math inline">\(p(R) = \dot{\pi}\)</span>. Planner <span class="math inline">\(p\)</span> encodes the (ir)rationality, biases, and style of the human, while reward <span class="math inline">\(R\)</span> describes the human’s goal.</p>
+</div>
+</div>
+</div>
+</div>
+<p>Policy decomposition is an underdetermined problem–additional constraints are needed to find <em>unique</em> solutions.</p>
+<ol type="1">
+<li><strong>Heterogeneity</strong> and <strong>suboptimality</strong> can be modeled via a planner.</li>
+<li>Simpler is not always better–degenerate decompositions have lower complexity than “reasonable” ones.</li>
+</ol>
+</div>
+<p><span style="font-size: 0.75em;"><span class="citation" data-cites="occam">Armstrong et al. (<a href="#/references" role="doc-biblioref" onclick="">2018, <em>Occam’s razor is insufficient to infer the preferences of irrational agents</em></a>)</span></span></p>
 </section>
 <section id="imperfect-human-feedback-sample-efficiency" class="slide level2">
 <h2>Imperfect Human Feedback: Sample Efficiency</h2>
@@ -338,6 +358,23 @@ P(a' \mid s) \propto \exp(\alpha EU_s[a']), \qquad EU_s[a] = U(s,a) + \underset{
 <li>Differentiability</li>
 </ol>
 <p>Instantaenous regret vs Cummulative regret Thompson sampling: drug delivery</p>
+</section>
+<section id="an-example-pbl-on-exoskeletons" class="slide level2">
+<h2>An Example: PBL on Exoskeletons</h2>
+<p>Preference feedback is collected from the user as they operate the device, which is then used to update robot behavior.</p>
+<p>However, several systematic deviations from ideal feedback can occur.</p>
+<ul>
+<li>A user may have <strong>false beliefs</strong> about what the exoskeleton is capable of.</li>
+<li>Despite being interested in rehabilitation or a clinician’s wishes, users might exhibit <strong>hyperbolic discounting</strong>, opting for less performant options to avoid pain.</li>
+<li>Users may inaccurately articulate their preferences, exhibiting <strong>systematic biases</strong> to ordering, demonstration length or query complexity.</li>
+</ul>
+<p>Different users, often with similar physical parameters, might simply prefer different gaits.</p>
+<p><strong>Sample efficiency</strong>: Users could tire from being asked questions that are difficult to answer, or redundant</p>
+</section></section>
+<section>
+<section id="learning-rewards-for-robotic-decision-making." class="title-slide slide level1 center">
+<h1>Learning Rewards for Robotic-Decision Making.</h1>
+
 </section>
 <section id="combining-preference-with-deep-rl" class="slide level2">
 <h2>Combining Preference with Deep RL</h2>
@@ -401,7 +438,7 @@ Hadfield-Menell, Dylan, Smitha Milli, Pieter Abbeel, Stuart J Russell, and Anca 
 MacGlashan, James, Mark K Ho, Robert Loftin, Bei Peng, Guan Wang, David L Roberts, Matthew E Taylor, and Michael L Littman. (2017). <em>Interactive learning from policy-dependent human feedback</em>. International conference on machine learning.
 </div>
 </div>
-</section>
+</section></section>
 <section id="questions" class="title-slide slide level1 center">
 <h1>Questions?</h1>
 

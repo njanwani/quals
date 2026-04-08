@@ -1,0 +1,14 @@
+## An Example: PBL on Exoskeletons
+
+Preference feedback is collected from the user as they operate the device, which is then used to update robot behavior.
+
+However, several systematic deviations from ideal feedback can occur.
+
+- A user may have **false beliefs** about what the exoskeleton is capable of.
+- Despite being interested in rehabilitation or a clinician's wishes, users might exhibit **hyperbolic discounting**, opting for less performant options to avoid pain.
+- Users may inaccurately articulate their preferences, exhibiting **systematic biases** to ordering, demonstration length or query complexity.
+
+
+Different users, often with similar physical parameters, might simply prefer different gaits.
+
+**Sample efficiency**: Users could tire from being asked questions that are difficult to answer, or redundant
