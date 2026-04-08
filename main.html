@@ -6,8 +6,8 @@
 <script src="main_files/libs/quarto-html/tippy.umd.min.js"></script>
 <link href="main_files/libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="main_files/libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="main_files/libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.9.36">
+<link href="main_files/libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.8.27">
 
   <meta name="author" content="Neil Janwani">
   <title>Learning reward functions from imperfect human feedback for robotic decision making</title>
@@ -17,9 +17,6 @@
   <link rel="stylesheet" href="main_files/libs/revealjs/dist/reset.css">
   <link rel="stylesheet" href="main_files/libs/revealjs/dist/reveal.css">
   <style>
-    /* Default styles provided by pandoc.
-    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
-    */
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
     div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -51,7 +48,7 @@
     div.csl-indent {
       margin-left: 2em;
     }  </style>
-  <link rel="stylesheet" href="main_files/libs/revealjs/dist/theme/quarto-b2736e9fcda83c748fd63b6e579550ef.css">
+  <link rel="stylesheet" href="main_files/libs/revealjs/dist/theme/quarto-5ae9c59b2727fcd5357d4f034d95f9e0.css">
   <link href="main_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="main_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="main_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -199,8 +196,8 @@ Neil Janwani
 </div>
 <p><span style="display: block; text-align: center;;"><em>Not all objectives are easily describable via hand-crafted rewards.</em></span></p>
 </section>
-<section id="the-canonical-paradigms-irl-and-pbl" class="slide level2">
-<h2>The canonical paradigms: IRL and PBL</h2>
+<section id="the-canonical-paradigms-to-learn-rewards" class="slide level2">
+<h2>The canonical paradigms to learn rewards</h2>
 <!-- **Inverse reinforcement learning** (IRL) learns a reward function consistent with provided demonstrations or other forms of feedback -->
 <div style="display: flex; gap: 1em;">
 <div style="flex: 1;">
@@ -239,17 +236,18 @@ Neil Janwani
 </div>
 </div>
 <!-- **Preference-based learning** (PBL) learns a reward function that is consistent with preferences collected from humans. -->
-<p>ADD MORE TO THIS SLIDE LATER: add in each (broad) type of feedback imperfection</p>
+<p>However, human feedback is <strong>imperfect</strong>.</p>
 <ul>
-<li>However, human feedback is <strong>imperfect</strong>.</li>
-<li>Even pairwise comparisons, one of the most reliable sources of human data, can vary wildly over experimental runs and individuals</li>
+<li>Inconsistency, suboptimality, and heterogeneity manifest as systematic noise.</li>
+<li>Humans aren’t computers: they have finite energy and avoid pain.</li>
 </ul>
+<p>Even pairwise comparisons, one of the most reliable sources of human data, can vary over experimental runs and individuals.</p>
 </section>
-<section id="outline" class="slide level2">
-<h2><span style="display: block; text-align: center;">Outline</span></h2>
+<section id="an-outline-for" class="slide level2">
+<h2><span style="display: block; text-align: center;">An Outline for…</span></h2>
 <div style="display: flex; gap: 1em; font-size: 0.8em;">
 <div style="flex: 1; border-right: 2px solid #282626; padding-right: 1em;">
-<p><strong>Using Imperfect Human Feedback…</strong></p>
+<p><strong>…Using Imperfect Human Feedback…</strong></p>
 <!-- Learning *ill-defined* rewards from humans -->
 <p>Highlight and validate the characteristics of human feedback in real human-robot systems.</p>
 <p><span style="font-size: 0.8em;"><span class="citation" data-cites="inconsistent">Evans et al. (<a href="#/references" role="doc-biblioref" onclick="">2016, <em>Learning the preferences of ignorant, inconsistent agents</em></a>)</span></span>.</p>
@@ -267,51 +265,75 @@ Neil Janwani
 <p><span style="display: block; text-align: center;">We’ll end by examining open problems in the field and proposing a new methodology to address some of these.</span></p>
 </section>
 <section>
-<section id="imperfect-human-feedback" class="title-slide slide level1 center">
-<h1>Imperfect Human Feedback</h1>
+<section id="imperfect-human-feedback." class="title-slide slide level1 center">
+<h1>Imperfect Human Feedback.</h1>
 
+</section>
+<section id="preliminaries-idealistic-behavior" class="slide level2">
+<h2>Preliminaries: Idealistic Behavior</h2>
+<p>How can we model idealistic behavior?</p>
+<p>Agents optimize <em>cummulative return</em>, or value <span class="math inline">\(V\)</span>, by adhering to optimal behavior <span class="math inline">\(\pi^*\)</span> <span class="math display">\[\begin{align}
+V_{\pi^*}(s_0) = \sum_t R(s_t,a_t), \qquad s_{t+1} \sim T(s_t, a_t) ,~a_{t} \sim \pi^*(s_t)
+\end{align}\]</span></p>
+<p>We can model this via <strong>Boltzmann Rationality</strong></p>
+<div title="Definition: Boltzmann Rationality">
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Definition: Boltzmann Rationality</strong></p>
+</div>
+<div class="callout-content">
+<p>A perfectly rational agent can be modeled via the recursive relationship found in Boltzmann Rationality, <span class="math display">\[\begin{align}
+P(a \mid s) \propto \exp(\alpha Q(s,a)), \qquad Q(s, a) = R(s, a) + \mathbb{E}[Q(s',a')]
+\end{align}\]</span> where <span class="math inline">\(s' \sim T(\cdot \mid s,a),~a' \sim P(\cdot \mid s')\)</span> and <span class="math inline">\(Q\)</span> is the quality function.</p>
+</div>
+</div>
+</div>
+</div>
 </section>
 <section id="imperfect-human-feedback-inconsistency" class="slide level2">
 <h2>Imperfect Human Feedback: Inconsistency</h2>
-<p>Assume agents take actions <em>approximately optimally</em> <span class="math display">\[\begin{align}
-P(a' \mid s) \propto \exp(\alpha EU_s[a']), \qquad EU_s[a] = U(s,a) + \underset{s',~a'}{\mathbb{E}}[EU_{s'}[a']]
-\end{align}\]</span></p>
-<p>Rather than account for imperfections by scaling <span class="math inline">\(\alpha\)</span>, we can encode <em>systematic</em> sources of inconsistency and sub-optimality:</p>
-<ol type="1">
-<li><u><em>Time inconsistency</em></u>: apply <strong>hyperbolic discounting</strong> to model the prioritization of immediate rewards over long-term ones</li>
-</ol>
-<div style="display: flex; gap: 1em; margin-top: -0.5em;">
-<div style="flex: 1;">
-<div style="margin-bottom: -1.5em;">
-<p><span class="math display">\[\begin{aligned}
-&amp;P(a' \mid s, d) \propto \exp(\alpha EU_{s, d}[a']) \\
-&amp;EU_{s,d}[a] = \frac{1}{1 + kd}U(s,a) + \underset{s',~a'}{\mathbb{E}}[EU_{s', d + 1}[a']]
-\end{aligned}\]</span></p>
+<!-- Assume agents take actions *approximately optimally*
+\begin{align}
+P(a' \mid s) \propto \exp(\alpha EU_s[a']), \qqua\sum_{n=0}^{100}d EU_s[a] = U(s,a) + \underset{s',~a'}{\mathbb{E}}[EU_{s'}[a']]
+\end{align}
+
+Rather than account for imperfections by scaling $\alpha$, we can encode *systematic* sources of inconsistency and sub-optimality: -->
+<!-- Varying $\alpha$ can model simple noise. -->
+<p>Can we model <em>systematic</em> deviations to optimal behavior?</p>
+<p><u><em>Time inconsistency</em></u>: apply <strong>hyperbolic discounting</strong> to model the prioritization of immediate rewards over long-term ones</p>
+<div style="margin-top: -0.5em; margin-bottom: -0.5em;">
+<span class="math display">\[\begin{aligned}
+&amp;P(a' \mid s, d) \propto \exp(\alpha Q(s, a' \mid d)) \\
+&amp;Q(s, a \mid d) = \frac{1}{1 + kd}R(s,a) + \underset{s',~a'}{\mathbb{E}}[Q(s', a' \mid d + 1)]
+\end{aligned}\]</span>
 </div>
+<div style="text-align: center;">
+<p><img data-src="images/discounting.svg" style="width:80.0%"></p>
 </div>
-<div style="flex: 1;">
-<p><em>Image placeholder</em></p>
-</div>
-</div>
-<p><span style="font-size: 0.8em;"><span class="citation" data-cites="inconsistent">Evans et al. (<a href="#/references" role="doc-biblioref" onclick="">2016, <em>Learning the preferences of ignorant, inconsistent agents</em></a>)</span></span>.</p>
+<p><span style="font-size: 0.6em;"><span class="citation" data-cites="inconsistent">Evans et al. (<a href="#/references" role="doc-biblioref" onclick="">2016, <em>Learning the preferences of ignorant, inconsistent agents</em></a>)</span></span>.</p>
+<!-- [@inconsistent]{style="font-size: 0.8em;"}. -->
 </section>
 <section id="imperfect-human-feedback-inconsistency-1" class="slide level2">
 <h2>Imperfect Human Feedback: Inconsistency</h2>
-<p>Assume agents take actions <em>approximately optimally</em> <span class="math display">\[\begin{align}
-P(a' \mid s) \propto \exp(\alpha EU_s[a']), \qquad EU_s[a] = U(s,a) + \underset{s',~a'}{\mathbb{E}}[EU_{s'}[a']]
-\end{align}\]</span></p>
-<p>Rather than account for imperfections by scaling <span class="math inline">\(\alpha\)</span>, we can encode <em>systematic</em> sources of inconsistency and sub-optimality:</p>
-<ol start="2" type="1">
-<li><u><em>False beliefs</em></u>: draw the expected future state from a prior <em>belief</em> <span class="math inline">\(p(s)\)</span> over state
-<div style="margin-bottom: -2.0em;">
-<p><span class="math display">\[\begin{aligned}
-&amp;P(a' \mid p(s), o, d) \propto \exp(\alpha EU_{p(s), o, d}[a']) \qquad p(s \mid o) \propto p(s)p(o \mid s) \\
-&amp;EU_{p(s),o,d}[a] = \underset{s \sim p(s | o)}{\mathbb{E}} \left[ \frac{1}{1 + kd}U(s,a) + \underset{s',~o',~a'}{\mathbb{E}}[EU_{p(s | o), o', d + 1}[a']] \right]
-\end{aligned}\]</span></p>
-</div></li>
-</ol>
-<p><span style="font-size: 0.8em;"><span class="citation" data-cites="inconsistent">Evans et al. (<a href="#/references" role="doc-biblioref" onclick="">2016, <em>Learning the preferences of ignorant, inconsistent agents</em></a>)</span></span>.</p>
-<!-- This enables their model to *explain* observed behavior as a function of its parameters. -->
+<!-- Assume agents take actions *approximately optimally*
+\begin{align}
+P(a' \mid s) \propto \exp(\alpha EU_s[a']), \qqua\sum_{n=0}^{100}d EU_s[a] = U(s,a) + \underset{s',~a'}{\mathbb{E}}[EU_{s'}[a']]
+\end{align}
+
+Rather than account for imperfections by scaling $\alpha$, we can encode *systematic* sources of inconsistency and sub-optimality: -->
+<!-- Varying $\alpha$ can model simple noise. -->
+<p>Can we model <em>systematic</em> deviations to optimal behavior?</p>
+<p><u><em>False beliefs</em></u>: draw the expected future state from a prior <em>belief</em> <span class="math inline">\(p(s)\)</span> over state <span class="math display">\[p(s \mid o) \propto p(s)p(o \mid s)\]</span></p>
+<p>Then, we can redefine our agent’s behavior in terms of belief <span class="math inline">\(p(s)\)</span>.</p>
+<span class="math display">\[\begin{aligned}
+&amp;P(a' \mid p(s), o, d) \propto \exp(\alpha EU_{p(s), o, d}[a']), \\
+&amp;EU_{p(s),o,d}[a] = \underset{s \sim p(s | o)}{\mathbb{E}} \left[ \frac{1}{1 + kd}U(s,a) + \underset{s',~o',~a'}{\mathbb{E}}[EU_{p(s | o), o', d + 1}[a']] \right].
+\end{aligned}\]</span>
+<p><span style="font-size: 0.6em;"><span class="citation" data-cites="inconsistent">Evans et al. (<a href="#/references" role="doc-biblioref" onclick="">2016, <em>Learning the preferences of ignorant, inconsistent agents</em></a>)</span></span>.</p>
 </section>
 <section id="imperfect-human-feedback-inconsistency-2" class="slide level2">
 <h2>Imperfect Human Feedback: Inconsistency</h2>
@@ -319,11 +341,11 @@ P(a' \mid s) \propto \exp(\alpha EU_s[a']), \qquad EU_s[a] = U(s,a) + \underset{
 <p>They asked humans <span class="math inline">\((n=130)\)</span> to explain observed behaviors, as well as predicted them with their model.</p>
 <p>They find empircally that there was some match in the probability distributions.</p>
 <p><strong>Takeaways</strong>: time-inconsistency and false beliefs are real, systematic ways humans are biased when providing demonstrations. Including these in reward learning models could improve the accuracy of the recovered reward.</p>
-<p><span style="font-size: 0.8em;"><span class="citation" data-cites="inconsistent">Evans et al. (<a href="#/references" role="doc-biblioref" onclick="">2016, <em>Learning the preferences of ignorant, inconsistent agents</em></a>)</span></span></p>
+<p><span style="font-size: 0.6em;"><span class="citation" data-cites="inconsistent">Evans et al. (<a href="#/references" role="doc-biblioref" onclick="">2016, <em>Learning the preferences of ignorant, inconsistent agents</em></a>)</span></span></p>
 </section>
 <section id="imperfect-human-feedback-suboptimality-and-heterogeneity" class="slide level2">
 <h2>Imperfect Human Feedback: Suboptimality and Heterogeneity</h2>
-<p>Humans exhibit <strong>bounded rationality</strong> and <strong>complex behavior</strong>, and can deviate from uniqueness and optimality in <em>biased</em>, non-random ways.</p>
+<p>Humans deviate from optimal behavior <span class="math inline">\(\pi^*\)</span> due to <em>bounded-rationality</em> and <em>complex decision-making</em>: <u>Boltzmann rationality is not necessarily correct</u>.</p>
 <div style="margin-bottom: -1.8em;">
 <div title="Definition: Policy Decomposition">
 <div class="callout callout-tip callout-titled callout-style-default">
@@ -335,7 +357,7 @@ P(a' \mid s) \propto \exp(\alpha EU_s[a']), \qquad EU_s[a] = U(s,a) + \underset{
 <p><strong>Definition: Policy Decomposition</strong></p>
 </div>
 <div class="callout-content">
-<p>A human policy <span class="math inline">\(\dot{\pi}\)</span> can be decomposed into a <em>planner-reward</em> pair <span class="math inline">\((p, R)\)</span> via <span class="math inline">\(p(R) = \dot{\pi}\)</span>. Planner <span class="math inline">\(p\)</span> encodes the (ir)rationality, biases, and style of the human, while reward <span class="math inline">\(R\)</span> describes the human’s goal.</p>
+<p>Human policy <span class="math inline">\(\pi^{.}\)</span> can be decomposed into a <em>planner-reward</em> pair <span class="math inline">\((p, R)\)</span> via <span class="math inline">\(p(R) = \pi^.\)</span>. Planner <span class="math inline">\(p\)</span> encodes the (ir)rationality, biases, and style of the human, while reward <span class="math inline">\(R\)</span> describes the human’s goal.</p>
 </div>
 </div>
 </div>
@@ -346,43 +368,124 @@ P(a' \mid s) \propto \exp(\alpha EU_s[a']), \qquad EU_s[a] = U(s,a) + \underset{
 <li>Simpler is not always better–degenerate decompositions have lower complexity than “reasonable” ones.</li>
 </ol>
 </div>
-<p><span style="font-size: 0.75em;"><span class="citation" data-cites="occam">Armstrong et al. (<a href="#/references" role="doc-biblioref" onclick="">2018, <em>Occam’s razor is insufficient to infer the preferences of irrational agents</em></a>)</span></span></p>
+<p><span style="font-size: 0.6em;"><span class="citation" data-cites="occam">Armstrong et al. (<a href="#/references" role="doc-biblioref" onclick="">2018, <em>Occam’s razor is insufficient to infer the preferences of irrational agents</em></a>)</span></span></p>
+</section>
+<section id="collecting-imperfect-human-feedback" class="slide level2">
+<h2>Collecting Imperfect Human Feedback</h2>
+<p>PBL (and IRL) can be made <em>active</em> from a well-tuned <em>acquisition function</em>.</p>
+<div title="Definition: Acquisition Function">
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Definition: Acquisition Function</strong></p>
+</div>
+<div class="callout-content">
+<p>An acquisition function <span class="math inline">\(a\)</span> is a strategy for selecting what queries to provide to the human to collect feedback. It is the central mechanism of <strong>active learning</strong>, enabling the learner to optimize data collection rather than passively collect feedback.</p>
+</div>
+</div>
+</div>
+</div>
+<p>Strategic sampling can help minimize other sources of noise and imperfections in human feedback.</p>
+<ol type="1">
+<li><em>User fatigue</em>: feedback quality can diminish after long trials.</li>
+<li><em>Discriminability</em>: providing users with queries they can tell apart.</li>
+<li><em>Regret minimization</em>: constant, bad behaviors can be dangerous, or uncomfortable for physical human-robot systems.</li>
+</ol>
 </section>
 <section id="imperfect-human-feedback-sample-efficiency" class="slide level2">
 <h2>Imperfect Human Feedback: Sample Efficiency</h2>
-<p>Humans can only provide limited responses. Moreover, the noisier feedback is the more careful we need to be about asking questions.</p>
-<p>Several approaches exist to combat this</p>
-<ol type="1">
-<li>Information Gain</li>
-<li>Thompson Sampling</li>
-<li>Differentiability</li>
-</ol>
-<p>Instantaenous regret vs Cummulative regret Thompson sampling: drug delivery</p>
+<p>PBL (and IRL) can be made <em>active</em> from a well-tuned <em>acquisition function</em>.</p>
+<div title="Definition: Acquisition Function">
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Definition: Acquisition Function</strong></p>
+</div>
+<div class="callout-content">
+<p>An acquisition function <span class="math inline">\(a\)</span> is a strategy for selecting what queries to provide to the human to collect feedback. It is the central mechanism of <strong>active learning</strong>, enabling the learner to optimize data collection rather than passively collect feedback.</p>
+</div>
+</div>
+</div>
+</div>
+<p><u><em>Information Gain</em></u>: select queries that maximize the expected reduction in uncertainty over the reward function</p>
+<p><span class="math display">\[a^*(q) = \arg\max_q \; H[\theta] - \mathbb{E}_{y \mid q}\left[H[\theta \mid y]\right]\]</span></p>
 </section>
-<section id="an-example-pbl-on-exoskeletons" class="slide level2">
-<h2>An Example: PBL on Exoskeletons</h2>
-<p>Preference feedback is collected from the user as they operate the device, which is then used to update robot behavior.</p>
-<p>However, several systematic deviations from ideal feedback can occur.</p>
-<ul>
-<li>A user may have <strong>false beliefs</strong> about what the exoskeleton is capable of.</li>
-<li>Despite being interested in rehabilitation or a clinician’s wishes, users might exhibit <strong>hyperbolic discounting</strong>, opting for less performant options to avoid pain.</li>
-<li>Users may inaccurately articulate their preferences, exhibiting <strong>systematic biases</strong> to ordering, demonstration length or query complexity.</li>
-</ul>
-<p>Different users, often with similar physical parameters, might simply prefer different gaits.</p>
-<p><strong>Sample efficiency</strong>: Users could tire from being asked questions that are difficult to answer, or redundant</p>
+<section id="imperfect-human-feedback-sample-efficiency-1" class="slide level2">
+<h2>Imperfect Human Feedback: Sample Efficiency</h2>
+<p>PBL (and IRL) can be made <em>active</em> from a well-tuned <em>acquisition function</em>.</p>
+<div title="Definition: Acquisition Function">
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Definition: Acquisition Function</strong></p>
+</div>
+<div class="callout-content">
+<p>An acquisition function <span class="math inline">\(a\)</span> is a strategy for selecting what queries to provide to the human to collect feedback. It is the central mechanism of <strong>active learning</strong>, enabling the learner to optimize data collection rather than passively collect feedback.</p>
+</div>
+</div>
+</div>
+</div>
+<p><u><em>Thompson Sampling</em></u>: sample a reward function from the posterior and select the query that is optimal under that sample</p>
+<p><span class="math display">\[\theta^* \sim p(\theta \mid \mathcal{D}), \qquad a^*(q) = \arg\max_q \; V_{\theta^*}(q)\]</span></p>
+</section>
+<section id="imperfect-human-feedback-sample-efficiency-2" class="slide level2">
+<h2>Imperfect Human Feedback: Sample Efficiency</h2>
+<p>PBL (and IRL) can be made <em>active</em> from a well-tuned <em>acquisition function</em>.</p>
+<div title="Definition: Acquisition Function">
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Definition: Acquisition Function</strong></p>
+</div>
+<div class="callout-content">
+<p>An acquisition function <span class="math inline">\(a\)</span> is a strategy for selecting what queries to provide to the human to collect feedback. It is the central mechanism of <strong>active learning</strong>, enabling the learner to optimize data collection rather than passively collect feedback.</p>
+</div>
+</div>
+</div>
+</div>
+<p><u><em>Discriminability</em></u>: pick (comparison) queries that are easy to impose a preference over</p>
+<p><span class="math display">\[x\]</span></p>
+<!-- {{< include slides/exo-example.qmd >}} -->
 </section></section>
 <section>
 <section id="learning-rewards-for-robotic-decision-making." class="title-slide slide level1 center">
 <h1>Learning Rewards for Robotic-Decision Making.</h1>
 
 </section>
-<section id="combining-preference-with-deep-rl" class="slide level2">
-<h2>Combining Preference with Deep RL</h2>
-<p><strong>Insight</strong>: Explain preferences over trajectories via reward <span class="math inline">\(R: \mathcal{S} \times \mathcal{A} \rightarrow \mathbb{R}\)</span></p>
-
-<img data-src="images/rlhf.png" class="r-stretch"></section>
-<section id="reward-learning-from-preference-over-trajectories" class="slide level2">
-<h2>Reward Learning from Preference Over Trajectories</h2>
+<section id="leveraging-preferences-in-deep-rl" class="slide level2">
+<h2>Leveraging Preferences in Deep RL</h2>
+<p>How can we tractably learn a reward <span class="math inline">\(\hat{R_{\theta}}\)</span> <em>consistent with preferences</em> over robot behaviors? <span class="math display">\[\begin{align}
+\sum_{(s,~a)~\in~\tau_1} \hat{R}_{\theta}(s,a) &gt; \sum_{(s,~a)~\in~\tau_2} \hat{R}_{\theta}(s,a) \implies \tau_1 \succ \tau_2
+\end{align}\]</span></p>
+<div style="display: flex; gap: 1em; margin-bottom: -1.0em;">
+<div style="flex: 1; font-size: 0.85em;">
+<ol type="1">
+<li>Optimize <span class="math inline">\(\pi\)</span> for <span class="math inline">\(\hat{R}\)</span> using deep RL</li>
+<li>Rollout <span class="math inline">\(\pi\)</span> to produce trajectory set <span class="math inline">\(\{\tau_1, \dots, \tau_i\}\)</span>.</li>
+<li>Select trajectory segments <span class="math inline">\((\sigma_1, \sigma_2)\)</span> and query human for preference.</li>
+<li>Optimize <span class="math inline">\(\hat{R}\)</span> to be consistent with those preferences.</li>
+</ol>
+</div>
+<div style="flex: 1;">
+<p><img data-src="images/rlhf.png" style="width:100.0%"></p>
+</div>
+</div>
+<p><span style="font-size: 0.6em;"><span class="citation" data-cites="rlhf">Christiano et al. (<a href="#/references" role="doc-biblioref" onclick="">2017, <em>Deep reinforcement learning from human preferences</em></a>)</span></span>.</p>
+</section>
+<section id="extracting-a-reward-from-preferences" class="slide level2">
+<h2>Extracting a Reward from Preferences</h2>
 <div title="Definition: Bradley-Terry Preference Model">
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
@@ -394,15 +497,53 @@ P(a' \mid s) \propto \exp(\alpha EU_s[a']), \qquad EU_s[a] = U(s,a) + \underset{
 </div>
 <div class="callout-content">
 <p><span class="math display">\[\begin{align}
-P(\sigma_1 \succ \sigma_2) = \frac{\exp \sum \hat{r}(s_t^1, a_t^1)}{\exp \sum \hat{r}(s_t^1, a_t^1) + \exp \sum \hat{r}(s_t^2, a_t^2)}
+P(\sigma^1 \succ \sigma^2 \mid \theta) = \frac{\exp \sum_{t} \hat{R}_{\theta}(s_t^1, a_t^1)}{\exp \sum_t \hat{R}_{\theta}(s_t^1, a_t^1) + \exp \sum_t \hat{R}_{\theta}(s_t^2, a_t^2)}, \qquad (s^i_t, a^i_t) \in \sigma_i
 \end{align}\]</span></p>
 </div>
 </div>
 </div>
 </div>
-<p><span class="math display">\[\text{loss}(\hat{r}) = -\sum_{(\sigma^1, \sigma^2, \mu) \in \mathcal{D}} \mu(1) \log \hat{P}[\sigma^1 \succ \sigma^2] + \mu(2) \log \hat{P}[\sigma^2 \succ \sigma^1].\]</span></p>
-<p>Learn an ensemble of predictors, and ask human queries based on disagreement of the ensemble.</p>
-<p>Model noise in preferences <strong>HOW</strong> (10% thing??)</p>
+<div style="display: flex; gap: 1em; font-size: 0.85em;">
+<div style="flex: 1;">
+<div style="text-align: center;">
+<strong>Querying</strong>
+</div>
+<ol type="1">
+<li>Learn an <em>ensemble</em> <span class="math inline">\(\hat{R}_{\theta_i}\)</span>.</li>
+<li>Query the human over <span class="math inline">\(\sigma^1\)</span>, <span class="math inline">\(\sigma^2\)</span> that elicit the most disagreement over <span class="math inline">\(\hat{R}_{\theta_i}\)</span>.</li>
+<li><span class="math inline">\(\mathcal{D} \leftarrow (\sigma^1, \sigma^2, \mu)\)</span></li>
+</ol>
+<p><span class="math inline">\(\mu\)</span> is a distribution over <span class="math inline">\(\{1, 2\}\)</span></p>
+</div>
+<div style="flex: 1;">
+<div style="text-align: center;">
+<strong>Optimizing</strong>
+</div>
+<p><span class="math display">\[\begin{align}
+\text{loss}(\theta) = -\sum_\mathcal{D}~\biggl[~&amp;\mu(1) \log \hat{P}(\sigma^1 \succ \sigma^2 \mid \theta)
+\\+ &amp;\mu(2) \log \hat{P}(\sigma^2 \succ \sigma^1 \mid \theta)\biggr] \\
+\theta \leftarrow \nabla_\theta~\text{loss}(\theta)
+\end{align}\]</span></p>
+<p><span class="math inline">\(\mu\)</span> can represent absolute and uniform preference, as well as incomparable.</p>
+</div>
+</div>
+</section>
+<section id="results-and-discussion" class="slide level2">
+<h2>Results and Discussion</h2>
+<div style="display: flex; gap: 1em;">
+<div style="flex: 1;">
+<p><em>Figure placeholder</em></p>
+</div>
+<div style="flex: 1;">
+<p>This approach works varyingly well. Occasionally better <em>or</em> worse than idealized reward.</p>
+</div>
+</div>
+<p><strong>Assumptions and Sources of Failure</strong></p>
+<ol type="1">
+<li>Assumes humans respond approximately optimally.</li>
+<li>Assumes annotators provide homogeneous preferences.</li>
+<li>Assumes preferences are made consistently over the whole learning process.</li>
+</ol>
 </section>
 <section id="dealing-with-sub-optimality-of-human-feedback" class="slide level2">
 <h2>Dealing with Sub-Optimality of Human Feedback</h2>

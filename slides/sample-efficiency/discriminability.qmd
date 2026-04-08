@@ -1,0 +1,3 @@
+[*Discriminability*]{.underline}: pick (comparison) queries that are easy to impose a preference over
+
+$$x$$

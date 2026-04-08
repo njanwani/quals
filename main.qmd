@@ -19,7 +19,7 @@ subtitle: "<span style='font-size: 0.7em;'>Committee: Prof. Matthew Gombolay (Ch
 {{< include slides/inconsistency-2.qmd >}}
 {{< include slides/subopt-hetero-1.qmd >}}
 {{< include slides/sample-efficiency-1.qmd >}}
-{{< include slides/exo-example.qmd >}}
+<!-- {{< include slides/exo-example.qmd >}} -->
 
 {{< include slides/transition-rewards.qmd >}}
 {{< include slides/rlhf-1.qmd >}}

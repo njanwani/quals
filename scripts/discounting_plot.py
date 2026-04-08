@@ -1,5 +1,9 @@
 import numpy as np
 import matplotlib.pyplot as plt
+import matplotlib
+
+matplotlib.rcParams['font.family'] = 'Roboto'
+matplotlib.rcParams['font.weight'] = 'light'
 
 d = np.linspace(0, 20, 200)
 
@@ -16,9 +20,10 @@ ax.plot(d, no_discount, label="No discounting", linewidth=2, linestyle="--", col
 ax.plot(d, exponential, label=f"Exponential ($\\gamma={gamma}$)", linewidth=2, color="#2196F3")
 ax.plot(d, hyperbolic, label=f"Hyperbolic ($k={k}$)", linewidth=2, color="#E91E63")
 
-ax.set_xlabel("Delay $d$", fontsize=12)
-ax.set_ylabel("Discount factor", fontsize=12)
-ax.legend(fontsize=10, loc="right")
+ax.set_xlabel("Delay $d$", fontsize=18)
+ax.set_ylabel("Discount factor", fontsize=18)
+ax.tick_params(axis='both', labelsize=14)
+ax.legend(fontsize=16, loc="right")
 ax.set_ylim(-0.05, 1.15)
 ax.xaxis.set_major_locator(plt.MaxNLocator(6))
 ax.yaxis.set_major_locator(plt.MaxNLocator(6))

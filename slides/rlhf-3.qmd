@@ -12,5 +12,7 @@ This approach works varyingly well. Occasionally better *or* worse than idealize
 </div>
 
 **Assumptions and Sources of Failure**
-1. Assume humans respond approximately optimaly 
-2. Assume annotators 
+
+1. Assumes humans respond approximately optimally.
+2. Assumes annotators provide homogeneous preferences.
+3. Assumes preferences are made consistently over the whole learning process.

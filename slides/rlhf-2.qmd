@@ -2,16 +2,16 @@
 
 ::: {.callout-tip title="Definition: Bradley-Terry Preference Model"}
 \begin{align}
-P(\sigma^1 \succ \sigma^2) = \frac{\exp \sum_{t} \hat{R}(s_t^1, a_t^1)}{\exp \sum_t \hat{R}(s_t^1, a_t^1) + \exp \sum_t \hat{R}(s_t^2, a_t^2)}, \qquad (s^i_t, a^i_t) \in \sigma_i
+P(\sigma^1 \succ \sigma^2 \mid \theta) = \frac{\exp \sum_{t} \hat{R}_{\theta}(s_t^1, a_t^1)}{\exp \sum_t \hat{R}_{\theta}(s_t^1, a_t^1) + \exp \sum_t \hat{R}_{\theta}(s_t^2, a_t^2)}, \qquad (s^i_t, a^i_t) \in \sigma_i
 \end{align}
 :::
 
-<div style="display: flex; gap: 1em;">
+<div style="display: flex; gap: 1em; font-size: 0.85em;">
 <div style="flex: 1;">
 <div style="text-align: center;">**Querying**</div>
 
-1. Learn an *ensemble* $\hat{R}_i$.
-2. Query the human over $\sigma^1$, $\sigma^2$ that elicit the most disagreement over $\hat{R}_i$.
+1. Learn an *ensemble* $\hat{R}_{\theta_i}$.
+2. Query the human over $\sigma^1$, $\sigma^2$ that elicit the most disagreement over $\hat{R}_{\theta_i}$.
 3. $\mathcal{D} \leftarrow (\sigma^1, \sigma^2, \mu)$
 
 $\mu$ is a distribution over $\{1, 2\}$
@@ -20,8 +20,9 @@ $\mu$ is a distribution over $\{1, 2\}$
 <div style="flex: 1;">
 <div style="text-align: center;">**Optimizing**</div>
 \begin{align}
-\text{loss}(\hat{r}) = -\sum_\mathcal{D}~\biggl[~&\mu(1) \log \hat{P}[\sigma^1 \succ \sigma^2] 
-\\+ &\mu(2) \log \hat{P}[\sigma^2 \succ \sigma^1]\biggr].
+\text{loss}(\theta) = -\sum_\mathcal{D}~\biggl[~&\mu(1) \log \hat{P}(\sigma^1 \succ \sigma^2 \mid \theta) 
+\\+ &\mu(2) \log \hat{P}(\sigma^2 \succ \sigma^1 \mid \theta)\biggr] \\
+\theta \leftarrow \nabla_\theta~\text{loss}(\theta)
 \end{align}
 
 $\mu$ can represent absolute and uniform preference, as well as incomparable.

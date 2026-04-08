@@ -1,0 +1,5 @@
+Strategic sampling can help minimize other sources of noise and imperfections in human feedback.
+
+1. *User fatigue*: feedback quality can diminish after long trials.
+2. *Discriminability*: providing users with queries they can tell apart.
+3. *Regret minimization*: constant, bad behaviors can be dangerous, or uncomfortable for physical human-robot systems. 
