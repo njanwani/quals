@@ -1,0 +1,23 @@
+## Revisiting Handcrafted Rewards
+
+*Inverse Reward Design* (IRD) reconsiders the human-crafted reward.
+
+- Reward hacking
+- Reward suboptimality
+
+IRD suggests that hand-crafted rewards should be interpreted *in the context in which they were specified*.
+
+<div style="display: flex; gap: 1em; align-items: center; margin-top: -1em;">
+<div style="flex: 2;">
+
+![](images/ird.png){width="100%"}
+
+</div>
+<div style="flex: 1;">
+
+*"Human-specified rewards should be treated as an observation."*
+
+[@ird]{style="font-size: 0.6em;"}.
+
+</div>
+</div>

@@ -1,9 +1,9 @@
-[*Time inconsistency*]{.underline}: apply **hyperbolic discounting** to model the prioritization of immediate rewards over long-term ones
+[*Time inconsistency*]{.underline}: apply **hyperbolic discounting** to model the prioritization of immediate rewards over long-term ones.
 
 <div style="margin-top: -0.5em; margin-bottom: -0.5em;">
 \begin{aligned}
-&P(a' \mid s, d) \propto \exp(\alpha Q(s, a' \mid d)) \\
-&Q(s, a \mid d) = \frac{1}{1 + kd}R(s,a) + \underset{s',~a'}{\mathbb{E}}[Q(s', a' \mid d + 1)]
+&P(a' \mid s, {\color{red}d}) \propto \exp(\alpha Q(s, a' \mid {\color{red}d})) \\
+&Q(s, a \mid {\color{red}d}) = {\color{red}\frac{1}{1 + kd}}R(s,a) + \underset{s',~a'}{\mathbb{E}}[Q(s', a' \mid {\color{red}d + 1})]
 \end{aligned}
 </div>
 

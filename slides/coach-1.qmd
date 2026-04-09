@@ -1,0 +1,17 @@
+## Your Feedback is Secretly an Advantage Function
+
+Rather than learning a reward function, can we skip straight to robotic decision-making?
+
+- Binary human feedback is *policy-dependent* 
+- Users judge current actions relative to other possible actions 
+
+This definition is synonymous with the *advantage function*
+
+::: {.callout-tip title="Definition: Advantage Function"}
+The advantage function $A$ roughly describes the relative utility of taking action $a$ at state $s$ in comparison to expected behavior.
+
+$$A(s,a) = Q(s,a) - V(s)$$
+
+:::
+
+[@coach]{style="font-size: 0.6em;"}.

@@ -1,0 +1,26 @@
+## Learning from Feedback without a Reward Function
+
+With feedback akin to advantage, "COACH" can be updated via policy gradient, forgoing a critic entirely.
+
+<div style="display: flex; gap: 1em;">
+<div style="flex: 1;">
+
+$$
+g_\theta = \mathbb{E}_{\pi_\theta}\left[\nabla_\theta \log \pi_\theta(a \mid s) \, A^{\pi_\theta}(s, a)\right]
+$$
+
+</div>
+<div style="flex: 1;">
+
+$$
+g_\theta = \mathbb{E}_{\pi_\theta}\left[\nabla_\theta \log \pi_\theta(a \mid s) \, f_t\right]
+$$
+</div>
+</div>
+
+COACH deals with *time-sensitive* feedback.
+
+1. Account for human reaction time using *eligibility traces*.
+2. Aggregate feedback to account for successive responses.
+
+[@coach]{style="font-size: 0.6em;"}.

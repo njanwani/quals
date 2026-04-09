@@ -25,8 +25,11 @@ subtitle: "<span style='font-size: 0.7em;'>Committee: Prof. Matthew Gombolay (Ch
 {{< include slides/rlhf-1.qmd >}}
 {{< include slides/rlhf-2.qmd >}}
 {{< include slides/rlhf-3.qmd >}}
-{{< include slides/ird.qmd >}}
-{{< include slides/coach.qmd >}}
+{{< include slides/coach-1.qmd >}}
+{{< include slides/coach-2.qmd >}}
+{{< include slides/coach-3.qmd >}}
+{{< include slides/ird-1.qmd >}}
+{{< include slides/ird-2.qmd >}}
 
 {{< include slides/open-problems.qmd >}}
 {{< include slides/mo-methodology.qmd >}}

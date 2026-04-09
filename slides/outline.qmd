@@ -15,7 +15,7 @@ Highlight and validate the characteristics of human feedback in real human-robot
 </div>
 <div style="flex: 1; padding-left: 1em;">
 
-**...to Learn Reward Functions**
+**...to Learn Rewards and Decision-Making.**
 
 <!-- Model the imperfections in human feedback -->
 
@@ -23,9 +23,9 @@ Examine how human data is tractably used to synthesize rewards and robotic decis
 
 [@rlhf]{style="font-size: 0.8em;"}.
 
-[@ird]{style="font-size: 0.8em;"}.
-
 [@coach]{style="font-size: 0.8em;"}.
+
+[@ird]{style="font-size: 0.8em;"}.
 
 </div>
 </div>

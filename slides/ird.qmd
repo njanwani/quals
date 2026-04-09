@@ -1,3 +1,0 @@
-## Dealing with Sub-Optimality of Human Feedback
-
-Inverse Reward Design

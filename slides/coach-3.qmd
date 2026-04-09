@@ -1,0 +1,9 @@
+## Results and Discussion of Assumptions
+
+
+1. **Inconsistency** can increase in this situation due to time-pressure, negatively influencing human decision making.
+2. The *correspondance problem* can result in **suboptimality** if robot features are not well constructed.
+3. **Heterogeneous** feedback can lead the policy to 'average' its behavior.
+
+
+[@coach]{style="font-size: 0.6em;"}.

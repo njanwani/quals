@@ -6,8 +6,8 @@
 <script src="main_files/libs/quarto-html/tippy.umd.min.js"></script>
 <link href="main_files/libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="main_files/libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="main_files/libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.8.27">
+<link href="main_files/libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.9.36">
 
   <meta name="author" content="Neil Janwani">
   <title>Learning reward functions from imperfect human feedback for robotic decision making</title>
@@ -17,6 +17,9 @@
   <link rel="stylesheet" href="main_files/libs/revealjs/dist/reset.css">
   <link rel="stylesheet" href="main_files/libs/revealjs/dist/reveal.css">
   <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
     div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -48,7 +51,7 @@
     div.csl-indent {
       margin-left: 2em;
     }  </style>
-  <link rel="stylesheet" href="main_files/libs/revealjs/dist/theme/quarto-5ae9c59b2727fcd5357d4f034d95f9e0.css">
+  <link rel="stylesheet" href="main_files/libs/revealjs/dist/theme/quarto-b2736e9fcda83c748fd63b6e579550ef.css">
   <link href="main_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="main_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="main_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -254,12 +257,12 @@ Neil Janwani
 <p><span style="font-size: 0.8em;"><span class="citation" data-cites="occam">Armstrong et al. (<a href="#/references" role="doc-biblioref" onclick="">2018, <em>Occam’s razor is insufficient to infer the preferences of irrational agents</em></a>)</span></span>.</p>
 </div>
 <div style="flex: 1; padding-left: 1em;">
-<p><strong>…to Learn Reward Functions</strong></p>
+<p><strong>…to Learn Rewards and Decision-Making.</strong></p>
 <!-- Model the imperfections in human feedback -->
 <p>Examine how human data is tractably used to synthesize rewards and robotic decision-making with ill-defined objectives</p>
 <p><span style="font-size: 0.8em;"><span class="citation" data-cites="rlhf">Christiano et al. (<a href="#/references" role="doc-biblioref" onclick="">2017, <em>Deep reinforcement learning from human preferences</em></a>)</span></span>.</p>
-<p><span style="font-size: 0.8em;"><span class="citation" data-cites="ird">Hadfield-Menell et al. (<a href="#/references" role="doc-biblioref" onclick="">2017, <em>Inverse reward design</em></a>)</span></span>.</p>
 <p><span style="font-size: 0.8em;"><span class="citation" data-cites="coach">MacGlashan et al. (<a href="#/references" role="doc-biblioref" onclick="">2017, <em>Interactive learning from policy-dependent human feedback</em></a>)</span></span>.</p>
+<p><span style="font-size: 0.8em;"><span class="citation" data-cites="ird">Hadfield-Menell et al. (<a href="#/references" role="doc-biblioref" onclick="">2017, <em>Inverse reward design</em></a>)</span></span>.</p>
 </div>
 </div>
 <p><span style="display: block; text-align: center;">We’ll end by examining open problems in the field and proposing a new methodology to address some of these.</span></p>
@@ -304,11 +307,11 @@ P(a' \mid s) \propto \exp(\alpha EU_s[a']), \qqua\sum_{n=0}^{100}d EU_s[a] = U(s
 Rather than account for imperfections by scaling $\alpha$, we can encode *systematic* sources of inconsistency and sub-optimality: -->
 <!-- Varying $\alpha$ can model simple noise. -->
 <p>Can we model <em>systematic</em> deviations to optimal behavior?</p>
-<p><u><em>Time inconsistency</em></u>: apply <strong>hyperbolic discounting</strong> to model the prioritization of immediate rewards over long-term ones</p>
+<p><u><em>Time inconsistency</em></u>: apply <strong>hyperbolic discounting</strong> to model the prioritization of immediate rewards over long-term ones.</p>
 <div style="margin-top: -0.5em; margin-bottom: -0.5em;">
 <span class="math display">\[\begin{aligned}
-&amp;P(a' \mid s, d) \propto \exp(\alpha Q(s, a' \mid d)) \\
-&amp;Q(s, a \mid d) = \frac{1}{1 + kd}R(s,a) + \underset{s',~a'}{\mathbb{E}}[Q(s', a' \mid d + 1)]
+&amp;P(a' \mid s, {\color{red}d}) \propto \exp(\alpha Q(s, a' \mid {\color{red}d})) \\
+&amp;Q(s, a \mid {\color{red}d}) = {\color{red}\frac{1}{1 + kd}}R(s,a) + \underset{s',~a'}{\mathbb{E}}[Q(s', a' \mid {\color{red}d + 1})]
 \end{aligned}\]</span>
 </div>
 <div style="text-align: center;">
@@ -531,8 +534,8 @@ P(\sigma^1 \succ \sigma^2 \mid \theta) = \frac{\exp \sum_{t} \hat{R}_{\theta}(s_
 <section id="results-and-discussion" class="slide level2">
 <h2>Results and Discussion</h2>
 <div style="display: flex; gap: 1em;">
-<div style="flex: 1;">
-<p><em>Figure placeholder</em></p>
+<div style="flex: 2;">
+<p><img data-src="images/rlhf-results.png"></p>
 </div>
 <div style="flex: 1;">
 <p>This approach works varyingly well. Occasionally better <em>or</em> worse than idealized reward.</p>
@@ -545,13 +548,103 @@ P(\sigma^1 \succ \sigma^2 \mid \theta) = \frac{\exp \sum_{t} \hat{R}_{\theta}(s_
 <li>Assumes preferences are made consistently over the whole learning process.</li>
 </ol>
 </section>
-<section id="dealing-with-sub-optimality-of-human-feedback" class="slide level2">
-<h2>Dealing with Sub-Optimality of Human Feedback</h2>
-<p>Inverse Reward Design</p>
+<section id="your-feedback-is-secretly-an-advantage-function" class="slide level2">
+<h2>Your Feedback is Secretly an Advantage Function</h2>
+<p>Rather than learning a reward function, can we skip straight to robotic decision-making?</p>
+<ul>
+<li>Binary human feedback is <em>policy-dependent</em></li>
+<li>Users judge current actions relative to other possible actions</li>
+</ul>
+<p>This definition is synonymous with the <em>advantage function</em></p>
+<div title="Definition: Advantage Function">
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Definition: Advantage Function</strong></p>
+</div>
+<div class="callout-content">
+<p>The advantage function <span class="math inline">\(A\)</span> roughly describes the relative utility of taking action <span class="math inline">\(a\)</span> at state <span class="math inline">\(s\)</span> in comparison to expected behavior.</p>
+<p><span class="math display">\[A(s,a) = Q(s,a) - V(s)\]</span></p>
+</div>
+</div>
+</div>
+</div>
+<p><span style="font-size: 0.6em;"><span class="citation" data-cites="coach">MacGlashan et al. (<a href="#/references" role="doc-biblioref" onclick="">2017, <em>Interactive learning from policy-dependent human feedback</em></a>)</span></span>.</p>
 </section>
-<section id="coach" class="slide level2">
-<h2>COACH</h2>
-<p>Like PBL but over a temporal scale</p>
+<section id="learning-from-feedback-without-a-reward-function" class="slide level2">
+<h2>Learning from Feedback without a Reward Function</h2>
+<p>With feedback akin to advantage, “COACH” can be updated via policy gradient, forgoing a critic entirely.</p>
+<div style="display: flex; gap: 1em;">
+<div style="flex: 1;">
+<p><span class="math display">\[
+g_\theta = \mathbb{E}_{\pi_\theta}\left[\nabla_\theta \log \pi_\theta(a \mid s) \, A^{\pi_\theta}(s, a)\right]
+\]</span></p>
+</div>
+<div style="flex: 1;">
+<p><span class="math display">\[
+g_\theta = \mathbb{E}_{\pi_\theta}\left[\nabla_\theta \log \pi_\theta(a \mid s) \, f_t\right]
+\]</span></p>
+</div>
+</div>
+<p>COACH deals with <em>time-sensitive</em> feedback.</p>
+<ol type="1">
+<li>Account for human reaction time using <em>eligibility traces</em>.</li>
+<li>Aggregate feedback to account for successive responses.</li>
+</ol>
+<p><span style="font-size: 0.6em;"><span class="citation" data-cites="coach">MacGlashan et al. (<a href="#/references" role="doc-biblioref" onclick="">2017, <em>Interactive learning from policy-dependent human feedback</em></a>)</span></span>.</p>
+</section>
+<section id="results-and-discussion-of-assumptions" class="slide level2">
+<h2>Results and Discussion of Assumptions</h2>
+<ol type="1">
+<li><strong>Inconsistency</strong> can increase in this situation due to time-pressure, negatively influencing human decision making.</li>
+<li>The <em>correspondance problem</em> can result in <strong>suboptimality</strong> if robot features are not well constructed.</li>
+<li><strong>Heterogeneous</strong> feedback can lead the policy to ‘average’ its behavior.</li>
+</ol>
+<p><span style="font-size: 0.6em;"><span class="citation" data-cites="coach">MacGlashan et al. (<a href="#/references" role="doc-biblioref" onclick="">2017, <em>Interactive learning from policy-dependent human feedback</em></a>)</span></span>.</p>
+</section>
+<section id="revisiting-handcrafted-rewards" class="slide level2">
+<h2>Revisiting Handcrafted Rewards</h2>
+<p><em>Inverse Reward Design</em> (IRD) reconsiders the human-crafted reward.</p>
+<ul>
+<li>Reward hacking</li>
+<li>Reward suboptimality</li>
+</ul>
+<p>IRD suggests that hand-crafted rewards should be interpreted <em>in the context in which they were specified</em>.</p>
+<div style="display: flex; gap: 1em; align-items: center; margin-top: -1em;">
+<div style="flex: 2;">
+<p><img data-src="images/ird.png" style="width:100.0%"></p>
+</div>
+<div style="flex: 1;">
+<p><em>“Human-specified rewards should be treated as an observation.”</em></p>
+<p><span style="font-size: 0.6em;"><span class="citation" data-cites="ird">Hadfield-Menell et al. (<a href="#/references" role="doc-biblioref" onclick="">2017, <em>Inverse reward design</em></a>)</span></span>.</p>
+</div>
+</div>
+</section>
+<section id="boltzmann-rationality-applied-to-reward-design" class="slide level2">
+<h2>Boltzmann Rationality Applied to Reward Design</h2>
+<p>Hand crafted rewards are likely to the extent that they lead to high <strong>true</strong> utility in the environment.</p>
+<div title="Definition: Approximately Optimal Designer">
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Definition: Approximately Optimal Designer</strong></p>
+</div>
+<div class="callout-content">
+<p>Allow <span class="math inline">\(w\)</span> to scalarize features <span class="math inline">\(\phi(\tau)\)</span> for reward <span class="math inline">\(R = w^T\phi(\tau)\)</span>, then <span class="math display">\[\begin{align}
+P(\tilde{w} \mid w^*, M) \propto \exp\left(\alpha~\mathbb{E}[{w^*}^T\phi(\tau) \mid \tau \sim \pi(\cdot \mid \tilde{w}, M)]\right)
+\end{align}\]</span></p>
+</div>
+</div>
+</div>
+</div>
+<p>We can then use Bayes rule to develop a posterior over reward functions, given hand-crafted <span class="math inline">\(\tilde{w}\)</span> and <span class="math inline">\(\alpha\)</span>.</p>
+<p>Lastly, risk-averse planning can be used to select trajectories that would maximize return of the true reward in the worst case.</p>
 </section>
 <section id="open-problem-multi-objective-preferences" class="slide level2">
 <h2>Open Problem: Multi-Objective Preferences</h2>
