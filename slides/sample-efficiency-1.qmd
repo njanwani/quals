@@ -3,17 +3,17 @@
 {{< include slides/sample-efficiency/preamble.qmd >}}
 {{< include slides/sample-efficiency/why-sampling.qmd >}}
 
-## Imperfect Human Feedback: Sample Efficiency
+## Sample Efficiency: Information Gain
 
 {{< include slides/sample-efficiency/preamble.qmd >}}
 {{< include slides/sample-efficiency/information-gain.qmd >}}
 
-## Imperfect Human Feedback: Sample Efficiency
+## Sample Efficiency: Thompson Sampling
 
 {{< include slides/sample-efficiency/preamble.qmd >}}
 {{< include slides/sample-efficiency/thompson-sampling.qmd >}}
 
-## Imperfect Human Feedback: Sample Efficiency
+<!-- ## Sample Efficiency: Discriminability
 
 {{< include slides/sample-efficiency/preamble.qmd >}}
-{{< include slides/sample-efficiency/discriminability.qmd >}}
+{{< include slides/sample-efficiency/discriminability.qmd >}} -->

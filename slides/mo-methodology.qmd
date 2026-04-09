@@ -1,3 +1,5 @@
 ## Proposed methodology
 
-explain active PBL.
+**Objective 1**: Verify benefits of multi objective
+
+**Objective 2**: Combine with previous work in Multi-Objective RL

@@ -12,3 +12,5 @@ P(\tilde{w} \mid w^*, M) \propto \exp\left(\alpha~\mathbb{E}[{w^*}^T\phi(\tau) \
 We can then use Bayes rule to develop a posterior over reward functions, given hand-crafted $\tilde{w}$ and confidence $\alpha$.
 
 Lastly, risk-averse planning can be used to select trajectories that would maximize return of the true reward in the worst case.
+
+[@ird]{style="font-size: 0.6em;"}.

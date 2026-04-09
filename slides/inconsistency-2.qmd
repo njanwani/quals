@@ -1,11 +1,17 @@
 ## Imperfect Human Feedback: Inconsistency
 
-The paper demonstrated that systematic integration of time-inconsistency and false beliefs aligned with humans.
+The paper demonstrated that their enhanced model with time-inconsistency and false beliefs aligned with humans.
 
-They asked humans $(n=130)$ to explain observed behaviors, as well as predicted them with their model.
+They asked humans $(n=50)$ to explain observed behaviors, and fit their own model to those behaviors.
 
-They find empircally that there was some match in the probability distributions.
+<div style="text-align: center;">
+![](images/ignorant.png){width="90%"}
+</div>
 
-**Takeaways**: time-inconsistency and false beliefs are real, systematic ways humans are biased when providing demonstrations. Including these in reward learning models could improve the accuracy of the recovered reward.
+<!-- They find empircally that there was some match in the probability distributions.
+
+**Takeaways**: time-inconsistency and false beliefs are real, systematic ways humans are biased when providing demonstrations. Including these in reward learning models could improve the accuracy of the recovered reward. -->
+
+Found a large similarities between model and human explanations.
 
 [@inconsistent]{style="font-size: 0.6em;"}

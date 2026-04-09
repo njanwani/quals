@@ -8,8 +8,18 @@
 </div>
 
 
-<div style="text-align: center;">
-![](images/discounting.svg){width="80%"}
+<div style="display: flex; gap: 1em;">
+<div style="flex: 1;">
+
+![](images/discounting.svg){width="100%"}
+
 </div>
+<div style="flex: 1;">
+
+Naive: $a' \sim P(\cdot \mid s, d)$
+
+Sophisticated: $a' \sim P(\cdot \mid s, 0)$
 
 [@inconsistent]{style="font-size: 0.6em;"}.
+</div>
+</div>

@@ -15,7 +15,7 @@ Highlight and validate the characteristics of human feedback in real human-robot
 </div>
 <div style="flex: 1; padding-left: 1em;">
 
-**...to Learn Rewards and Decision-Making.**
+**...to Learn Rewards and Construct Policies.**
 
 <!-- Model the imperfections in human feedback -->
 

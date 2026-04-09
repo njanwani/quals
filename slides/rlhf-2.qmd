@@ -14,7 +14,7 @@ P(\sigma^1 \succ \sigma^2 \mid \theta) = \frac{\exp \sum_{t} \hat{R}_{\theta}(s_
 2. Query the human over $\sigma^1$, $\sigma^2$ that elicit the most disagreement over $\hat{R}_{\theta_i}$.
 3. $\mathcal{D} \leftarrow (\sigma^1, \sigma^2, \mu)$
 
-$\mu$ is a distribution over $\{1, 2\}$
+$\mu$ is a distribution over $\{1, 2\}$ representing user's feedback.
 
 </div>
 <div style="flex: 1;">
@@ -25,6 +25,6 @@ $\mu$ is a distribution over $\{1, 2\}$
 \theta \leftarrow \nabla_\theta~\text{loss}(\theta)
 \end{align}
 
-$\mu$ can represent absolute and uniform preference, as well as incomparable.
 </div>
 </div>
+[@rlhf]{style="font-size: 0.6em;"}.

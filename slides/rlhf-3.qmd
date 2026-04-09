@@ -1,13 +1,15 @@
 ## Results and Discussion
 
 <div style="display: flex; gap: 1em;">
-<div style="flex: 2;">
+<div style="flex: 1;">
 
 ![](images/rlhf-results.png)
 
 </div>
 <div style="flex: 1;">
-This approach works varyingly well. Occasionally better *or* worse than idealized reward. 
+This approach works varyingly well. Non-stationarity somewhat clouds results. 
+
+[@rlhf]{style="font-size: 0.6em;"}.
 </div>
 </div>
 

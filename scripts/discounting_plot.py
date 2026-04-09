@@ -15,7 +15,7 @@ exponential = gamma ** d
 
 no_discount = np.ones_like(d)
 
-fig, ax = plt.subplots(figsize=(12, 3.5))
+fig, ax = plt.subplots(figsize=(7, 3.5))
 ax.plot(d, no_discount, label="No discounting", linewidth=2, linestyle="--", color="#888888")
 ax.plot(d, exponential, label=f"Exponential ($\\gamma={gamma}$)", linewidth=2, color="#2196F3")
 ax.plot(d, hyperbolic, label=f"Hyperbolic ($k={k}$)", linewidth=2, color="#E91E63")

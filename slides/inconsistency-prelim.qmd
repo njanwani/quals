@@ -7,7 +7,7 @@ Agents optimize *cummulative return*, or value $V$, by adhering to optimal behav
 V_{\pi^*}(s_0) = \sum_t R(s_t,a_t), \qquad s_{t+1} \sim T(s_t, a_t) ,~a_{t} \sim \pi^*(s_t)
 \end{align}
 
-We can model this via **Boltzmann Rationality**
+We can model this via **Boltzmann Rationality**.
 
 ::: {.callout-tip title="Definition: Boltzmann Rationality"}
 A perfectly rational agent can be modeled via the recursive relationship found in Boltzmann Rationality,
