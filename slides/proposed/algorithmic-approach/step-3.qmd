@@ -1,0 +1,7 @@
+## Step 3: Preference Learning {.nav-proposed}
+
+Use $\vec{e}$ to rapidly find human-preferred behavior using PBL with regret minimization.
+
+<div style="text-align: center;">
+![](images/ThompsonSampling2.gif){width="60%"}
+</div>

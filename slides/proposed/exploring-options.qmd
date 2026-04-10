@@ -1,1 +1,21 @@
 ## Exploring Your Options {.nav-open}
+
+**Research Question**: Can enabling a person to *explore their options* before providing preferences reduce *inconsistency* in their feedback?
+
+<div style="display: flex; gap: 1em; margin-bottom: -1em;">
+<div style="flex: 1.8;">
+![](images/morl-bruce.png){width="100%"}
+<div style="margin-top: -1em;">
+[@moplayground]{style="font-size: 0.6em;"}
+</div>
+</div>
+<div style="flex: 1.2;">
+[Constructed preferences]{style="text-decoration: underline;"}. People's preferences may not formalize on first glance--especially for non-experts.
+
+[@constructed]{style="font-size: 0.6em;"}
+</div>
+</div>
+
+<div style="text-align: center;">
+**Idea**: develop an algorithm that enables informed *exploration* by actively querying where to *inform* the human.
+</div>

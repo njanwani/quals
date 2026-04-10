@@ -1,5 +1,13 @@
 ## Heterogeneity {.nav-feedback}
 
-Varied planners can result in different feedback w.r.t the same reward.
+[People provide different feedback or strategies for the same query.]{style="text-decoration: underline;"}
 
-Find some source that humans balance between multiple objectives.
+Even for the same reward $R$, the existence of a planner $p$ can result in heterogenous feedback. [@occam]{style="font-size: 0.6em;"}
+
+1. User styles
+2. Reasoning capabilities
+
+People prioritize various objectives to different degrees. [@mobo, @imitationbook]{style="font-size: 0.6em;"}
+
+1. Users may desire different *tradeoffs* of objectives
+2. Different individuals may prioritize different goals (safety versus speed)

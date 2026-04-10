@@ -1,0 +1,20 @@
+## Step 1: Pareto-Optimal Policy Set {.nav-proposed}
+
+Learn *Pareto-optimal* Policy Set via *Multi-Objective Reinforcement Learning*.
+
+::: {.callout-tip title="Definition: Multi-Objective MDP (MOMDP)"}
+A MOMDP is a tuple $\langle \mathcal{S}, \mathcal{A}, T, {\color{red}\vec{R}}, \gamma \rangle$ where $\mathcal{S}$ is the state space, $\mathcal{A}$ is the action space, $T$ is the transition function, $\gamma$ is the discount factor, and ${\color{red}\vec{R}: \mathcal{S} \times \mathcal{A} \rightarrow \mathbb{R}^k}$ is a **vector-valued** reward over $k$ objectives.
+:::
+
+- The objective of MORL is to solve this MOMDP by finding the *Pareto-optimal* policy family that optimally trade-off across all $k$ objectives.
+
+<div style="display: flex; gap: 1em;">
+<div style="flex: 1;">
+::: {.callout-tip title="Definition: Pareto-Optimality"}
+A policy $\pi$ is Pareto-optimal if no other policy improves on one objective without worsening another.
+:::
+</div>
+<div style="flex: 1; margin-top: -1em;">
+![](images/MORL.png){width="100%"}
+</div>
+</div>

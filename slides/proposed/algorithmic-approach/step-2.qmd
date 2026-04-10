@@ -1,0 +1,11 @@
+## Step 2: Similarity Queries {.nav-proposed}
+
+Actively request *similarity queries* from the user to learn similarity embedding $\vec{e}$.
+
+Which one is more similar to $\pi_A$, $\pi_i$ or $\pi_j$?
+
+<div style="text-align: center; margin-top: -0.5em; margin-bottom: -0.5em;">
+![](images/sirl.png){width="80%"}
+</div>
+
+The use of an anchor forces the comparison to be a *local* decision. 

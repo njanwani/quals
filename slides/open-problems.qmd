@@ -1,9 +1,11 @@
 ## Open Problems {.nav-open}
 
-How can we apply the aforementioned solutions to cases of continuous robotic control?
+1. How can we apply the aforementioned solutions to cases of continuous robotic control rather than simpler, systems with finite possibilities?
 
-Can we reduce reliance on hand-crafted features?
+2. Can we reduce reliance on hand-crafted features, opting less human-assisted reward learning?
 
-Should people explore their options before *deciding* their preference?
+3. Should people explore their options before *deciding* their preference?
 
-How can we explicitly model bounded-rationality, or style, of a demonstrator?
+4. How can we explicitly model bounded-rationality, or style, of a demonstrator?
+
+**Research Objective**: to enable easy *exploration* and *personalization* of robotic systems, specifically towards assitive devices, like exoskeletons.

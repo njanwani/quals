@@ -6,8 +6,8 @@
 <script src="main_files/libs/quarto-html/tippy.umd.min.js"></script>
 <link href="main_files/libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="main_files/libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="main_files/libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.9.36">
+<link href="main_files/libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.8.27">
 
   <meta name="author" content="Neil Janwani">
   <title>Learning reward functions from imperfect human feedback for robotic decision making</title>
@@ -17,9 +17,6 @@
   <link rel="stylesheet" href="main_files/libs/revealjs/dist/reset.css">
   <link rel="stylesheet" href="main_files/libs/revealjs/dist/reveal.css">
   <style>
-    /* Default styles provided by pandoc.
-    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
-    */
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
     div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -51,7 +48,7 @@
     div.csl-indent {
       margin-left: 2em;
     }  </style>
-  <link rel="stylesheet" href="main_files/libs/revealjs/dist/theme/quarto-caf30efa069c63858d1613de406c3f9c.css">
+  <link rel="stylesheet" href="main_files/libs/revealjs/dist/theme/quarto-2ad1500e93ff8c125688baf0dfd614c4.css">
   <link href="main_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="main_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="main_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -391,6 +388,10 @@ Q(s,a \mid d) = \gamma(d) R(s,a) + \mathbb{E}_{s', a'}[Q(s', a' \mid d + 1)],
 <section id="inconsistency-1" class="slide level2 nav-feedback">
 <h2>Inconsistency</h2>
 <p><u>Users may provide different feedback for the same query at different times.</u></p>
+<ol type="1">
+<li><p>People have <em>false beliefs</em> about system state <span class="math inline">\(s\)</span>, which can influence feedback when those beliefs change. <span style="font-size: 0.6em;"><span class="citation" data-cites="inconsistent">Evans et al. (<a href="#/references" role="doc-biblioref" onclick="">2016, <em>Learning the preferences of ignorant, inconsistent agents</em></a>)</span></span></p></li>
+<li><p>People may not have perfect knowledge of their own underlying utility function.</p></li>
+</ol>
 <div title="Definition: Constructed preferences">
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
@@ -401,7 +402,8 @@ Q(s,a \mid d) = \gamma(d) R(s,a) + \mathbb{E}_{s', a'}[Q(s', a' \mid d + 1)],
 <p><strong>Definition: Constructed preferences</strong></p>
 </div>
 <div class="callout-content">
-<p>Constructed preferences</p>
+<p>Constructed preferences refers to the idea that people don’t have stable, or pre-existing preferences waiting to be revelead by feedback elicitation. Rather, people <em>build</em> their preferences when faced with decisions.</p>
+<p><span style="font-size: 0.6em;"><span class="citation" data-cites="constructed">(<a href="#/references" role="doc-biblioref" onclick="">2006, <em>The construction of preference</em></a>)</span></span></p>
 </div>
 </div>
 </div>
@@ -442,8 +444,17 @@ Q(s,a \mid d) = \gamma(d) R(s,a) + \mathbb{E}_{s', a'}[Q(s', a' \mid d + 1)],
 </section>
 <section id="heterogeneity" class="slide level2 nav-feedback">
 <h2>Heterogeneity</h2>
-<p>Varied planners can result in different feedback w.r.t the same reward.</p>
-<p>Find some source that humans balance between multiple objectives.</p>
+<p><span style="text-decoration: underline;">People provide different feedback or strategies for the same query.</span></p>
+<p>Even for the same reward <span class="math inline">\(R\)</span>, the existence of a planner <span class="math inline">\(p\)</span> can result in heterogenous feedback. <span style="font-size: 0.6em;"><span class="citation" data-cites="occam">Armstrong et al. (<a href="#/references" role="doc-biblioref" onclick="">2018, <em>Occam’s razor is insufficient to infer the preferences of irrational agents</em></a>)</span></span></p>
+<ol type="1">
+<li>User styles</li>
+<li>Reasoning capabilities</li>
+</ol>
+<p>People prioritize various objectives to different degrees. <span style="font-size: 0.6em;"><span class="citation" data-cites="mobo">Astudillo et al. (<a href="#/references" role="doc-biblioref" onclick="">2024, <em>Preferential multi-objective bayesian optimization</em></a>)</span>, <span class="citation" data-cites="imitationbook">Dautenhahn et al. (<a href="#/references" role="doc-biblioref" onclick="">2002, <em>Imitation in animals and artifacts</em></a>)</span></span></p>
+<ol type="1">
+<li>Users may desire different <em>tradeoffs</em> of objectives</li>
+<li>Different individuals may prioritize different goals (safety versus speed)</li>
+</ol>
 </section></section>
 <section>
 <section id="learning-rewards-for-robotic-decision-making." class="title-slide slide level1 center">
@@ -656,8 +667,8 @@ g_\theta = \mathbb{E}_{\pi_\theta}\left[\nabla_\theta \log \pi_\theta(a \mid s) 
 </ol>
 <p><span style="font-size: 0.6em;"><span class="citation" data-cites="coach">MacGlashan et al. (<a href="#/references" role="doc-biblioref" onclick="">2017, <em>Interactive learning from policy-dependent human feedback</em></a>)</span></span>.</p>
 </section>
-<section id="results-and-discussion-of-assumptions" class="slide level2 nav-rewards">
-<h2>Results and Discussion of Assumptions</h2>
+<section id="discussion-of-assumptions" class="slide level2 nav-rewards">
+<h2>Discussion of Assumptions</h2>
 <ol type="1">
 <li><strong>Inconsistency</strong> can increase in this situation due to time-pressure, negatively influencing human decision making.</li>
 <li>The <em>correspondance problem</em> can result in <strong>suboptimality</strong> if robot features are not well constructed.</li>
@@ -709,16 +720,103 @@ P(\tilde{w} \mid w^*, M) \propto \exp\left(\alpha~\mathbb{E}[{w^*}^T\phi(\tau) \
 </section>
 <section id="open-problems" class="slide level2 nav-open">
 <h2>Open Problems</h2>
-<p>How can we apply the aforementioned solutions to cases of continuous robotic control?</p>
-<p>Can we reduce reliance on hand-crafted features?</p>
-<p>Should people explore their options before <em>deciding</em> their preference?</p>
-<p>How can we explicitly model bounded-rationality, or style, of a demonstrator?</p>
+<ol type="1">
+<li><p>How can we apply the aforementioned solutions to cases of continuous robotic control rather than simpler, systems with finite possibilities?</p></li>
+<li><p>Can we reduce reliance on hand-crafted features, opting less human-assisted reward learning?</p></li>
+<li><p>Should people explore their options before <em>deciding</em> their preference?</p></li>
+<li><p>How can we explicitly model bounded-rationality, or style, of a demonstrator?</p></li>
+</ol>
+<p><strong>Research Objective</strong>: to enable easy <em>exploration</em> and <em>personalization</em> of robotic systems, specifically towards assitive devices, like exoskeletons.</p>
 </section>
 <section id="exploring-your-options" class="slide level2 nav-open">
 <h2>Exploring Your Options</h2>
+<p><strong>Research Question</strong>: Can enabling a person to <em>explore their options</em> before providing preferences reduce <em>inconsistency</em> in their feedback?</p>
+<div style="display: flex; gap: 1em; margin-bottom: -1em;">
+<div style="flex: 1.8;">
+<img data-src="images/morl-bruce.png" style="width:100.0%">
+<div style="margin-top: -1em;">
+<p><span style="font-size: 0.6em;"><span class="citation" data-cites="moplayground">Janwani et al. (<a href="#/references" role="doc-biblioref" onclick="">2026, <em>MO-playground: Massively parallelized multi-objective reinforcement learning for robotics</em></a>)</span></span></p>
+</div>
+</div>
+<div style="flex: 1.2;">
+<p><span style="text-decoration: underline;">Constructed preferences</span>. People’s preferences may not formalize on first glance–especially for non-experts.</p>
+<p><span style="font-size: 0.6em;"><span class="citation" data-cites="constructed">(<a href="#/references" role="doc-biblioref" onclick="">2006, <em>The construction of preference</em></a>)</span></span></p>
+</div>
+</div>
+<div style="text-align: center;">
+<p><strong>Idea</strong>: develop an algorithm that enables informed <em>exploration</em> by actively querying where to <em>inform</em> the human.</p>
+</div>
 </section>
 <section id="algorithmic-approach" class="slide level2 nav-proposed">
 <h2>Algorithmic Approach</h2>
+<ol type="1">
+<li>Learn <em>Pareto-optimal</em> Policy Set using <em>Multi-Objective Reinforcement Learning</em>.</li>
+<li>Actively request <em>similarity queries</em> from the user to learn similarity embedding <span class="math inline">\(\vec{e}\)</span>.</li>
+<li>Use <span class="math inline">\(\vec{e}\)</span> to rapidly find human-preferred behavior using PBL with regret minimization.</li>
+</ol>
+<div style="text-align: center; margin-top: -1em;">
+<p><img data-src="images/qual-method.svg" style="width:100.0%"></p>
+</div>
+</section>
+<section id="step-1-pareto-optimal-policy-set" class="slide level2 nav-proposed">
+<h2>Step 1: Pareto-Optimal Policy Set</h2>
+<p>Learn <em>Pareto-optimal</em> Policy Set via <em>Multi-Objective Reinforcement Learning</em>.</p>
+<div title="Definition: Multi-Objective MDP (MOMDP)">
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Definition: Multi-Objective MDP (MOMDP)</strong></p>
+</div>
+<div class="callout-content">
+<p>A MOMDP is a tuple <span class="math inline">\(\langle \mathcal{S}, \mathcal{A}, T, {\color{red}\vec{R}}, \gamma \rangle\)</span> where <span class="math inline">\(\mathcal{S}\)</span> is the state space, <span class="math inline">\(\mathcal{A}\)</span> is the action space, <span class="math inline">\(T\)</span> is the transition function, <span class="math inline">\(\gamma\)</span> is the discount factor, and <span class="math inline">\({\color{red}\vec{R}: \mathcal{S} \times \mathcal{A} \rightarrow \mathbb{R}^k}\)</span> is a <strong>vector-valued</strong> reward over <span class="math inline">\(k\)</span> objectives.</p>
+</div>
+</div>
+</div>
+</div>
+<ul>
+<li>The objective of MORL is to solve this MOMDP by finding the <em>Pareto-optimal</em> policy family that optimally trade-off across all <span class="math inline">\(k\)</span> objectives.</li>
+</ul>
+<div style="display: flex; gap: 1em;">
+<div style="flex: 1;">
+<div title="Definition: Pareto-Optimality">
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Definition: Pareto-Optimality</strong></p>
+</div>
+<div class="callout-content">
+<p>A policy <span class="math inline">\(\pi\)</span> is Pareto-optimal if no other policy improves on one objective without worsening another.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div style="flex: 1; margin-top: -1em;">
+<p><img data-src="images/MORL.png" style="width:100.0%"></p>
+</div>
+</div>
+</section>
+<section id="step-2-similarity-queries" class="slide level2 nav-proposed">
+<h2>Step 2: Similarity Queries</h2>
+<p>Actively request <em>similarity queries</em> from the user to learn similarity embedding <span class="math inline">\(\vec{e}\)</span>.</p>
+<p>Which one is more similar to <span class="math inline">\(\pi_A\)</span>, <span class="math inline">\(\pi_i\)</span> or <span class="math inline">\(\pi_j\)</span>?</p>
+<div style="text-align: center; margin-top: -0.5em; margin-bottom: -0.5em;">
+<p><img data-src="images/sirl.png" style="width:80.0%"></p>
+</div>
+<p>The use of an anchor forces the comparison to be a <em>local</em> decision.</p>
+</section>
+<section id="step-3-preference-learning" class="slide level2 nav-proposed">
+<h2>Step 3: Preference Learning</h2>
+<p>Use <span class="math inline">\(\vec{e}\)</span> to rapidly find human-preferred behavior using PBL with regret minimization.</p>
+<div style="text-align: center;">
+<p><img data-src="images/ThompsonSampling2.gif" style="width:60.0%"></p>
+</div>
 </section>
 <section id="baseline-case" class="slide level2 nav-proposed">
 <h2>Baseline Case</h2>
@@ -738,8 +836,14 @@ Abbeel, Pieter, and Andrew Y Ng. (2004). <em>Apprenticeship learning via inverse
 <div id="ref-occam" class="csl-entry" role="listitem">
 Armstrong, Stuart, and Sören Mindermann. (2018). <em>Occam’s razor is insufficient to infer the preferences of irrational agents</em>. Advances in neural information processing systems. vol. 31.
 </div>
+<div id="ref-mobo" class="csl-entry" role="listitem">
+Astudillo, Raul, Kejun Li, Maegan Tucker, Chu Xin Cheng, Aaron D Ames, and Yisong Yue. (2024). <em>Preferential multi-objective bayesian optimization</em>. arXiv preprint arXiv:2406.14699.
+</div>
 <div id="ref-rlhf" class="csl-entry" role="listitem">
 Christiano, Paul F, Jan Leike, Tom Brown, Miljan Martic, Shane Legg, and Dario Amodei. (2017). <em>Deep reinforcement learning from human preferences</em>. Advances in neural information processing systems. vol. 30.
+</div>
+<div id="ref-imitationbook" class="csl-entry" role="listitem">
+Dautenhahn, Kerstin, and Chrystopher L. Nehaniv. (2002). <em><a href="https://doi.org/10.7551/mitpress/3676.001.0001">Imitation in animals and artifacts</a></em>.
 </div>
 <div id="ref-inconsistent" class="csl-entry" role="listitem">
 Evans, Owain, Andreas Stuhlmüller, and Noah Goodman. (2016). <em>Learning the preferences of ignorant, inconsistent agents</em>. Proceedings of the AAAI conference on artificial intelligence. vol. 30.
@@ -747,8 +851,14 @@ Evans, Owain, Andreas Stuhlmüller, and Noah Goodman. (2016). <em>Learning the p
 <div id="ref-ird" class="csl-entry" role="listitem">
 Hadfield-Menell, Dylan, Smitha Milli, Pieter Abbeel, Stuart J Russell, and Anca Dragan. (2017). <em>Inverse reward design</em>. Advances in neural information processing systems. vol. 30.
 </div>
+<div id="ref-moplayground" class="csl-entry" role="listitem">
+Janwani, Neil, Ellen Novoseller, Vernon J Lawhern, and Maegan Tucker. (2026). <em>MO-playground: Massively parallelized multi-objective reinforcement learning for robotics</em>. arXiv preprint arXiv:2603.09237.
+</div>
 <div id="ref-coach" class="csl-entry" role="listitem">
 MacGlashan, James, Mark K Ho, Robert Loftin, Bei Peng, Guan Wang, David L Roberts, Matthew E Taylor, and Michael L Littman. (2017). <em>Interactive learning from policy-dependent human feedback</em>. International conference on machine learning.
+</div>
+<div id="ref-constructed" class="csl-entry" role="listitem">
+(2006). <em>The construction of preference</em>.
 </div>
 </div>
 </section></section>

@@ -34,6 +34,9 @@ subtitle: "<span style='font-size: 0.7em;'>Committee: Prof. Matthew Gombolay (Ch
 {{< include slides/open-problems.qmd >}}
 {{< include slides/proposed/exploring-options.qmd >}}
 {{< include slides/proposed/algorithmic-approach.qmd >}}
+{{< include slides/proposed/algorithmic-approach/step-1.qmd >}}
+{{< include slides/proposed/algorithmic-approach/step-2.qmd >}}
+{{< include slides/proposed/algorithmic-approach/step-3.qmd >}}
 {{< include slides/proposed/baseline-case.qmd >}}
 {{< include slides/proposed/experimental-validation.qmd >}}
 {{< include slides/proposed/potential-limitations.qmd >}}

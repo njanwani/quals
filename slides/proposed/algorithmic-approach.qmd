@@ -1,1 +1,9 @@
 ## Algorithmic Approach {.nav-proposed}
+
+1. Learn *Pareto-optimal* Policy Set using *Multi-Objective Reinforcement Learning*.
+2. Actively request *similarity queries* from the user to learn similarity embedding $\vec{e}$.
+3. Use $\vec{e}$ to rapidly find human-preferred behavior using PBL with regret minimization.
+
+<div style="text-align: center; margin-top: -1em;">
+![](images/qual-method.svg){width="100%"}
+</div>
