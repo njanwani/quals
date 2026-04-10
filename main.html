@@ -51,7 +51,7 @@
     div.csl-indent {
       margin-left: 2em;
     }  </style>
-  <link rel="stylesheet" href="main_files/libs/revealjs/dist/theme/quarto-f3429d1da4886eb1ba738de10f746db8.css">
+  <link rel="stylesheet" href="main_files/libs/revealjs/dist/theme/quarto-caf30efa069c63858d1613de406c3f9c.css">
   <link href="main_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="main_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="main_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -277,6 +277,7 @@ Neil Janwani
 </div>
 <div class="callout-content">
 <p>IRL infers the underlying reward <span class="math inline">\(R\)</span> that explains observed expert behavior, typically by assuming the expert acts (approximately) optimally to <span class="math inline">\(R\)</span>.</p>
+<p><span style="font-size: 0.6em;"><span class="citation" data-cites="irl">Abbeel et al. (<a href="#/references" role="doc-biblioref" onclick="">2004, <em>Apprenticeship learning via inverse reinforcement learning</em></a>)</span></span>.</p>
 </div>
 </div>
 </div>
@@ -294,6 +295,7 @@ Neil Janwani
 </div>
 <div class="callout-content">
 <p>PBL infers a reward <span class="math inline">\(R\)</span> that is <em>consistent</em> with human preferences over pairs or sets of trajectories, actions, or outcomes, rather than from demonstrations or explicit feedback.</p>
+<p><span style="font-size: 0.6em;"><span class="citation" data-cites="rlhf">Christiano et al. (<a href="#/references" role="doc-biblioref" onclick="">2017, <em>Deep reinforcement learning from human preferences</em></a>)</span></span>.</p>
 </div>
 </div>
 </div>
@@ -303,16 +305,16 @@ Neil Janwani
 <!-- **Preference-based learning** (PBL) learns a reward function that is consistent with preferences collected from humans. -->
 <p>However, human feedback is <strong>imperfect</strong>.</p>
 <ul>
-<li>Inconsistency, suboptimality, and heterogeneity manifest as systematic noise.</li>
+<li>Inconsistency, suboptimality, and heterogeneity are <em>systematic</em> noise.</li>
 <li>Humans aren’t computers: they have finite energy and avoid pain.</li>
 </ul>
-<p>Even pairwise comparisons, one of the most reliable sources of human data, can vary over experimental runs and individuals.</p>
+<p>Even pairwise comparisons, can vary over trials and individuals.</p>
 </section>
-<section id="an-outline-for" class="slide level2 nav-intro">
-<h2><span style="display: block; text-align: center;">An Outline for…</span></h2>
+<section id="an-outline-for-leveraging" class="slide level2 nav-intro">
+<h2><span style="display: block; text-align: center;">An Outline for Leveraging…</span></h2>
 <div style="display: flex; gap: 1em; font-size: 0.8em;">
 <div style="flex: 1; border-right: 2px solid #282626; padding-right: 1em;">
-<p><strong>…Using Imperfect Human Feedback…</strong></p>
+<p><strong>…Imperfect Human Feedback…</strong></p>
 <!-- Learning *ill-defined* rewards from humans -->
 <p>Highlight and validate the characteristics of human feedback in real human-robot systems.</p>
 <p><span style="font-size: 0.8em;"><span class="citation" data-cites="inconsistent">Evans et al. (<a href="#/references" role="doc-biblioref" onclick="">2016, <em>Learning the preferences of ignorant, inconsistent agents</em></a>)</span></span>.</p>
@@ -327,7 +329,7 @@ Neil Janwani
 <p><span style="font-size: 0.8em;"><span class="citation" data-cites="ird">Hadfield-Menell et al. (<a href="#/references" role="doc-biblioref" onclick="">2017, <em>Inverse reward design</em></a>)</span></span>.</p>
 </div>
 </div>
-<p><span style="display: block; text-align: center;">We’ll end by examining open problems in the field and proposing a new methodology to address some of these.</span></p>
+<p><span style="display: block; text-align: center;">We’ll end by examining an open problem in the field and proposing a new methodology to address it.</span></p>
 </section>
 <section>
 <section id="imperfect-human-feedback." class="title-slide slide level1 center">
@@ -728,6 +730,9 @@ P(\tilde{w} \mid w^*, M) \propto \exp\left(\alpha~\mathbb{E}[{w^*}^T\phi(\tau) \
 <section id="references" class="slide level2 nav-none smaller scrollable" style="font-size: 0.5em;">
 <h2>References</h2>
 <div id="refs" class="references csl-bib-body" role="list">
+<div id="ref-irl" class="csl-entry" role="listitem">
+Abbeel, Pieter, and Andrew Y Ng. (2004). <em>Apprenticeship learning via inverse reinforcement learning</em>. Proceedings of the twenty-first international conference on machine learning.
+</div>
 <div id="ref-occam" class="csl-entry" role="listitem">
 Armstrong, Stuart, and Sören Mindermann. (2018). <em>Occam’s razor is insufficient to infer the preferences of irrational agents</em>. Advances in neural information processing systems. vol. 31.
 </div>

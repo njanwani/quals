@@ -7,8 +7,10 @@
 // Then add {.nav-<key>} to the corresponding slide headings.
 
 var NAV_SECTIONS = [
-  { key: "intro",    label: "Introduction" },
-  { key: "feedback", label: "Imperfect Feedback" },
-  { key: "rewards",  label: "Learning Rewards" },
-  { key: "proposed", label: "Proposed Method" },
+  { key: "intro",     label: "Introduction" },
+  { key: "feedback",  label: "Imperfect Feedback" },
+  { key: "rewards",   label: "Learning Rewards" },
+  { key: "questions", label: "Open Questions" },
+  { key: "proposed",  label: "Proposed Method" },
+  // { key: "limits",    label: "Limitations" },
 ];

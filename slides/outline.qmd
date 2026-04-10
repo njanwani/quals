@@ -1,8 +1,8 @@
-## [An Outline for...]{style="display: block; text-align: center;"} {.nav-intro}
+## [An Outline for Leveraging...]{style="display: block; text-align: center;"} {.nav-intro}
 <div style="display: flex; gap: 1em; font-size: 0.8em;">
 <div style="flex: 1; border-right: 2px solid #282626; padding-right: 1em;">
 
-**...Using Imperfect Human Feedback...**
+**...Imperfect Human Feedback...**
 
 <!-- Learning *ill-defined* rewards from humans -->
 
@@ -30,4 +30,4 @@ Examine how human data is tractably used to synthesize rewards and robotic decis
 </div>
 </div>
 
-[We'll end by examining open problems in the field and proposing a new methodology to address some of these.]{style="display: block; text-align: center;"}
+[We'll end by examining an open problem in the field and proposing a new methodology to address it.]{style="display: block; text-align: center;"}
