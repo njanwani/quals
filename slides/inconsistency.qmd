@@ -1,0 +1,7 @@
+## Inconsistency {.nav-feedback}
+
+Some sources of inconsistency in human feedback include
+
+1. Random, uniform noise
+2. Time-inconsistency: users might suddenly change their preferences in non-random ways
+3. False beliefs

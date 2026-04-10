@@ -1,0 +1,5 @@
+## Suboptimality {.nav-feedback}
+
+Suboptimality can be considered via *policy decomposition*
+
+Go through what $R$ and $p$ are according to the slide you already made.

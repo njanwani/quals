@@ -1,0 +1,13 @@
+## Imperfect Human Feedback: Inconsistency {.nav-feedback visibility="uncounted"}
+
+{{< include slides/backup/inconsistency/preamble.qmd >}}
+{{< include slides/backup/inconsistency/time.qmd >}}
+
+<!-- [@inconsistent]{style="font-size: 0.8em;"}. -->
+
+## Imperfect Human Feedback: Inconsistency {.nav-feedback}
+
+{{< include slides/backup/inconsistency/preamble.qmd >}}
+{{< include slides/backup/inconsistency/false-beliefs.qmd >}}
+
+[@inconsistent]{style="font-size: 0.6em;"}.

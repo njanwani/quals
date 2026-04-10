@@ -1,4 +1,4 @@
-## Imperfect Human Feedback: Suboptimality and Heterogeneity {.nav-feedback}
+## Imperfect Human Feedback: Suboptimality and Heterogeneity {.nav-feedback visibility="uncounted"}
 
 Humans deviate from optimal behavior $\pi^*$ due to *bounded-rationality* and *complex decision-making*: [Boltzmann rationality is not necessarily correct]{.underline}.
 

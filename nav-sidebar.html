@@ -53,6 +53,17 @@ document.addEventListener('DOMContentLoaded', function() {
 
   Reveal.on('ready', function(event) {
     updateSidebar(event.currentSlide);
+
+    // Mark all slides after the "Backup" transition as uncounted
+    var slides = document.querySelectorAll('.reveal .slides > section');
+    var pastBackup = false;
+    slides.forEach(function(slide) {
+      if (slide.querySelector('h1') && slide.textContent.trim() === 'Backup') {
+        pastBackup = true;
+      } else if (pastBackup) {
+        slide.setAttribute('data-visibility', 'uncounted');
+      }
+    });
   });
 
   Reveal.on('slidechanged', function(event) {

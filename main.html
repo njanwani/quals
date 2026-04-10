@@ -200,6 +200,17 @@ document.addEventListener('DOMContentLoaded', function() {
 
   Reveal.on('ready', function(event) {
     updateSidebar(event.currentSlide);
+
+    // Mark all slides after the "Backup" transition as uncounted
+    var slides = document.querySelectorAll('.reveal .slides > section');
+    var pastBackup = false;
+    slides.forEach(function(slide) {
+      if (slide.querySelector('h1') && slide.textContent.trim() === 'Backup') {
+        pastBackup = true;
+      } else if (pastBackup) {
+        slide.setAttribute('data-visibility', 'uncounted');
+      }
+    });
   });
 
   Reveal.on('slidechanged', function(event) {
@@ -336,117 +347,40 @@ Neil Janwani
 <h1>Imperfect Human Feedback.</h1>
 
 </section>
-<section id="preliminaries-idealistic-behavior" class="slide level2 nav-feedback">
-<h2>Preliminaries: Idealistic Behavior</h2>
-<p>How can we model idealistic behavior?</p>
-<p>Agents optimize <em>cummulative return</em>, or value <span class="math inline">\(V\)</span>, by adhering to optimal behavior <span class="math inline">\(\pi^*\)</span> <span class="math display">\[\begin{align}
-V_{\pi^*}(s_0) = \sum_t R(s_t,a_t), \qquad s_{t+1} \sim T(s_t, a_t) ,~a_{t} \sim \pi^*(s_t)
-\end{align}\]</span></p>
-<p>We can model this via <strong>Boltzmann Rationality</strong>.</p>
-<div title="Definition: Boltzmann Rationality">
-<div class="callout callout-tip callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Definition: Boltzmann Rationality</strong></p>
-</div>
-<div class="callout-content">
-<p>A perfectly rational agent can be modeled via the recursive relationship found in Boltzmann Rationality, <span class="math display">\[\begin{align}
-P(a \mid s) \propto \exp(\alpha Q(s,a)), \qquad Q(s, a) = R(s, a) + \mathbb{E}[Q(s',a')]
-\end{align}\]</span> where <span class="math inline">\(s' \sim T(\cdot \mid s,a),~a' \sim P(\cdot \mid s')\)</span> and <span class="math inline">\(Q\)</span> is the quality function.</p>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section id="imperfect-human-feedback-inconsistency" class="slide level2 nav-feedback">
-<h2>Imperfect Human Feedback: Inconsistency</h2>
-<!-- Assume agents take actions *approximately optimally*
-\begin{align}
-P(a' \mid s) \propto \exp(\alpha EU_s[a']), \qqua\sum_{n=0}^{100}d EU_s[a] = U(s,a) + \underset{s',~a'}{\mathbb{E}}[EU_{s'}[a']]
-\end{align}
-
-Rather than account for imperfections by scaling $\alpha$, we can encode *systematic* sources of inconsistency and sub-optimality: -->
-<!-- Varying $\alpha$ can model simple noise. -->
-<p>Can we model <em>systematic</em> deviations to optimal behavior?</p>
-<p><u><em>Time inconsistency</em></u>: apply <strong>hyperbolic discounting</strong> to model the prioritization of immediate rewards over long-term ones.</p>
-<div style="margin-top: -0.5em; margin-bottom: -0.5em;">
-<span class="math display">\[\begin{aligned}
-&amp;P(a' \mid s, {\color{red}d}) \propto \exp(\alpha Q(s, a' \mid {\color{red}d})) \\
-&amp;Q(s, a \mid {\color{red}d}) = {\color{red}\frac{1}{1 + kd}}R(s,a) + \underset{s',~a'}{\mathbb{E}}[Q(s', a' \mid {\color{red}d + 1})]
-\end{aligned}\]</span>
-</div>
-<div style="display: flex; gap: 1em;">
-<div style="flex: 1;">
-<p><img data-src="images/discounting.svg" style="width:100.0%"></p>
-</div>
-<div style="flex: 1;">
-<p>Naive: <span class="math inline">\(a' \sim P(\cdot \mid s, d)\)</span></p>
-<p>Sophisticated: <span class="math inline">\(a' \sim P(\cdot \mid s, 0)\)</span></p>
-<p><span style="font-size: 0.6em;"><span class="citation" data-cites="inconsistent">Evans et al. (<a href="#/references" role="doc-biblioref" onclick="">2016, <em>Learning the preferences of ignorant, inconsistent agents</em></a>)</span></span>.</p>
-</div>
-</div>
-<!-- [@inconsistent]{style="font-size: 0.8em;"}. -->
-</section>
-<section id="imperfect-human-feedback-inconsistency-1" class="slide level2 nav-feedback">
-<h2>Imperfect Human Feedback: Inconsistency</h2>
-<!-- Assume agents take actions *approximately optimally*
-\begin{align}
-P(a' \mid s) \propto \exp(\alpha EU_s[a']), \qqua\sum_{n=0}^{100}d EU_s[a] = U(s,a) + \underset{s',~a'}{\mathbb{E}}[EU_{s'}[a']]
-\end{align}
-
-Rather than account for imperfections by scaling $\alpha$, we can encode *systematic* sources of inconsistency and sub-optimality: -->
-<!-- Varying $\alpha$ can model simple noise. -->
-<p>Can we model <em>systematic</em> deviations to optimal behavior?</p>
-<p><u><em>False beliefs</em></u>: update state knowledge with a prior <em>belief</em> <span class="math inline">\(p(s)\)</span> and likelihood function <span class="math inline">\(p( o \mid s)\)</span>: <span class="math display">\[p(s \mid o) \propto p(s)p(o \mid s)\]</span></p>
-<p>Then, we can redefine our agent’s behavior in terms of belief <span class="math inline">\(p(s)\)</span>.</p>
-<span class="math display">\[\begin{aligned}
-&amp;P(a' \mid {\color{red}p(s)}, o, d) \propto \exp \left(\alpha Q({\color{red}p(s)}, a' \mid o, d) \right), \\
-&amp;Q({\color{red}p(s)}, a \mid o, d) = \underset{{\color{red}s \sim p(s | o)}}{\mathbb{E}} \left[ \frac{1}{1 + kd}R(s,a) + \underset{s',~{\color{red}o'},~a'}{\mathbb{E}}[Q({\color{red}p(s | o)}, a' \mid o', d + 1)] \right].
-\end{aligned}\]</span>
-<p><span style="font-size: 0.6em;"><span class="citation" data-cites="inconsistent">Evans et al. (<a href="#/references" role="doc-biblioref" onclick="">2016, <em>Learning the preferences of ignorant, inconsistent agents</em></a>)</span></span>.</p>
-</section>
-<section id="imperfect-human-feedback-inconsistency-2" class="slide level2 nav-feedback">
-<h2>Imperfect Human Feedback: Inconsistency</h2>
-<p>The paper demonstrated that their enhanced model with time-inconsistency and false beliefs aligned with humans.</p>
-<p>They asked humans <span class="math inline">\((n=50)\)</span> to explain observed behaviors, and fit their own model to those behaviors.</p>
-<div style="text-align: center;">
-<p><img data-src="images/ignorant.png" style="width:90.0%"></p>
-</div>
-<!-- They find empircally that there was some match in the probability distributions.
-
-**Takeaways**: time-inconsistency and false beliefs are real, systematic ways humans are biased when providing demonstrations. Including these in reward learning models could improve the accuracy of the recovered reward. -->
-<p>Found a large similarities between model and human explanations.</p>
-<p><span style="font-size: 0.6em;"><span class="citation" data-cites="inconsistent">Evans et al. (<a href="#/references" role="doc-biblioref" onclick="">2016, <em>Learning the preferences of ignorant, inconsistent agents</em></a>)</span></span></p>
-</section>
-<section id="imperfect-human-feedback-suboptimality-and-heterogeneity" class="slide level2 nav-feedback">
-<h2>Imperfect Human Feedback: Suboptimality and Heterogeneity</h2>
-<p>Humans deviate from optimal behavior <span class="math inline">\(\pi^*\)</span> due to <em>bounded-rationality</em> and <em>complex decision-making</em>: <u>Boltzmann rationality is not necessarily correct</u>.</p>
-<div style="margin-bottom: -1.8em;">
-<div title="Definition: Policy Decomposition">
-<div class="callout callout-tip callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Definition: Policy Decomposition</strong></p>
-</div>
-<div class="callout-content">
-<p>Human policy <span class="math inline">\(\pi^{.}\)</span> can be decomposed into a <em>planner-reward</em> pair <span class="math inline">\((p, R)\)</span> via <span class="math inline">\(p(R) = \pi^.\)</span>. Planner <span class="math inline">\(p\)</span> encodes the (ir)rationality, biases, and style of the human, while reward <span class="math inline">\(R\)</span> describes the human’s goal.</p>
-</div>
-</div>
-</div>
-</div>
-<p>Policy decomposition is an underdetermined problem–additional constraints are needed to find <em>unique</em> solutions.</p>
+<section id="types-of-imperfect-feedback" class="slide level2 nav-feedback">
+<h2>Types of Imperfect Feedback</h2>
+<p>Human feedback deviates from ideal behavior in three systematic ways:</p>
 <ol type="1">
-<li><strong>Heterogeneity</strong> and <strong>suboptimality</strong> can be modeled via a planner.</li>
-<li>Simpler is not always better–degenerate decompositions have lower complexity than “reasonable” ones.</li>
+<li><p><strong>Inconsistency</strong>: a user may provide different feedback for the same query at different times.</p></li>
+<li><p><strong>Suboptimality</strong>: people don’t always provide <em>optimal</em> demonstrations to an underlying reward.</p></li>
+<li><p><strong>Heterogeneity</strong>: humans can exhibit <em>different biases, styles, and prioritizations</em>.</p></li>
 </ol>
-</div>
-<p><span style="font-size: 0.6em;"><span class="citation" data-cites="occam">Armstrong et al. (<a href="#/references" role="doc-biblioref" onclick="">2018, <em>Occam’s razor is insufficient to infer the preferences of irrational agents</em></a>)</span></span></p>
+<p>Each of these imperfections manifest in <em>systematic</em>, <em>non-random</em> ways.</p>
+<p>Reward learning methods must account for these imperfections to accurately recover the true reward <span class="math inline">\(R\)</span>.</p>
+</section>
+<section id="inconsistency" class="slide level2 nav-feedback">
+<h2>Inconsistency</h2>
+<p>Some sources of inconsistency in human feedback include</p>
+<ol type="1">
+<li>Random, uniform noise</li>
+<li>Time-inconsistency: users might suddenly change their preferences in non-random ways</li>
+<li>False beliefs</li>
+</ol>
+</section>
+<section id="suboptimality" class="slide level2 nav-feedback">
+<h2>Suboptimality</h2>
+<p>Suboptimality can be considered via <em>policy decomposition</em></p>
+<p>Go through what <span class="math inline">\(R\)</span> and <span class="math inline">\(p\)</span> are according to the slide you already made.</p>
+</section>
+<section id="heterogeneity" class="slide level2 nav-feedback">
+<h2>Heterogeneity</h2>
+<p>Varied planners can result in different feedback w.r.t the same reward.</p>
+<p>Find some source that humans balance between multiple objectives.</p>
+</section></section>
+<section>
+<section id="learning-rewards-for-robotic-decision-making." class="title-slide slide level1 center">
+<h1>Learning Rewards for Robotic-Decision Making.</h1>
+
 </section>
 <section id="collecting-imperfect-human-feedback" class="slide level2 nav-feedback">
 <h2>Collecting Imperfect Human Feedback</h2>
@@ -472,7 +406,7 @@ Rather than account for imperfections by scaling $\alpha$, we can encode *system
 <li><em>Regret minimization</em>: constant, bad behaviors can be dangerous, or uncomfortable for physical human-robot systems. <!-- 3. *Discriminability*: providing users with queries they can tell apart. --></li>
 </ol>
 </section>
-<section id="sample-efficiency-information-gain" class="slide level2">
+<section id="sample-efficiency-information-gain" class="slide level2 nav-feedback">
 <h2>Sample Efficiency: Information Gain</h2>
 <p>PBL (and IRL) can be made <em>active</em> from a well-tuned <em>acquisition function</em>.</p>
 <div title="Definition: Acquisition Function">
@@ -493,7 +427,7 @@ Rather than account for imperfections by scaling $\alpha$, we can encode *system
 <p><u><em>Information Gain</em></u>: select queries that maximize the expected reduction in uncertainty over the reward function</p>
 <p><span class="math display">\[a^*(q) = \arg\max_q \; H[\theta] - \mathbb{E}_{y \mid q}\left[H[\theta \mid y]\right]\]</span></p>
 </section>
-<section id="sample-efficiency-thompson-sampling" class="slide level2">
+<section id="sample-efficiency-thompson-sampling" class="slide level2 nav-feedback">
 <h2>Sample Efficiency: Thompson Sampling</h2>
 <p>PBL (and IRL) can be made <em>active</em> from a well-tuned <em>acquisition function</em>.</p>
 <div title="Definition: Acquisition Function">
@@ -523,12 +457,6 @@ An acquisition function $a$ is a strategy for selecting what queries to provide 
 
 
 {{< include slides/sample-efficiency/discriminability.qmd >}} -->
-<!-- {{< include slides/exo-example.qmd >}} -->
-</section></section>
-<section>
-<section id="learning-rewards-for-robotic-decision-making." class="title-slide slide level1 center">
-<h1>Learning Rewards for Robotic-Decision Making.</h1>
-
 </section>
 <section id="leveraging-preferences-in-deep-rl" class="slide level2 nav-rewards">
 <h2>Leveraging Preferences in Deep RL</h2>
@@ -711,21 +639,27 @@ P(\tilde{w} \mid w^*, M) \propto \exp\left(\alpha~\mathbb{E}[{w^*}^T\phi(\tau) \
 <p>Lastly, risk-averse planning can be used to select trajectories that would maximize return of the true reward in the worst case.</p>
 <p><span style="font-size: 0.6em;"><span class="citation" data-cites="ird">Hadfield-Menell et al. (<a href="#/references" role="doc-biblioref" onclick="">2017, <em>Inverse reward design</em></a>)</span></span>.</p>
 </section>
-<section id="open-problem-multi-objective-preferences" class="slide level2 nav-proposed">
-<h2>Open Problem: Multi-Objective Preferences</h2>
-<p><em>Heterogeneity</em> partially results from users having various <em>prioritizations</em> over ill-defined objectives.</p>
-<p>In the exoskeleton, can we</p>
-<ol type="1">
-<li>learn objectives for <em>naturalness</em> and <em>agileness</em>, and</li>
-<li>optimize user satisfaction over <em>Pareto Optimal</em> gaits</li>
-</ol>
-<p>Some works have addressed multi-objective preferences, but have not validated this theory in practice or applied it to complex environments.</p>
-<p><strong>Central question</strong>: How can modeling preferences as multi-objective improve our usage of human feedback?</p>
+<section id="open-problems" class="slide level2 nav-open">
+<h2>Open Problems</h2>
+<p>How can we apply the aforementioned solutions to cases of continuous robotic control?</p>
+<p>Can we reduce reliance on hand-crafted features?</p>
+<p>Should people explore their options before <em>deciding</em> their preference?</p>
+<p>How can we explicitly model bounded-rationality, or style, of a demonstrator?</p>
 </section>
-<section id="proposed-methodology" class="slide level2 nav-proposed">
-<h2>Proposed methodology</h2>
-<p><strong>Objective 1</strong>: Verify benefits of multi objective</p>
-<p><strong>Objective 2</strong>: Combine with previous work in Multi-Objective RL</p>
+<section id="exploring-your-options" class="slide level2 nav-open">
+<h2>Exploring Your Options</h2>
+</section>
+<section id="algorithmic-approach" class="slide level2 nav-proposed">
+<h2>Algorithmic Approach</h2>
+</section>
+<section id="baseline-case" class="slide level2 nav-proposed">
+<h2>Baseline Case</h2>
+</section>
+<section id="experimental-validation" class="slide level2 nav-proposed">
+<h2>Experimental Validation</h2>
+</section>
+<section id="potential-limitations" class="slide level2 nav-proposed">
+<h2>Potential Limitations</h2>
 </section>
 <section id="references" class="slide level2 nav-none smaller scrollable" style="font-size: 0.5em;">
 <h2>References</h2>
@@ -750,10 +684,124 @@ MacGlashan, James, Mark K Ho, Robert Loftin, Bei Peng, Guan Wang, David L Robert
 </div>
 </div>
 </section></section>
+<section>
 <section id="questions" class="title-slide slide level1 center">
 <h1>Questions?</h1>
 
 </section>
+<section id="preliminaries-idealistic-behavior" class="slide level2 nav-feedback" data-visibility="uncounted">
+<h2>Preliminaries: Idealistic Behavior</h2>
+<p>How can we model idealistic behavior?</p>
+<p>Agents optimize <em>cummulative return</em>, or value <span class="math inline">\(V\)</span>, by adhering to optimal behavior <span class="math inline">\(\pi^*\)</span> <span class="math display">\[\begin{align}
+V_{\pi^*}(s_0) = \sum_t R(s_t,a_t), \qquad s_{t+1} \sim T(s_t, a_t) ,~a_{t} \sim \pi^*(s_t)
+\end{align}\]</span></p>
+<p>We can model this via <strong>Boltzmann Rationality</strong>.</p>
+<div title="Definition: Boltzmann Rationality">
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Definition: Boltzmann Rationality</strong></p>
+</div>
+<div class="callout-content">
+<p>A perfectly rational agent can be modeled via the recursive relationship found in Boltzmann Rationality, <span class="math display">\[\begin{align}
+P(a \mid s) \propto \exp(\alpha Q(s,a)), \qquad Q(s, a) = R(s, a) + \mathbb{E}[Q(s',a')]
+\end{align}\]</span> where <span class="math inline">\(s' \sim T(\cdot \mid s,a),~a' \sim P(\cdot \mid s')\)</span> and <span class="math inline">\(Q\)</span> is the quality function.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="imperfect-human-feedback-inconsistency" class="slide level2 nav-feedback" data-visibility="uncounted">
+<h2>Imperfect Human Feedback: Inconsistency</h2>
+<!-- Assume agents take actions *approximately optimally*
+\begin{align}
+P(a' \mid s) \propto \exp(\alpha EU_s[a']), \qqua\sum_{n=0}^{100}d EU_s[a] = U(s,a) + \underset{s',~a'}{\mathbb{E}}[EU_{s'}[a']]
+\end{align}
+
+Rather than account for imperfections by scaling $\alpha$, we can encode *systematic* sources of inconsistency and sub-optimality: -->
+<!-- Varying $\alpha$ can model simple noise. -->
+<p>Can we model <em>systematic</em> deviations to optimal behavior?</p>
+<p><u><em>Time inconsistency</em></u>: apply <strong>hyperbolic discounting</strong> to model the prioritization of immediate rewards over long-term ones.</p>
+<div style="margin-top: -0.5em; margin-bottom: -0.5em;">
+<span class="math display">\[\begin{aligned}
+&amp;P(a' \mid s, {\color{red}d}) \propto \exp(\alpha Q(s, a' \mid {\color{red}d})) \\
+&amp;Q(s, a \mid {\color{red}d}) = {\color{red}\frac{1}{1 + kd}}R(s,a) + \underset{s',~a'}{\mathbb{E}}[Q(s', a' \mid {\color{red}d + 1})]
+\end{aligned}\]</span>
+</div>
+<div style="display: flex; gap: 1em;">
+<div style="flex: 1;">
+<p><img data-src="images/discounting.svg" style="width:100.0%"></p>
+</div>
+<div style="flex: 1;">
+<p>Naive: <span class="math inline">\(a' \sim P(\cdot \mid s, d)\)</span></p>
+<p>Sophisticated: <span class="math inline">\(a' \sim P(\cdot \mid s, 0)\)</span></p>
+<p><span style="font-size: 0.6em;"><span class="citation" data-cites="inconsistent">Evans et al. (<a href="#/references" role="doc-biblioref" onclick="">2016, <em>Learning the preferences of ignorant, inconsistent agents</em></a>)</span></span>.</p>
+</div>
+</div>
+<!-- [@inconsistent]{style="font-size: 0.8em;"}. -->
+</section>
+<section id="imperfect-human-feedback-inconsistency-1" class="slide level2 nav-feedback">
+<h2>Imperfect Human Feedback: Inconsistency</h2>
+<!-- Assume agents take actions *approximately optimally*
+\begin{align}
+P(a' \mid s) \propto \exp(\alpha EU_s[a']), \qqua\sum_{n=0}^{100}d EU_s[a] = U(s,a) + \underset{s',~a'}{\mathbb{E}}[EU_{s'}[a']]
+\end{align}
+
+Rather than account for imperfections by scaling $\alpha$, we can encode *systematic* sources of inconsistency and sub-optimality: -->
+<!-- Varying $\alpha$ can model simple noise. -->
+<p>Can we model <em>systematic</em> deviations to optimal behavior?</p>
+<p><u><em>False beliefs</em></u>: update state knowledge with a prior <em>belief</em> <span class="math inline">\(p(s)\)</span> and likelihood function <span class="math inline">\(p( o \mid s)\)</span>: <span class="math display">\[p(s \mid o) \propto p(s)p(o \mid s)\]</span></p>
+<p>Then, we can redefine our agent’s behavior in terms of belief <span class="math inline">\(p(s)\)</span>.</p>
+<span class="math display">\[\begin{aligned}
+&amp;P(a' \mid {\color{red}p(s)}, o, d) \propto \exp \left(\alpha Q({\color{red}p(s)}, a' \mid o, d) \right), \\
+&amp;Q({\color{red}p(s)}, a \mid o, d) = \underset{{\color{red}s \sim p(s | o)}}{\mathbb{E}} \left[ \frac{1}{1 + kd}R(s,a) + \underset{s',~{\color{red}o'},~a'}{\mathbb{E}}[Q({\color{red}p(s | o)}, a' \mid o', d + 1)] \right].
+\end{aligned}\]</span>
+<p><span style="font-size: 0.6em;"><span class="citation" data-cites="inconsistent">Evans et al. (<a href="#/references" role="doc-biblioref" onclick="">2016, <em>Learning the preferences of ignorant, inconsistent agents</em></a>)</span></span>.</p>
+</section>
+<section id="imperfect-human-feedback-inconsistency-2" class="slide level2 nav-feedback" data-visibility="uncounted">
+<h2>Imperfect Human Feedback: Inconsistency</h2>
+<p>The paper demonstrated that their enhanced model with time-inconsistency and false beliefs aligned with humans.</p>
+<p>They asked humans <span class="math inline">\((n=50)\)</span> to explain observed behaviors, and fit their own model to those behaviors.</p>
+<div style="text-align: center;">
+<p><img data-src="images/ignorant.png" style="width:90.0%"></p>
+</div>
+<!-- They find empircally that there was some match in the probability distributions.
+
+**Takeaways**: time-inconsistency and false beliefs are real, systematic ways humans are biased when providing demonstrations. Including these in reward learning models could improve the accuracy of the recovered reward. -->
+<p>Found a large similarities between model and human explanations.</p>
+<p><span style="font-size: 0.6em;"><span class="citation" data-cites="inconsistent">Evans et al. (<a href="#/references" role="doc-biblioref" onclick="">2016, <em>Learning the preferences of ignorant, inconsistent agents</em></a>)</span></span></p>
+</section>
+<section id="imperfect-human-feedback-suboptimality-and-heterogeneity" class="slide level2 nav-feedback" data-visibility="uncounted">
+<h2>Imperfect Human Feedback: Suboptimality and Heterogeneity</h2>
+<p>Humans deviate from optimal behavior <span class="math inline">\(\pi^*\)</span> due to <em>bounded-rationality</em> and <em>complex decision-making</em>: <u>Boltzmann rationality is not necessarily correct</u>.</p>
+<div style="margin-bottom: -1.8em;">
+<div title="Definition: Policy Decomposition">
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Definition: Policy Decomposition</strong></p>
+</div>
+<div class="callout-content">
+<p>Human policy <span class="math inline">\(\pi^{.}\)</span> can be decomposed into a <em>planner-reward</em> pair <span class="math inline">\((p, R)\)</span> via <span class="math inline">\(p(R) = \pi^.\)</span>. Planner <span class="math inline">\(p\)</span> encodes the (ir)rationality, biases, and style of the human, while reward <span class="math inline">\(R\)</span> describes the human’s goal.</p>
+</div>
+</div>
+</div>
+</div>
+<p>Policy decomposition is an underdetermined problem–additional constraints are needed to find <em>unique</em> solutions.</p>
+<ol type="1">
+<li><strong>Heterogeneity</strong> and <strong>suboptimality</strong> can be modeled via a planner.</li>
+<li>Simpler is not always better–degenerate decompositions have lower complexity than “reasonable” ones.</li>
+</ol>
+</div>
+<p><span style="font-size: 0.6em;"><span class="citation" data-cites="occam">Armstrong et al. (<a href="#/references" role="doc-biblioref" onclick="">2018, <em>Occam’s razor is insufficient to infer the preferences of irrational agents</em></a>)</span></span></p>
+
+</section></section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">

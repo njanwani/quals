@@ -14,15 +14,14 @@ subtitle: "<span style='font-size: 0.7em;'>Committee: Prof. Matthew Gombolay (Ch
 {{< include slides/paradigms.qmd >}}
 {{< include slides/outline.qmd >}}
 
-{{< include slides/transition-imperfect.qmd >}}
-{{< include slides/inconsistency-prelim.qmd >}}
-{{< include slides/inconsistency-1.qmd >}}
-{{< include slides/inconsistency-2.qmd >}}
-{{< include slides/subopt-hetero-1.qmd >}}
-{{< include slides/sample-efficiency-1.qmd >}}
-<!-- {{< include slides/exo-example.qmd >}} -->
+{{< include slides/transitions/transition-imperfect.qmd >}}
+{{< include slides/imperfect-overview.qmd >}}
+{{< include slides/inconsistency.qmd >}}
+{{< include slides/suboptimality.qmd >}}
+{{< include slides/heterogeneity.qmd >}}
 
-{{< include slides/transition-rewards.qmd >}}
+{{< include slides/transitions/transition-rewards.qmd >}}
+{{< include slides/sample-efficiency-1.qmd >}}
 {{< include slides/rlhf-1.qmd >}}
 {{< include slides/rlhf-2.qmd >}}
 {{< include slides/rlhf-3.qmd >}}
@@ -33,6 +32,15 @@ subtitle: "<span style='font-size: 0.7em;'>Committee: Prof. Matthew Gombolay (Ch
 {{< include slides/ird-2.qmd >}}
 
 {{< include slides/open-problems.qmd >}}
-{{< include slides/mo-methodology.qmd >}}
+{{< include slides/proposed/exploring-options.qmd >}}
+{{< include slides/proposed/algorithmic-approach.qmd >}}
+{{< include slides/proposed/baseline-case.qmd >}}
+{{< include slides/proposed/experimental-validation.qmd >}}
+{{< include slides/proposed/potential-limitations.qmd >}}
 
 {{< include slides/references.qmd >}}
+
+{{< include slides/backup/inconsistency-prelim.qmd >}}
+{{< include slides/backup/inconsistency-1.qmd >}}
+{{< include slides/backup/inconsistency-2.qmd >}}
+{{< include slides/backup/subopt-hetero-1.qmd >}}

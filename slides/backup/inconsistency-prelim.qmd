@@ -1,4 +1,4 @@
-## Preliminaries: Idealistic Behavior {.nav-feedback}
+## Preliminaries: Idealistic Behavior {.nav-feedback visibility="uncounted"}
 
 How can we model idealistic behavior?
 

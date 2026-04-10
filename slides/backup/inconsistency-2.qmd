@@ -1,4 +1,4 @@
-## Imperfect Human Feedback: Inconsistency {.nav-feedback}
+## Imperfect Human Feedback: Inconsistency {.nav-feedback visibility="uncounted"}
 
 The paper demonstrated that their enhanced model with time-inconsistency and false beliefs aligned with humans.
 

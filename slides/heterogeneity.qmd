@@ -1,0 +1,5 @@
+## Heterogeneity {.nav-feedback}
+
+Varied planners can result in different feedback w.r.t the same reward.
+
+Find some source that humans balance between multiple objectives.
