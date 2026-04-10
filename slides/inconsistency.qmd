@@ -1,7 +1,9 @@
 ## Inconsistency {.nav-feedback}
 
-Some sources of inconsistency in human feedback include
+{{< include slides/inconsistency/preamble.qmd >}}
+{{< include slides/inconsistency/time.qmd >}}
 
-1. Random, uniform noise
-2. Time-inconsistency: users might suddenly change their preferences in non-random ways
-3. False beliefs
+## Inconsistency {.nav-feedback}
+
+{{< include slides/inconsistency/preamble.qmd >}}
+{{< include slides/inconsistency/beliefs.qmd >}}

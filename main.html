@@ -360,17 +360,85 @@ Neil Janwani
 </section>
 <section id="inconsistency" class="slide level2 nav-feedback">
 <h2>Inconsistency</h2>
-<p>Some sources of inconsistency in human feedback include</p>
-<ol type="1">
-<li>Random, uniform noise</li>
-<li>Time-inconsistency: users might suddenly change their preferences in non-random ways</li>
-<li>False beliefs</li>
-</ol>
+<p><u>Users may provide different feedback for the same query at different times.</u></p>
+<p>Time-inconsistency: users might suddenly change their preferences in non-random ways</p>
+<div style="display: flex; gap: 1em;">
+<div style="flex: 2; margin-bottom: -2em;">
+<div title="Definition: Hyperbolic Discounting">
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Definition: Hyperbolic Discounting</strong></p>
+</div>
+<div class="callout-content">
+<p>Hyperbolic discounting <span class="math inline">\(\gamma(d) = \frac{1}{1 + kd}\)</span> is used to model behaviors like procrastination in humans. <span class="math display">\[
+Q(s,a \mid d) = \gamma(d) R(s,a) + \mathbb{E}_{s', a'}[Q(s', a' \mid d + 1)],
+\]</span> where <span class="math inline">\(s' \sim T(s, a), a' \sim \pi(\cdot \mid s)\)</span>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div style="flex: 1; margin-top: -1.5em; margin-bottom: -2em;">
+<p><img data-src="images/discounting.svg" style="width:100.0%"></p>
+</div>
+</div>
+<p><span style="font-size: 0.6em;"><span class="citation" data-cites="inconsistent">Evans et al. (<a href="#/references" role="doc-biblioref" onclick="">2016, <em>Learning the preferences of ignorant, inconsistent agents</em></a>)</span></span></p>
+</section>
+<section id="inconsistency-1" class="slide level2 nav-feedback">
+<h2>Inconsistency</h2>
+<p><u>Users may provide different feedback for the same query at different times.</u></p>
+<div title="Definition: Constructed preferences">
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Definition: Constructed preferences</strong></p>
+</div>
+<div class="callout-content">
+<p>Constructed preferences</p>
+</div>
+</div>
+</div>
+</div>
 </section>
 <section id="suboptimality" class="slide level2 nav-feedback">
 <h2>Suboptimality</h2>
-<p>Suboptimality can be considered via <em>policy decomposition</em></p>
-<p>Go through what <span class="math inline">\(R\)</span> and <span class="math inline">\(p\)</span> are according to the slide you already made.</p>
+<p><u>Humans deviate from optimal behavior <span class="math inline">\(\pi^*\)</span>, providing feedback suboptimal to the true underlying reward.</u></p>
+<div style="margin-bottom: 0.0 em;">
+<p>Even with perfect knowledge of their desires, humans exhibit <em>bounded-rationality</em> and <em>complex decision-making</em>.</p>
+<div title="Definition: Policy Decomposition">
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Definition: Policy Decomposition</strong></p>
+</div>
+<div class="callout-content">
+<p>Human policy <span class="math inline">\(\pi^{.}\)</span> can be decomposed into a <em>planner-reward</em> pair <span class="math inline">\((p, R)\)</span> via <span class="math inline">\(p(R) = \pi^.\)</span>. Planner <span class="math inline">\(p\)</span> encodes the (ir)rationality, biases, and style of the human, while reward <span class="math inline">\(R\)</span> describes the human’s goal.</p>
+</div>
+</div>
+</div>
+</div>
+<p>Policy decomposition is an underdetermined problem–additional assumptions are needed to find <em>unique</em> solutions.</p>
+</div>
+<p><span style="font-size: 0.6em;"><span class="citation" data-cites="occam">Armstrong et al. (<a href="#/references" role="doc-biblioref" onclick="">2018, <em>Occam’s razor is insufficient to infer the preferences of irrational agents</em></a>)</span></span></p>
+</section>
+<section id="suboptimality-1" class="slide level2 nav-feedback">
+<h2>Suboptimality</h2>
+<p><u>Humans deviate from optimal behavior <span class="math inline">\(\pi^*\)</span>, providing feedback suboptimal to the true underlying reward.</u></p>
+<p>Feedback and hand-crafted reward functions can be suboptimal to the true, underlying goal due to <em>covariate shift</em>.</p>
+<div style="text-align: center; margin-bottom: -1.5em;">
+<p><img data-src="images/ird.png" style="width:60.0%"></p>
+</div>
+<p><span style="font-size: 0.6em;"><span class="citation" data-cites="ird">Hadfield-Menell et al. (<a href="#/references" role="doc-biblioref" onclick="">2017, <em>Inverse reward design</em></a>)</span></span> <span style="font-size: 0.6em;"><span class="citation" data-cites="ird">Hadfield-Menell et al. (<a href="#/references" role="doc-biblioref" onclick="">2017, <em>Inverse reward design</em></a>)</span></span></p>
 </section>
 <section id="heterogeneity" class="slide level2 nav-feedback">
 <h2>Heterogeneity</h2>

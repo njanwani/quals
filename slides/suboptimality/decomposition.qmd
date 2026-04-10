@@ -1,0 +1,12 @@
+<div style="margin-bottom: 0.0 em;">
+
+Even with perfect knowledge of their desires, humans exhibit *bounded-rationality* and *complex decision-making*.
+
+::: {.callout-tip title="Definition: Policy Decomposition"}
+Human policy $\pi^{.}$ can be decomposed into a *planner-reward* pair $(p, R)$ via $p(R) = \pi^.$. Planner $p$ encodes the (ir)rationality, biases, and style of the human, while reward $R$ describes the human's goal.
+:::
+
+Policy decomposition is an underdetermined problem--additional assumptions are needed to find *unique* solutions.
+</div>
+
+[@occam]{style="font-size: 0.6em;"}

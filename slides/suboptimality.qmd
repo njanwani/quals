@@ -1,5 +1,9 @@
 ## Suboptimality {.nav-feedback}
 
-Suboptimality can be considered via *policy decomposition*
+{{< include slides/suboptimality/preamble.qmd >}}
+{{< include slides/suboptimality/decomposition.qmd >}}
 
-Go through what $R$ and $p$ are according to the slide you already made.
+## Suboptimality {.nav-feedback}
+
+{{< include slides/suboptimality/preamble.qmd >}}
+{{< include slides/suboptimality/ird.qmd >}}

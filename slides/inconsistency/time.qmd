@@ -1,0 +1,22 @@
+Time-inconsistency: users might suddenly change their preferences in non-random ways
+
+<div style="display: flex; gap: 1em;">
+<div style="flex: 2; margin-bottom: -2em;">
+
+::: {.callout-tip title="Definition: Hyperbolic Discounting"}
+Hyperbolic discounting $\gamma(d) = \frac{1}{1 + kd}$ is used to model behaviors like procrastination in humans.
+$$
+Q(s,a \mid d) = \gamma(d) R(s,a) + \mathbb{E}_{s', a'}[Q(s', a' \mid d + 1)],
+$$
+where $s' \sim T(s, a), a' \sim \pi(\cdot \mid s)$.
+:::
+
+</div>
+<div style="flex: 1; margin-top: -1.5em; margin-bottom: -2em;">
+
+![](images/discounting.svg){width="100%"}
+
+</div>
+</div>
+
+[@inconsistent]{style="font-size: 0.6em;"}

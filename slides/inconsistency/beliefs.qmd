@@ -1,0 +1,5 @@
+
+
+::: {.callout-tip title="Definition: Constructed preferences"}
+Constructed preferences
+:::

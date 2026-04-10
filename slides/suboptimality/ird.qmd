@@ -1,0 +1,7 @@
+Feedback and hand-crafted reward functions can be suboptimal to the true, underlying goal due to *covariate shift*.
+
+<div style="text-align: center; margin-bottom: -1.5em;">
+![](images/ird.png){width="60%"}
+</div>
+
+[@ird]{style="font-size: 0.6em;"} [@ird]{style="font-size: 0.6em;"}

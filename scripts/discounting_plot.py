@@ -15,15 +15,15 @@ exponential = gamma ** d
 
 no_discount = np.ones_like(d)
 
-fig, ax = plt.subplots(figsize=(7, 3.5))
+fig, ax = plt.subplots(figsize=(7, 6.5))
 ax.plot(d, no_discount, label="No discounting", linewidth=2, linestyle="--", color="#888888")
 ax.plot(d, exponential, label=f"Exponential ($\\gamma={gamma}$)", linewidth=2, color="#2196F3")
 ax.plot(d, hyperbolic, label=f"Hyperbolic ($k={k}$)", linewidth=2, color="#E91E63")
 
-ax.set_xlabel("Delay $d$", fontsize=18)
-ax.set_ylabel("Discount factor", fontsize=18)
-ax.tick_params(axis='both', labelsize=14)
-ax.legend(fontsize=16, loc="right")
+ax.set_xlabel("Delay $d$", fontsize=24)
+ax.set_ylabel("Discount factor", fontsize=24)
+ax.tick_params(axis='both', labelsize=20)
+ax.legend(fontsize=22, loc="right")
 ax.set_ylim(-0.05, 1.15)
 ax.xaxis.set_major_locator(plt.MaxNLocator(6))
 ax.yaxis.set_major_locator(plt.MaxNLocator(6))
