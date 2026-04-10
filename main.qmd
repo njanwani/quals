@@ -6,6 +6,7 @@ csl: custom.csl
 format:
   clean-revealjs:
     slide-number: "c/t"
+    include-before-body: nav-sidebar.html
 subtitle: "<span style='font-size: 0.7em;'>Committee: Prof. Matthew Gombolay (Chair), Prof. Maegan Tucker (Advisor), Prof. Sonia Chernova</span>"
 ---
 

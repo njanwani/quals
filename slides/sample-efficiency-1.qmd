@@ -1,4 +1,4 @@
-## Collecting Imperfect Human Feedback
+## Collecting Imperfect Human Feedback {.nav-feedback}
 
 {{< include slides/sample-efficiency/preamble.qmd >}}
 {{< include slides/sample-efficiency/why-sampling.qmd >}}

@@ -51,7 +51,7 @@
     div.csl-indent {
       margin-left: 2em;
     }  </style>
-  <link rel="stylesheet" href="main_files/libs/revealjs/dist/theme/quarto-b2736e9fcda83c748fd63b6e579550ef.css">
+  <link rel="stylesheet" href="main_files/libs/revealjs/dist/theme/quarto-f3429d1da4886eb1ba738de10f746db8.css">
   <link href="main_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="main_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="main_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -145,6 +145,68 @@
   </style>
 </head>
 <body class="quarto-light">
+<script src="nav-sections.js"></script>
+<div id="nav-sidebar"></div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var sidebar = document.getElementById('nav-sidebar');
+
+  // Build sidebar from NAV_SECTIONS config
+  NAV_SECTIONS.forEach(function(section, i) {
+    if (i > 0) {
+      var line = document.createElement('div');
+      line.className = 'nav-line';
+      sidebar.appendChild(line);
+    }
+    var box = document.createElement('div');
+    box.className = 'nav-box';
+    box.dataset.section = section.key;
+    box.textContent = section.label;
+    sidebar.appendChild(box);
+  });
+
+  var boxes = sidebar.querySelectorAll('.nav-box');
+
+  function updateSidebar(slide) {
+    // Hide on title slide, transition slides (h1-only), nav-none slides
+    var isTitle = slide.id === 'title-slide';
+    var isTransition = slide.querySelector('h1') && !slide.querySelector('h2');
+    var isHidden = slide.classList.contains('nav-none');
+
+    if (isTitle || isTransition || isHidden) {
+      sidebar.style.display = 'none';
+      return;
+    }
+
+    sidebar.style.display = 'flex';
+
+    // Find which section this slide belongs to
+    var activeKey = null;
+    NAV_SECTIONS.forEach(function(section) {
+      if (slide.classList.contains('nav-' + section.key)) {
+        activeKey = section.key;
+      }
+    });
+
+    boxes.forEach(function(box) {
+      if (box.dataset.section === activeKey) {
+        box.classList.add('active');
+      } else {
+        box.classList.remove('active');
+      }
+    });
+  }
+
+  Reveal.on('ready', function(event) {
+    updateSidebar(event.currentSlide);
+  });
+
+  Reveal.on('slidechanged', function(event) {
+    updateSidebar(event.currentSlide);
+  });
+});
+</script>
 <script src="mathjax-config.js"></script>
   <div class="reveal">
     <div class="slides">
@@ -162,7 +224,7 @@ Neil Janwani
 </div>
 
 </section>
-<section id="introduction-why-learn-rewards" class="slide level2">
+<section id="introduction-why-learn-rewards" class="slide level2 nav-intro">
 <h2>Introduction: why learn rewards?</h2>
 <p>Reinforcement learning (RL) has yielded high performing robotic control.</p>
 <div class="columns">
@@ -199,7 +261,7 @@ Neil Janwani
 </div>
 <p><span style="display: block; text-align: center;;"><em>Not all objectives are easily describable via hand-crafted rewards.</em></span></p>
 </section>
-<section id="the-canonical-paradigms-to-learn-rewards" class="slide level2">
+<section id="the-canonical-paradigms-to-learn-rewards" class="slide level2 nav-intro">
 <h2>The canonical paradigms to learn rewards</h2>
 <!-- **Inverse reinforcement learning** (IRL) learns a reward function consistent with provided demonstrations or other forms of feedback -->
 <div style="display: flex; gap: 1em;">
@@ -246,7 +308,7 @@ Neil Janwani
 </ul>
 <p>Even pairwise comparisons, one of the most reliable sources of human data, can vary over experimental runs and individuals.</p>
 </section>
-<section id="an-outline-for" class="slide level2">
+<section id="an-outline-for" class="slide level2 nav-intro">
 <h2><span style="display: block; text-align: center;">An Outline for…</span></h2>
 <div style="display: flex; gap: 1em; font-size: 0.8em;">
 <div style="flex: 1; border-right: 2px solid #282626; padding-right: 1em;">
@@ -272,7 +334,7 @@ Neil Janwani
 <h1>Imperfect Human Feedback.</h1>
 
 </section>
-<section id="preliminaries-idealistic-behavior" class="slide level2">
+<section id="preliminaries-idealistic-behavior" class="slide level2 nav-feedback">
 <h2>Preliminaries: Idealistic Behavior</h2>
 <p>How can we model idealistic behavior?</p>
 <p>Agents optimize <em>cummulative return</em>, or value <span class="math inline">\(V\)</span>, by adhering to optimal behavior <span class="math inline">\(\pi^*\)</span> <span class="math display">\[\begin{align}
@@ -297,7 +359,7 @@ P(a \mid s) \propto \exp(\alpha Q(s,a)), \qquad Q(s, a) = R(s, a) + \mathbb{E}[Q
 </div>
 </div>
 </section>
-<section id="imperfect-human-feedback-inconsistency" class="slide level2">
+<section id="imperfect-human-feedback-inconsistency" class="slide level2 nav-feedback">
 <h2>Imperfect Human Feedback: Inconsistency</h2>
 <!-- Assume agents take actions *approximately optimally*
 \begin{align}
@@ -326,7 +388,7 @@ Rather than account for imperfections by scaling $\alpha$, we can encode *system
 </div>
 <!-- [@inconsistent]{style="font-size: 0.8em;"}. -->
 </section>
-<section id="imperfect-human-feedback-inconsistency-1" class="slide level2">
+<section id="imperfect-human-feedback-inconsistency-1" class="slide level2 nav-feedback">
 <h2>Imperfect Human Feedback: Inconsistency</h2>
 <!-- Assume agents take actions *approximately optimally*
 \begin{align}
@@ -344,7 +406,7 @@ Rather than account for imperfections by scaling $\alpha$, we can encode *system
 \end{aligned}\]</span>
 <p><span style="font-size: 0.6em;"><span class="citation" data-cites="inconsistent">Evans et al. (<a href="#/references" role="doc-biblioref" onclick="">2016, <em>Learning the preferences of ignorant, inconsistent agents</em></a>)</span></span>.</p>
 </section>
-<section id="imperfect-human-feedback-inconsistency-2" class="slide level2">
+<section id="imperfect-human-feedback-inconsistency-2" class="slide level2 nav-feedback">
 <h2>Imperfect Human Feedback: Inconsistency</h2>
 <p>The paper demonstrated that their enhanced model with time-inconsistency and false beliefs aligned with humans.</p>
 <p>They asked humans <span class="math inline">\((n=50)\)</span> to explain observed behaviors, and fit their own model to those behaviors.</p>
@@ -357,7 +419,7 @@ Rather than account for imperfections by scaling $\alpha$, we can encode *system
 <p>Found a large similarities between model and human explanations.</p>
 <p><span style="font-size: 0.6em;"><span class="citation" data-cites="inconsistent">Evans et al. (<a href="#/references" role="doc-biblioref" onclick="">2016, <em>Learning the preferences of ignorant, inconsistent agents</em></a>)</span></span></p>
 </section>
-<section id="imperfect-human-feedback-suboptimality-and-heterogeneity" class="slide level2">
+<section id="imperfect-human-feedback-suboptimality-and-heterogeneity" class="slide level2 nav-feedback">
 <h2>Imperfect Human Feedback: Suboptimality and Heterogeneity</h2>
 <p>Humans deviate from optimal behavior <span class="math inline">\(\pi^*\)</span> due to <em>bounded-rationality</em> and <em>complex decision-making</em>: <u>Boltzmann rationality is not necessarily correct</u>.</p>
 <div style="margin-bottom: -1.8em;">
@@ -384,7 +446,7 @@ Rather than account for imperfections by scaling $\alpha$, we can encode *system
 </div>
 <p><span style="font-size: 0.6em;"><span class="citation" data-cites="occam">Armstrong et al. (<a href="#/references" role="doc-biblioref" onclick="">2018, <em>Occam’s razor is insufficient to infer the preferences of irrational agents</em></a>)</span></span></p>
 </section>
-<section id="collecting-imperfect-human-feedback" class="slide level2">
+<section id="collecting-imperfect-human-feedback" class="slide level2 nav-feedback">
 <h2>Collecting Imperfect Human Feedback</h2>
 <p>PBL (and IRL) can be made <em>active</em> from a well-tuned <em>acquisition function</em>.</p>
 <div title="Definition: Acquisition Function">
@@ -466,7 +528,7 @@ An acquisition function $a$ is a strategy for selecting what queries to provide 
 <h1>Learning Rewards for Robotic-Decision Making.</h1>
 
 </section>
-<section id="leveraging-preferences-in-deep-rl" class="slide level2">
+<section id="leveraging-preferences-in-deep-rl" class="slide level2 nav-rewards">
 <h2>Leveraging Preferences in Deep RL</h2>
 <p>How can we tractably learn a reward <span class="math inline">\(\hat{R_{\theta}}\)</span> <em>consistent with preferences</em> over robot behaviors? <span class="math display">\[\begin{align}
 \sum_{(s,~a)~\in~\tau_1} \hat{R}_{\theta}(s,a) &gt; \sum_{(s,~a)~\in~\tau_2} \hat{R}_{\theta}(s,a) \implies \tau_1 \succ \tau_2
@@ -486,7 +548,7 @@ An acquisition function $a$ is a strategy for selecting what queries to provide 
 </div>
 <p><span style="font-size: 0.6em;"><span class="citation" data-cites="rlhf">Christiano et al. (<a href="#/references" role="doc-biblioref" onclick="">2017, <em>Deep reinforcement learning from human preferences</em></a>)</span></span>.</p>
 </section>
-<section id="extracting-a-reward-from-preferences" class="slide level2">
+<section id="extracting-a-reward-from-preferences" class="slide level2 nav-rewards">
 <h2>Extracting a Reward from Preferences</h2>
 <div title="Definition: Bradley-Terry Preference Model">
 <div class="callout callout-tip callout-titled callout-style-default">
@@ -530,7 +592,7 @@ P(\sigma^1 \succ \sigma^2 \mid \theta) = \frac{\exp \sum_{t} \hat{R}_{\theta}(s_
 </div>
 <p><span style="font-size: 0.6em;"><span class="citation" data-cites="rlhf">Christiano et al. (<a href="#/references" role="doc-biblioref" onclick="">2017, <em>Deep reinforcement learning from human preferences</em></a>)</span></span>.</p>
 </section>
-<section id="results-and-discussion" class="slide level2">
+<section id="results-and-discussion" class="slide level2 nav-rewards">
 <h2>Results and Discussion</h2>
 <div style="display: flex; gap: 1em;">
 <div style="flex: 1;">
@@ -548,7 +610,7 @@ P(\sigma^1 \succ \sigma^2 \mid \theta) = \frac{\exp \sum_{t} \hat{R}_{\theta}(s_
 <li>Assumes preferences are made consistently over the whole learning process.</li>
 </ol>
 </section>
-<section id="your-feedback-is-secretly-an-advantage-function" class="slide level2">
+<section id="your-feedback-is-secretly-an-advantage-function" class="slide level2 nav-rewards">
 <h2>Your Feedback is Secretly an Advantage Function</h2>
 <p>Rather than learning a reward function, can we skip straight to robotic decision-making?</p>
 <ul>
@@ -574,7 +636,7 @@ P(\sigma^1 \succ \sigma^2 \mid \theta) = \frac{\exp \sum_{t} \hat{R}_{\theta}(s_
 </div>
 <p><span style="font-size: 0.6em;"><span class="citation" data-cites="coach">MacGlashan et al. (<a href="#/references" role="doc-biblioref" onclick="">2017, <em>Interactive learning from policy-dependent human feedback</em></a>)</span></span>.</p>
 </section>
-<section id="learning-from-feedback-without-a-reward-function" class="slide level2">
+<section id="learning-from-feedback-without-a-reward-function" class="slide level2 nav-rewards">
 <h2>Learning from Feedback without a Reward Function</h2>
 <p>With feedback akin to advantage, “COACH” can be updated via policy gradient, forgoing a critic entirely.</p>
 <div style="display: flex; gap: 1em;">
@@ -596,7 +658,7 @@ g_\theta = \mathbb{E}_{\pi_\theta}\left[\nabla_\theta \log \pi_\theta(a \mid s) 
 </ol>
 <p><span style="font-size: 0.6em;"><span class="citation" data-cites="coach">MacGlashan et al. (<a href="#/references" role="doc-biblioref" onclick="">2017, <em>Interactive learning from policy-dependent human feedback</em></a>)</span></span>.</p>
 </section>
-<section id="results-and-discussion-of-assumptions" class="slide level2">
+<section id="results-and-discussion-of-assumptions" class="slide level2 nav-rewards">
 <h2>Results and Discussion of Assumptions</h2>
 <ol type="1">
 <li><strong>Inconsistency</strong> can increase in this situation due to time-pressure, negatively influencing human decision making.</li>
@@ -605,7 +667,7 @@ g_\theta = \mathbb{E}_{\pi_\theta}\left[\nabla_\theta \log \pi_\theta(a \mid s) 
 </ol>
 <p><span style="font-size: 0.6em;"><span class="citation" data-cites="coach">MacGlashan et al. (<a href="#/references" role="doc-biblioref" onclick="">2017, <em>Interactive learning from policy-dependent human feedback</em></a>)</span></span>.</p>
 </section>
-<section id="revisiting-handcrafted-rewards" class="slide level2">
+<section id="revisiting-handcrafted-rewards" class="slide level2 nav-rewards">
 <h2>Revisiting Handcrafted Rewards</h2>
 <p><em>Inverse Reward Design</em> (IRD) reconsiders the human-crafted reward.</p>
 <ul>
@@ -623,7 +685,7 @@ g_\theta = \mathbb{E}_{\pi_\theta}\left[\nabla_\theta \log \pi_\theta(a \mid s) 
 </div>
 </div>
 </section>
-<section id="boltzmann-rationality-applied-to-reward-design" class="slide level2">
+<section id="boltzmann-rationality-applied-to-reward-design" class="slide level2 nav-rewards">
 <h2>Boltzmann Rationality Applied to Reward Design</h2>
 <p>Hand crafted rewards are likely to the extent that they lead to high <strong>true</strong> utility in the environment.</p>
 <div title="Definition: Approximately Optimal Designer">
@@ -647,7 +709,7 @@ P(\tilde{w} \mid w^*, M) \propto \exp\left(\alpha~\mathbb{E}[{w^*}^T\phi(\tau) \
 <p>Lastly, risk-averse planning can be used to select trajectories that would maximize return of the true reward in the worst case.</p>
 <p><span style="font-size: 0.6em;"><span class="citation" data-cites="ird">Hadfield-Menell et al. (<a href="#/references" role="doc-biblioref" onclick="">2017, <em>Inverse reward design</em></a>)</span></span>.</p>
 </section>
-<section id="open-problem-multi-objective-preferences" class="slide level2">
+<section id="open-problem-multi-objective-preferences" class="slide level2 nav-proposed">
 <h2>Open Problem: Multi-Objective Preferences</h2>
 <p><em>Heterogeneity</em> partially results from users having various <em>prioritizations</em> over ill-defined objectives.</p>
 <p>In the exoskeleton, can we</p>
@@ -658,12 +720,12 @@ P(\tilde{w} \mid w^*, M) \propto \exp\left(\alpha~\mathbb{E}[{w^*}^T\phi(\tau) \
 <p>Some works have addressed multi-objective preferences, but have not validated this theory in practice or applied it to complex environments.</p>
 <p><strong>Central question</strong>: How can modeling preferences as multi-objective improve our usage of human feedback?</p>
 </section>
-<section id="proposed-methodology" class="slide level2">
+<section id="proposed-methodology" class="slide level2 nav-proposed">
 <h2>Proposed methodology</h2>
 <p><strong>Objective 1</strong>: Verify benefits of multi objective</p>
 <p><strong>Objective 2</strong>: Combine with previous work in Multi-Objective RL</p>
 </section>
-<section id="references" class="slide level2 smaller scrollable" style="font-size: 0.5em;">
+<section id="references" class="slide level2 nav-none smaller scrollable" style="font-size: 0.5em;">
 <h2>References</h2>
 <div id="refs" class="references csl-bib-body" role="list">
 <div id="ref-occam" class="csl-entry" role="listitem">

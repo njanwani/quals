@@ -1,4 +1,4 @@
-## Introduction: why learn rewards?
+## Introduction: why learn rewards? {.nav-intro}
 
 Reinforcement learning (RL) has yielded high performing robotic control.
 

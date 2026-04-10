@@ -1,11 +1,11 @@
-## Imperfect Human Feedback: Inconsistency
+## Imperfect Human Feedback: Inconsistency {.nav-feedback}
 
 {{< include slides/inconsistency/preamble.qmd >}}
 {{< include slides/inconsistency/time.qmd >}}
 
 <!-- [@inconsistent]{style="font-size: 0.8em;"}. -->
 
-## Imperfect Human Feedback: Inconsistency
+## Imperfect Human Feedback: Inconsistency {.nav-feedback}
 
 {{< include slides/inconsistency/preamble.qmd >}}
 {{< include slides/inconsistency/false-beliefs.qmd >}}

@@ -1,4 +1,4 @@
-## Open Problem: Multi-Objective Preferences
+## Open Problem: Multi-Objective Preferences {.nav-proposed}
 
 *Heterogeneity* partially results from users having various *prioritizations* over ill-defined objectives.
 

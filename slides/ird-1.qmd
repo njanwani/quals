@@ -1,4 +1,4 @@
-## Revisiting Handcrafted Rewards
+## Revisiting Handcrafted Rewards {.nav-rewards}
 
 *Inverse Reward Design* (IRD) reconsiders the human-crafted reward.
 

@@ -1,4 +1,4 @@
-## Learning from Feedback without a Reward Function
+## Learning from Feedback without a Reward Function {.nav-rewards}
 
 With feedback akin to advantage, "COACH" can be updated via policy gradient, forgoing a critic entirely.
 

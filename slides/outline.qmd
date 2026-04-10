@@ -1,4 +1,4 @@
-## [An Outline for...]{style="display: block; text-align: center;"}
+## [An Outline for...]{style="display: block; text-align: center;"} {.nav-intro}
 <div style="display: flex; gap: 1em; font-size: 0.8em;">
 <div style="flex: 1; border-right: 2px solid #282626; padding-right: 1em;">
 

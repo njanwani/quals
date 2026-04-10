@@ -1,4 +1,4 @@
-## Proposed methodology
+## Proposed methodology {.nav-proposed}
 
 **Objective 1**: Verify benefits of multi objective
 

@@ -1,4 +1,4 @@
-## Extracting a Reward from Preferences
+## Extracting a Reward from Preferences {.nav-rewards}
 
 ::: {.callout-tip title="Definition: Bradley-Terry Preference Model"}
 \begin{align}
