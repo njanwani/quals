@@ -1,12 +1,25 @@
-<div style="margin-bottom: 0.0 em;">
 
-Even with perfect knowledge of their desires, humans exhibit *bounded-rationality* and *complex decision-making*.
+
+Policy decomposition is a way to describe *bounded-rationality* and *complex decision-making*
+in humans.
 
 ::: {.callout-tip title="Definition: Policy Decomposition"}
 Human policy $\pi^{.}$ can be decomposed into a *planner-reward* pair $(p, R)$ via $p(R) = \pi^.$. Planner $p$ encodes the (ir)rationality, biases, and style of the human, while reward $R$ describes the human's goal.
-:::
-
-Policy decomposition is an underdetermined problem--additional assumptions are needed to find *unique* solutions.
-</div>
 
 [@occam]{style="font-size: 0.6em;"}
+:::
+
+<div style="display: flex; gap: 1em;">
+<div style="flex: 1;">
+*Inverse reward design* accounts for suboptimality of hand-crafted rewards: adopting risk-averse behavior when needed.
+
+[@ird]{style="font-size: 0.6em;"}
+</div>
+<div style="border-left: 1px solid #ccc; margin: 0 0.5em;"></div>
+<div style="flex: 1;">
+MIND-MELD accounts for suboptimality by learning to adjust and correct for annotator skill.
+
+[@mindmeld]{style="font-size: 0.6em;"}
+</div>
+</div>
+

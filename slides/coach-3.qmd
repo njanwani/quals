@@ -1,4 +1,4 @@
-## Discussion of Assumptions {.nav-rewards}
+## Discussion of Assumptions {.nav-rewards visibility="uncounted"}
 
 
 1. **Inconsistency** can increase in this situation due to time-pressure, negatively influencing human decision making.

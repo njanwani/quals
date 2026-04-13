@@ -1,4 +1,4 @@
-## The canonical paradigms to learn rewards {.nav-intro}
+## Learning Rewards: the Canonical Paradigms {.nav-intro}
 
 <!-- **Inverse reinforcement learning** (IRL) learns a reward function consistent with provided demonstrations or other forms of feedback -->
 
@@ -7,33 +7,46 @@ The MDP is the tuple $M = \langle \mathcal{S}, \mathcal{A}, \mathcal{T}, \gamma,
 
 [@irl, @maxent]{style="font-size: 0.6em;"}.
 ::: -->
+*How do we learn rewards from human data?*
 
+::: {.fragment}
 ::: {.callout-tip title="Definition: Inverse Reinforcement Learning (IRL)"}
-IRL *recovers* the reward, $R$, that explains provided observations or demonstrations. Oftentimes, this reward function is assumed to linear in the features of the demonstration $\tau$
+IRL *recovers* the reward, $R$, that explains provided observations or demonstrations.
 
-$$
-R(\tau) = w^T \cdot \phi(\tau)
-$$
-where $\tau$ is a series of state-action pairs, $\phi$ is the features, and $w$ is the scalarization weights.
-
-**Assumption**: IRL methods often assume provided demonstrations are [approximately optimal]{.underline} with respect to the underlying reward $R$
+<!-- **Assumption**: IRL methods often assume provided demonstrations are [approximately optimal]{.underline} with respect to the underlying reward $R$ -->
 
 [@irl, @maxent]{style="font-size: 0.6em;"}.
 :::
+:::
 
+<!-- IRL methods often assume provided demonstrations are [approximately optimal]{.underline} with respect to the underlying reward $R$. -->
+
+<div style="display: flex; gap: 1em;">
+<div style="flex: 1;">
+::: {.fragment}
 ::: {.callout-tip title="Definition: Preference-Based Learning (PBL)"}
-Rather than directly collect demonstrations, PBL infers a reward $R$ from human preferences over pairs or sets of trajectories, actions, or outcomes. 
+Rather than directly collect demonstrations, PBL infers a reward $R$ from human preferences over pairs or sets of trajectories, actions, or outcomes.
 
-**Assumption**: PBL often does this by assuming that the provided preferences are approximately consistent to $R$.
+<!-- **Assumption**: PBL often does this by assuming that the provided preferences are approximately consistent to $R$. -->
 
 [@rlhf]{style="font-size: 0.6em;"}.
 :::
 
-<!-- ::: {.callout-tip title="Definition: Active Preference Learning (APL)"}
-APL enables the learner to *actively* select which preference queries to ask the human. The query selection algorithm is sometimes called the *acquisition function* and can be used to improve the speed or robustness of the learning process.
+Notably, PBL is less query efficient than IRL.
+:::
+</div>
+<div style="flex: 1;">
+::: {.fragment}
+::: {.callout-tip title="Definition: Active Preference Learning (APL)"}
+APL enables the learner to *actively* select which preference queries to ask the human via the *acquisition function*.
+
+Examples: regret minimization, discriminability, information gain, and volume removal.
 
 [@apl, @easy]{style="font-size: 0.6em;"}.
-::: -->
+:::
+:::
+</div>
+</div>
 
 
 <!-- However, human feedback is **imperfect**.

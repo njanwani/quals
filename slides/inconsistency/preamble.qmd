@@ -1,1 +1,1 @@
-[Users may provide different feedback for the same query at different times.]{.underline}
+<!-- [Users may provide different feedback for the same query at different times.]{.underline} -->

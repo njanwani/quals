@@ -1,6 +1,6 @@
-## References {.nav-none style="font-size: 0.5em;"}
+## References {.nav-none style="font-size: 0.5em;" visibility="uncounted"}
 
 ::: {#refs}
 :::
 
-# Questions?
+# Questions? {visibility="uncounted"}

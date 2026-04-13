@@ -1,4 +1,4 @@
-## Exploring Your Options {.nav-open}
+## Motivation: Exploring Your Options {.nav-open}
 
 **Research Question**: Can enabling a person to *explore their options* before providing preferences reduce *inconsistency* in their feedback?
 

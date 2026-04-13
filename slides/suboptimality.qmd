@@ -1,9 +1,4 @@
-## Suboptimality {.nav-feedback}
+## **Suboptimality**: Adapting to Human Errors {.nav-feedback}
 
 {{< include slides/suboptimality/preamble.qmd >}}
 {{< include slides/suboptimality/decomposition.qmd >}}
-
-## Suboptimality {.nav-feedback}
-
-{{< include slides/suboptimality/preamble.qmd >}}
-{{< include slides/suboptimality/ird.qmd >}}

@@ -1,13 +1,20 @@
 ## Types of Imperfect Feedback {.nav-feedback}
 
-Human feedback deviates from ideal behavior in three systematic ways:
+Human feedback is not always perfect. There exist three distinct kinds of imperfections
 
-1. **Inconsistency**: a user may provide different feedback for the same query at different times.
+<table>
+<thead><tr><th>Type</th><th>Definition</th></tr></thead>
+<tbody>
+<tr class="fragment"><td>**Inconsistency** [@inconsistent]{style="font-size: 0.6em;"}</td><td>New feedback contradicts previous feedback in the same session.</td></tr>
+<tr class="fragment"><td>**Suboptimality** [@mindmeld, @ird, @occam]{style="font-size: 0.6em;"}</td><td>Provided demonstrations consistently do not optimize the underlying reward $R$.</td></tr>
+<tr class="fragment"><td>**Heterogeneity** [@mindmeld, @occam]{style="font-size: 0.6em;"}</td><td>Feedback is influenced by the style, skill-set, and priorities of the particular demonstrator.</td></tr>
+</tbody>
+</table>
 
-2. **Suboptimality**: people don't always provide *optimal* demonstrations to an underlying reward.
+<!-- Each of these imperfections manifest in *systematic*, *non-random* ways. -->
 
-3. **Heterogeneity**: humans can exhibit *different biases, styles, and prioritizations*.
-
-Each of these imperfections manifest in *systematic*, *non-random* ways.
-
+<!-- ::: {.fragment} -->
+<div style="margin-top: -0.5em;">
 Reward learning methods must account for these imperfections to accurately recover the true reward $R$.
+</div>
+<!-- ::: -->

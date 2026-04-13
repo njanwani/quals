@@ -1,13 +1,15 @@
-## Heterogeneity {.nav-feedback}
+## **Heterogeneity**: Identifying Style {.nav-feedback}
 
-[People provide different feedback or strategies for the same query.]{style="text-decoration: underline;"}
+- For the same reward $R$, the existence of a planner $p$ can result in heterogenous feedback. [@occam]{style="font-size: 0.6em;"} <!-- 1. User styles 2. Reasoning capabilities -->
+- People prioritize various objectives to different degrees. [@mobo, @imitationbook]{style="font-size: 0.6em;"}
 
-Even for the same reward $R$, the existence of a planner $p$ can result in heterogenous feedback. [@occam]{style="font-size: 0.6em;"}
+<hr>
 
-1. User styles
-2. Reasoning capabilities
+<div style="margin-top: -0.5em;">
+MIND-MELD learns operator styles by learning personalized embeddings and correction terms given calibration tasks [@mindmeld]{style="font-size: 0.6em;"}
 
-People prioritize various objectives to different degrees. [@mobo, @imitationbook]{style="font-size: 0.6em;"}
+Several approaches fail here.
 
-1. Users may desire different *tradeoffs* of objectives
-2. Different individuals may prioritize different goals (safety versus speed)
+- Example: COACH cannot learn from heterogeneous 'coaches'. [@coach]{style="font-size: 0.6em;"}
+<!-- 1. Users may desire different *tradeoffs* of objectives 2. Different individuals may prioritize different goals (safety versus speed) -->
+</div>

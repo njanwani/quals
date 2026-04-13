@@ -1,11 +1,11 @@
 ## Open Problems {.nav-open}
 
-1. How can we apply the aforementioned solutions to cases of continuous robotic control rather than simpler, systems with finite possibilities?
+1. How can we simulatenously adjust and detect imperfections in human feedback?
 
-2. Can we reduce reliance on hand-crafted features, opting less human-assisted reward learning?
+2. Can we improve the (real time) efficiency of reward learning algorithms for real-world tasks?
 
-3. Should people explore their options before *deciding* their preference?
+3. How should we address non-stationary human preferences and rewards?
 
-4. How can we explicitly model bounded-rationality, or style, of a demonstrator?
+4. Do human-human interactions with annotators change the quality of feedback they provide? 
 
-**Research Objective**: to enable easy *exploration* and *personalization* of robotic systems, specifically towards assitive devices, like exoskeletons.
+**Research Objective**: to enable easy *exploration* and *personalization* of robotic systems, specifically towards assitive devices, like exoskeletons and legged locomotion.

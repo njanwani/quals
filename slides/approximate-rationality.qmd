@@ -1,0 +1,28 @@
+## **Inconsistency**: Approximate Rationality {.nav-feedback}
+
+- Classic IRL assumes demonstrations are *approximately optimal* to the underlying reward $R$.
+- PBL assumes correct preferences are likely to the extent that they produce high utility under estimate $\hat{R}$.
+
+<div style="display: flex; gap: 1em;">
+<div style="flex: 3;">
+::: {.callout-tip title="Definition: Bradley-Terry Model"}
+The Bradley-Terry model provides a probabilistic framework for pairwise comparison $(\xi_1, \xi_2)$:
+
+$$P(\xi_1 \succ b) = \frac{\exp(\hat{R}(\xi_1))}{\exp(\hat{R}(\xi_1)) + \exp(\hat{R}(\xi_2))}$$
+
+where $\xi_1, \xi_2$ are sample robot trajectories.
+
+<!-- This is the foundation for Reinforcement Learning from Human Feedback (RLHF), which learns reward models from pairwise preference data rather than assuming demonstrations are optimal. -->
+
+[@bradleyterry, @rlhf]{style="font-size: 0.6em;"}.
+:::
+</div>
+<div style="flex: 2;">
+::: {.callout-warning title="Limitation: Approximate Rationality"}
+- There are systematic biases found in each type of feedback suboptimality, heterogeneity, and other forms of inconsistency
+- Not addressed by approximate rationality alone.
+
+[@inconsistent]{style="font-size: 0.6em;"}.
+:::
+</div>
+</div>

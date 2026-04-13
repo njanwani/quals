@@ -1,4 +1,4 @@
-## Boltzmann Rationality Applied to Reward Design {.nav-rewards}
+## Boltzmann Rationality Applied to Reward Design {.nav-rewards visibility="uncounted"}
 
 Hand crafted rewards are likely to the extent that they lead to high **true** utility in the environment.
 
