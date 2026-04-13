@@ -28,7 +28,7 @@ Reinforcement learning (RL) has yielded high performing robotic control.
 :::
 ::::
 
-Yet, process hinges on having a well-defined *reward function*.
+Yet, this process hinges on having a well-defined *reward function*.
 
 ::: {.callout-tip title="Definition: Reward Function"}
 The reward function $R : \mathcal{S} \times \mathcal{A} \rightarrow \mathbb{R}$ maps (state, action) pairs to a scalar signal that is maximized when the agent achieves its *goal*. 

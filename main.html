@@ -251,7 +251,7 @@ Neil Janwani
   <source src="videos/inhand_z.mp4" type="video/mp4">
 </video>
 </div></div>
-<p>Yet, process hinges on having a well-defined <em>reward function</em>.</p>
+<p>Yet, this process hinges on having a well-defined <em>reward function</em>.</p>
 <div title="Definition: Reward Function">
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
@@ -313,10 +313,12 @@ Neil Janwani
 <!-- **Preference-based learning** (PBL) learns a reward function that is consistent with preferences collected from humans. -->
 <p>However, human feedback is <strong>imperfect</strong>.</p>
 <ul>
-<li>Inconsistency, suboptimality, and heterogeneity are <em>systematic</em> noise.</li>
-<li>Humans aren’t computers: they have finite energy and avoid pain.</li>
+<li>Inconsistency, suboptimality, and heterogeneity bias provided feedback.</li>
+<li>Humans are not computers: they have finite energy and are risk-averse.</li>
 </ul>
-<p>Even pairwise comparisons, can vary over trials and individuals.</p>
+<p>Even pairwise comparisons, can vary over trials and individuals. <span style="font-size: 0.6em;"><span class="citation" data-cites="exopbl">Tucker et al. (<a href="#/references" role="doc-biblioref" onclick="">2020, <em>Preference-based learning for exoskeleton gait optimization</em></a>)</span></span> <!-- <span style="display: block; margin-top: -0.8em;">
+
+</span> --></p>
 </section>
 <section id="an-outline-for-leveraging" class="slide level2 nav-intro">
 <h2><span style="display: block; text-align: center;">An Outline for Leveraging…</span></h2>
@@ -324,7 +326,7 @@ Neil Janwani
 <div style="flex: 1; border-right: 2px solid #282626; padding-right: 1em;">
 <p><strong>…Imperfect Human Feedback…</strong></p>
 <!-- Learning *ill-defined* rewards from humans -->
-<p>Highlight and validate the characteristics of human feedback in real human-robot systems.</p>
+<p>Examine the main categories of systematic bias in human feedback for real human-robot systems.</p>
 <p><span style="font-size: 0.8em;"><span class="citation" data-cites="inconsistent">Evans et al. (<a href="#/references" role="doc-biblioref" onclick="">2016, <em>Learning the preferences of ignorant, inconsistent agents</em></a>)</span></span>.</p>
 <p><span style="font-size: 0.8em;"><span class="citation" data-cites="occam">Armstrong et al. (<a href="#/references" role="doc-biblioref" onclick="">2018, <em>Occam’s razor is insufficient to infer the preferences of irrational agents</em></a>)</span></span>.</p>
 </div>
@@ -337,10 +339,10 @@ Neil Janwani
 <p><span style="font-size: 0.8em;"><span class="citation" data-cites="ird">Hadfield-Menell et al. (<a href="#/references" role="doc-biblioref" onclick="">2017, <em>Inverse reward design</em></a>)</span></span>.</p>
 </div>
 </div>
-<p><span style="display: block; text-align: center;">We’ll end by examining an open problem in the field and proposing a new methodology to address it.</span></p>
+<p><span style="display: block; text-align: center;">We’ll end by examining an open problem in the field related to my research and proposing a new methodology to address it.</span></p>
 </section>
 <section>
-<section id="imperfect-human-feedback." class="title-slide slide level1 center">
+<section id="imperfect-human-feedback." class="title-slide slide level1 nav-feedback center" data-visibility="uncounted">
 <h1>Imperfect Human Feedback.</h1>
 
 </section>
@@ -457,7 +459,7 @@ Q(s,a \mid d) = \gamma(d) R(s,a) + \mathbb{E}_{s', a'}[Q(s', a' \mid d + 1)],
 </ol>
 </section></section>
 <section>
-<section id="learning-rewards-for-robotic-decision-making." class="title-slide slide level1 center">
+<section id="learning-rewards-for-robotic-decision-making." class="title-slide slide level1 nav-feedback center" data-visibility="uncounted">
 <h1>Learning Rewards for Robotic-Decision Making.</h1>
 
 </section>
@@ -856,6 +858,9 @@ Janwani, Neil, Ellen Novoseller, Vernon J Lawhern, and Maegan Tucker. (2026). <e
 </div>
 <div id="ref-coach" class="csl-entry" role="listitem">
 MacGlashan, James, Mark K Ho, Robert Loftin, Bei Peng, Guan Wang, David L Roberts, Matthew E Taylor, and Michael L Littman. (2017). <em>Interactive learning from policy-dependent human feedback</em>. International conference on machine learning.
+</div>
+<div id="ref-exopbl" class="csl-entry" role="listitem">
+Tucker, Maegan, Ellen Novoseller, Claudia Kann, Yanan Sui, Yisong Yue, Joel W. Burdick, and Aaron D. Ames. (2020). <em><a href="https://doi.org/10.1109/ICRA40945.2020.9196661">Preference-based learning for exoskeleton gait optimization</a></em>. 2020 IEEE international conference on robotics and automation (ICRA).
 </div>
 <div id="ref-constructed" class="csl-entry" role="listitem">
 (2006). <em>The construction of preference</em>.
