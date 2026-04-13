@@ -8,9 +8,9 @@
 
 var NAV_SECTIONS = [
   { key: "intro",     label: "Introduction" },
-  { key: "feedback",  label: "Imperfect Feedback" },
-  { key: "rewards",   label: "Learning Rewards" },
+  { key: "feedback",  label: "Dealing with Imperfect Feedback" },
+  // { key: "rewards",   label: "Learning Rewards" },
   { key: "open",      label: "Open Questions" },
   { key: "proposed",  label: "Proposed Method" },
-  // { key: "limits",    label: "Limitations" },
+  { key: "limits",    label: "Limitations and Future Work" },
 ];
