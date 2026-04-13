@@ -10,7 +10,7 @@ V_{\pi^*}(s_0) = \sum_t R(s_t,a_t), \qquad s_{t+1} \sim T(s_t, a_t) ,~a_{t} \sim
 We can model this via **Boltzmann Rationality**.
 
 ::: {.callout-tip title="Definition: Boltzmann Rationality"}
-A perfectly rational agent can be modeled via the recursive relationship found in Boltzmann Rationality,
+An approximately rational agent can be modeled via the recursive relationship found in Boltzmann Rationality,
 \begin{align}
 P(a \mid s) \propto \exp(\alpha Q(s,a)), \qquad Q(s, a) = R(s, a) + \mathbb{E}[Q(s',a')]
 \end{align}

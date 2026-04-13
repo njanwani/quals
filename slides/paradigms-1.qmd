@@ -1,0 +1,44 @@
+## The canonical paradigms to learn rewards {.nav-intro}
+
+<!-- **Inverse reinforcement learning** (IRL) learns a reward function consistent with provided demonstrations or other forms of feedback -->
+
+<!-- ::: {.callout-tip title="Definition: Markov Decision Process (MDP)"}
+The MDP is the tuple $M = \langle \mathcal{S}, \mathcal{A}, \mathcal{T}, \gamma, \mathcal{D}, R\rangle$, with states $s \in \mathcal{S}$, actions $a \in \mathcal{A}$, transitions $\mathcal{T}$, discount factor $\gamma$, initial state distribution $\mathcal{D}, and reward $R$. The MDP represents a way to model agents that are optimal to reward $R$ in their world specified by $M$.
+
+[@irl, @maxent]{style="font-size: 0.6em;"}.
+::: -->
+
+::: {.callout-tip title="Definition: Inverse Reinforcement Learning (IRL)"}
+IRL *recovers* the reward, $R$, that explains provided observations or demonstrations. Oftentimes, this reward function is assumed to linear in the features of the demonstration $\tau$
+
+$$
+R(\tau) = w^T \cdot \phi(\tau)
+$$
+where $\tau$ is a series of state-action pairs, $\phi$ is the features, and $w$ is the scalarization weights.
+
+**Assumption**: IRL methods often assume provided demonstrations are [approximately optimal]{.underline} with respect to the underlying reward $R$
+
+[@irl, @maxent]{style="font-size: 0.6em;"}.
+:::
+
+::: {.callout-tip title="Definition: Preference-Based Learning (PBL)"}
+Rather than directly collect demonstrations, PBL infers a reward $R$ from human preferences over pairs or sets of trajectories, actions, or outcomes. 
+
+**Assumption**: PBL often does this by assuming that the provided preferences are approximately consistent to $R$.
+
+[@rlhf]{style="font-size: 0.6em;"}.
+:::
+
+<!-- ::: {.callout-tip title="Definition: Active Preference Learning (APL)"}
+APL enables the learner to *actively* select which preference queries to ask the human. The query selection algorithm is sometimes called the *acquisition function* and can be used to improve the speed or robustness of the learning process.
+
+[@apl, @easy]{style="font-size: 0.6em;"}.
+::: -->
+
+
+<!-- However, human feedback is **imperfect**.
+
+- Inconsistency, suboptimality, and heterogeneity bias provided feedback.
+- Humans are not computers: they have finite energy and are risk-averse.
+
+Even pairwise comparisons, can vary over trials and individuals. [@exopbl]{style="font-size: 0.6em;"} -->

@@ -6,8 +6,8 @@
 <script src="main_files/libs/quarto-html/tippy.umd.min.js"></script>
 <link href="main_files/libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="main_files/libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="main_files/libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.8.27">
+<link href="main_files/libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.9.36">
 
   <meta name="author" content="Neil Janwani">
   <title>Learning reward functions from imperfect human feedback for robotic decision making</title>
@@ -17,6 +17,9 @@
   <link rel="stylesheet" href="main_files/libs/revealjs/dist/reset.css">
   <link rel="stylesheet" href="main_files/libs/revealjs/dist/reveal.css">
   <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
     div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -48,7 +51,7 @@
     div.csl-indent {
       margin-left: 2em;
     }  </style>
-  <link rel="stylesheet" href="main_files/libs/revealjs/dist/theme/quarto-2ad1500e93ff8c125688baf0dfd614c4.css">
+  <link rel="stylesheet" href="main_files/libs/revealjs/dist/theme/quarto-caf30efa069c63858d1613de406c3f9c.css">
   <link href="main_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="main_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="main_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -272,8 +275,11 @@ Neil Janwani
 <section id="the-canonical-paradigms-to-learn-rewards" class="slide level2 nav-intro">
 <h2>The canonical paradigms to learn rewards</h2>
 <!-- **Inverse reinforcement learning** (IRL) learns a reward function consistent with provided demonstrations or other forms of feedback -->
-<div style="display: flex; gap: 1em;">
-<div style="flex: 1;">
+<!-- ::: {.callout-tip title="Definition: Markov Decision Process (MDP)"}
+The MDP is the tuple $M = \langle \mathcal{S}, \mathcal{A}, \mathcal{T}, \gamma, \mathcal{D}, R\rangle$, with states $s \in \mathcal{S}$, actions $a \in \mathcal{A}$, transitions $\mathcal{T}$, discount factor $\gamma$, initial state distribution $\mathcal{D}, and reward $R$. The MDP represents a way to model agents that are optimal to reward $R$ in their world specified by $M$.
+
+[@irl, @maxent]{style="font-size: 0.6em;"}.
+::: -->
 <div title="Definition: Inverse Reinforcement Learning (IRL)">
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
@@ -284,14 +290,16 @@ Neil Janwani
 <p><strong>Definition: Inverse Reinforcement Learning (IRL)</strong></p>
 </div>
 <div class="callout-content">
-<p>IRL infers the underlying reward <span class="math inline">\(R\)</span> that explains observed expert behavior, typically by assuming the expert acts (approximately) optimally to <span class="math inline">\(R\)</span>.</p>
-<p><span style="font-size: 0.6em;"><span class="citation" data-cites="irl">Abbeel et al. (<a href="#/references" role="doc-biblioref" onclick="">2004, <em>Apprenticeship learning via inverse reinforcement learning</em></a>)</span></span>.</p>
+<p>IRL <em>recovers</em> the reward, <span class="math inline">\(R\)</span>, that explains provided observations or demonstrations. Oftentimes, this reward function is assumed to linear in the features of the demonstration <span class="math inline">\(\tau\)</span></p>
+<p><span class="math display">\[
+R(\tau) = w^T \cdot \phi(\tau)
+\]</span> where <span class="math inline">\(\tau\)</span> is a series of state-action pairs, <span class="math inline">\(\phi\)</span> is the features, and <span class="math inline">\(w\)</span> is the scalarization weights.</p>
+<p><strong>Assumption</strong>: IRL methods often assume provided demonstrations are <u>approximately optimal</u> with respect to the underlying reward <span class="math inline">\(R\)</span></p>
+<p><span style="font-size: 0.6em;"><span class="citation" data-cites="irl">Abbeel et al. (<a href="#/references" role="doc-biblioref" onclick="">2004, <em>Apprenticeship learning via inverse reinforcement learning</em></a>)</span>, <span class="citation" data-cites="maxent"><span class="nocase">Ziebart et al.</span> (<a href="#/references" role="doc-biblioref" onclick="">2008, <em>Maximum entropy inverse reinforcement learning.</em></a>)</span></span>.</p>
 </div>
 </div>
 </div>
 </div>
-</div>
-<div style="flex: 1;">
 <div title="Definition: Preference-Based Learning (PBL)">
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
@@ -302,23 +310,82 @@ Neil Janwani
 <p><strong>Definition: Preference-Based Learning (PBL)</strong></p>
 </div>
 <div class="callout-content">
-<p>PBL infers a reward <span class="math inline">\(R\)</span> that is <em>consistent</em> with human preferences over pairs or sets of trajectories, actions, or outcomes, rather than from demonstrations or explicit feedback.</p>
+<p>Rather than directly collect demonstrations, PBL infers a reward <span class="math inline">\(R\)</span> from human preferences over pairs or sets of trajectories, actions, or outcomes.</p>
+<p><strong>Assumption</strong>: PBL often does this by assuming that the provided preferences are approximately consistent to <span class="math inline">\(R\)</span>.</p>
 <p><span style="font-size: 0.6em;"><span class="citation" data-cites="rlhf">Christiano et al. (<a href="#/references" role="doc-biblioref" onclick="">2017, <em>Deep reinforcement learning from human preferences</em></a>)</span></span>.</p>
 </div>
 </div>
 </div>
 </div>
-</div>
-</div>
-<!-- **Preference-based learning** (PBL) learns a reward function that is consistent with preferences collected from humans. -->
-<p>However, human feedback is <strong>imperfect</strong>.</p>
-<ul>
-<li>Inconsistency, suboptimality, and heterogeneity bias provided feedback.</li>
-<li>Humans are not computers: they have finite energy and are risk-averse.</li>
-</ul>
-<p>Even pairwise comparisons, can vary over trials and individuals. <span style="font-size: 0.6em;"><span class="citation" data-cites="exopbl">Tucker et al. (<a href="#/references" role="doc-biblioref" onclick="">2020, <em>Preference-based learning for exoskeleton gait optimization</em></a>)</span></span> <!-- <span style="display: block; margin-top: -0.8em;">
+<!-- ::: {.callout-tip title="Definition: Active Preference Learning (APL)"}
+APL enables the learner to *actively* select which preference queries to ask the human. The query selection algorithm is sometimes called the *acquisition function* and can be used to improve the speed or robustness of the learning process.
 
-</span> --></p>
+[@apl, @easy]{style="font-size: 0.6em;"}.
+::: -->
+<!-- However, human feedback is **imperfect**.
+
+- Inconsistency, suboptimality, and heterogeneity bias provided feedback.
+- Humans are not computers: they have finite energy and are risk-averse.
+
+Even pairwise comparisons, can vary over trials and individuals. [@exopbl]{style="font-size: 0.6em;"} -->
+</section>
+<section id="the-canonical-paradigms-to-learn-rewards-1" class="slide level2 nav-intro">
+<h2>The canonical paradigms to learn rewards</h2>
+<div title="Definition: Active Preference Learning (APL)">
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Definition: Active Preference Learning (APL)</strong></p>
+</div>
+<div class="callout-content">
+<p>APL enables the learner to <em>actively</em> select which preference queries to ask the human. The query selection algorithm is sometimes called the <em>acquisition function</em>.</p>
+<p><span style="font-size: 0.6em;"><span class="citation" data-cites="apl">Sadigh et al. (<a href="#/references" role="doc-biblioref" onclick="">2017, <em>Active preference-based learning of reward functions</em></a>)</span>, <span class="citation" data-cites="easy">Bıyık et al. (<a href="#/references" role="doc-biblioref" onclick="">2019, <em>Asking easy questions: A user-friendly approach to active reward learning</em></a>)</span></span>.</p>
+</div>
+</div>
+</div>
+</div>
+<p>Acquisition functions are particularly useful to achieve faster convergence to a desired optimum or more efficient learning</p>
+<div title="Definition: Active Preference Learning (APL)">
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Definition: Active Preference Learning (APL)</strong></p>
+</div>
+<div class="callout-content">
+<p>APL enables the learner to <em>actively</em> select which preference queries to ask the human. The query selection algorithm is sometimes called the <em>acquisition function</em>.</p>
+<p><span style="font-size: 0.6em;"><span class="citation" data-cites="apl">Sadigh et al. (<a href="#/references" role="doc-biblioref" onclick="">2017, <em>Active preference-based learning of reward functions</em></a>)</span>, <span class="citation" data-cites="easy">Bıyık et al. (<a href="#/references" role="doc-biblioref" onclick="">2019, <em>Asking easy questions: A user-friendly approach to active reward learning</em></a>)</span></span>.</p>
+</div>
+</div>
+</div>
+</div>
+<div title="Definition: Active Preference Learning (APL)">
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Definition: Active Preference Learning (APL)</strong></p>
+</div>
+<div class="callout-content">
+<p>APL enables the learner to <em>actively</em> select which preference queries to ask the human. The query selection algorithm is sometimes called the <em>acquisition function</em>.</p>
+<p><span style="font-size: 0.6em;"><span class="citation" data-cites="apl">Sadigh et al. (<a href="#/references" role="doc-biblioref" onclick="">2017, <em>Active preference-based learning of reward functions</em></a>)</span>, <span class="citation" data-cites="easy">Bıyık et al. (<a href="#/references" role="doc-biblioref" onclick="">2019, <em>Asking easy questions: A user-friendly approach to active reward learning</em></a>)</span></span>.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- However, human feedback is **imperfect**.
+
+- Inconsistency, suboptimality, and heterogeneity bias provided feedback.
+- Humans are not computers: they have finite energy and are risk-averse.
+
+Even pairwise comparisons, can vary over trials and individuals. [@exopbl]{style="font-size: 0.6em;"} -->
 </section>
 <section id="an-outline-for-leveraging" class="slide level2 nav-intro">
 <h2><span style="display: block; text-align: center;">An Outline for Leveraging…</span></h2>
@@ -841,6 +908,9 @@ Armstrong, Stuart, and Sören Mindermann. (2018). <em>Occam’s razor is insuffi
 <div id="ref-mobo" class="csl-entry" role="listitem">
 Astudillo, Raul, Kejun Li, Maegan Tucker, Chu Xin Cheng, Aaron D Ames, and Yisong Yue. (2024). <em>Preferential multi-objective bayesian optimization</em>. arXiv preprint arXiv:2406.14699.
 </div>
+<div id="ref-easy" class="csl-entry" role="listitem">
+Bıyık, Erdem, Malayandi Palan, Nicholas C Landolfi, Dylan P Losey, and Dorsa Sadigh. (2019). <em>Asking easy questions: A user-friendly approach to active reward learning</em>. arXiv preprint arXiv:1910.04365.
+</div>
 <div id="ref-rlhf" class="csl-entry" role="listitem">
 Christiano, Paul F, Jan Leike, Tom Brown, Miljan Martic, Shane Legg, and Dario Amodei. (2017). <em>Deep reinforcement learning from human preferences</em>. Advances in neural information processing systems. vol. 30.
 </div>
@@ -859,8 +929,11 @@ Janwani, Neil, Ellen Novoseller, Vernon J Lawhern, and Maegan Tucker. (2026). <e
 <div id="ref-coach" class="csl-entry" role="listitem">
 MacGlashan, James, Mark K Ho, Robert Loftin, Bei Peng, Guan Wang, David L Roberts, Matthew E Taylor, and Michael L Littman. (2017). <em>Interactive learning from policy-dependent human feedback</em>. International conference on machine learning.
 </div>
-<div id="ref-exopbl" class="csl-entry" role="listitem">
-Tucker, Maegan, Ellen Novoseller, Claudia Kann, Yanan Sui, Yisong Yue, Joel W. Burdick, and Aaron D. Ames. (2020). <em><a href="https://doi.org/10.1109/ICRA40945.2020.9196661">Preference-based learning for exoskeleton gait optimization</a></em>. 2020 IEEE international conference on robotics and automation (ICRA).
+<div id="ref-apl" class="csl-entry" role="listitem">
+Sadigh, Dorsa, Anca Dragan, Shankar Sastry, and Sanjit Seshia. (2017). <em>Active preference-based learning of reward functions</em>.
+</div>
+<div id="ref-maxent" class="csl-entry" role="listitem">
+<span class="nocase">Ziebart, Brian D, Andrew L Maas, J Andrew Bagnell, Anind K Dey, and others</span>. (2008). <em>Maximum entropy inverse reinforcement learning.</em> Aaai. vol. 8.
 </div>
 <div id="ref-constructed" class="csl-entry" role="listitem">
 (2006). <em>The construction of preference</em>.
@@ -889,7 +962,7 @@ V_{\pi^*}(s_0) = \sum_t R(s_t,a_t), \qquad s_{t+1} \sim T(s_t, a_t) ,~a_{t} \sim
 <p><strong>Definition: Boltzmann Rationality</strong></p>
 </div>
 <div class="callout-content">
-<p>A perfectly rational agent can be modeled via the recursive relationship found in Boltzmann Rationality, <span class="math display">\[\begin{align}
+<p>An approximately rational agent can be modeled via the recursive relationship found in Boltzmann Rationality, <span class="math display">\[\begin{align}
 P(a \mid s) \propto \exp(\alpha Q(s,a)), \qquad Q(s, a) = R(s, a) + \mathbb{E}[Q(s',a')]
 \end{align}\]</span> where <span class="math inline">\(s' \sim T(\cdot \mid s,a),~a' \sim P(\cdot \mid s')\)</span> and <span class="math inline">\(Q\)</span> is the quality function.</p>
 </div>

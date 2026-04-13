@@ -11,7 +11,8 @@ subtitle: "<span style='font-size: 0.7em;'>Committee: Prof. Matthew Gombolay (Ch
 ---
 
 {{< include slides/introduction.qmd >}}
-{{< include slides/paradigms.qmd >}}
+{{< include slides/paradigms-1.qmd >}}
+{{< include slides/paradigms-2.qmd >}}
 {{< include slides/outline.qmd >}}
 
 {{< include slides/transitions/transition-imperfect.qmd >}}

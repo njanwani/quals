@@ -1,0 +1,27 @@
+## The canonical paradigms to learn rewards {.nav-intro}
+
+::: {.callout-tip title="Definition: Active Preference Learning (APL)"}
+APL enables the learner to *actively* select which preference queries to ask the human. The query selection algorithm is sometimes called the *acquisition function*.
+
+[@apl, @easy]{style="font-size: 0.6em;"}.
+:::
+
+Acquisition functions are particularly useful to achieve faster convergence to a desired optimum or more efficient learning
+
+::: {.callout-tip title="Definition: Active Preference Learning (APL)"}
+APL enables the learner to *actively* select which preference queries to ask the human. The query selection algorithm is sometimes called the *acquisition function*.
+
+[@apl, @easy]{style="font-size: 0.6em;"}.
+:::
+
+::: {.callout-tip title="Definition: Active Preference Learning (APL)"}
+APL enables the learner to *actively* select which preference queries to ask the human. The query selection algorithm is sometimes called the *acquisition function*.
+
+[@apl, @easy]{style="font-size: 0.6em;"}.
+:::
+<!-- However, human feedback is **imperfect**.
+
+- Inconsistency, suboptimality, and heterogeneity bias provided feedback.
+- Humans are not computers: they have finite energy and are risk-averse.
+
+Even pairwise comparisons, can vary over trials and individuals. [@exopbl]{style="font-size: 0.6em;"} -->
