@@ -1,4 +1,4 @@
-## **Heterogeneity**: Identifying Style {.nav-feedback}
+## **Heterogeneity**: Style and Prioritization {.nav-feedback}
 
 - For the same reward $R$, the existence of a planner $p$ can result in heterogenous feedback. [@occam]{style="font-size: 0.6em;"} <!-- 1. User styles 2. Reasoning capabilities -->
 - People prioritize various objectives to different degrees. [@mobo, @imitationbook]{style="font-size: 0.6em;"}

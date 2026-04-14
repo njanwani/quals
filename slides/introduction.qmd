@@ -9,6 +9,7 @@ Reinforcement learning (RL) has yielded high performing robotic control.
   <source src="videos/humanoid-run.mp4" type="video/mp4">
 </video>
 ```
+[@moplayground]{style="font-size: 0.4em; display: block; margin-top: -2.0em;"}
 :::
 ::: {.column width="33%"}
 ```{=html}
@@ -18,6 +19,7 @@ Reinforcement learning (RL) has yielded high performing robotic control.
 </video>
 </div>
 ```
+[@moplayground]{style="font-size: 0.4em; display: block; margin-top: -1.2em;"}
 :::
 ::: {.column width="33%"}
 ```{=html}
@@ -25,10 +27,13 @@ Reinforcement learning (RL) has yielded high performing robotic control.
   <source src="videos/inhand_z.mp4" type="video/mp4">
 </video>
 ```
+[@playground]{style="font-size: 0.4em; display: block; margin-top: -2.0em;"}
 :::
 ::::
 
+<div style="margin-top: -1.0em;">
 Yet, this process hinges on having a well-defined *reward function*.
+</div>
 
 ::: {.callout-tip title="Definition: Reward Function"}
 The reward function $R : \mathcal{S} \times \mathcal{A} \rightarrow \mathbb{R}$ maps (state, action) pairs to a scalar signal that is maximized when the agent achieves its *goal*. 

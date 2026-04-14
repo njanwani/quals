@@ -54,6 +54,12 @@ document.addEventListener('DOMContentLoaded', function() {
   Reveal.on('ready', function(event) {
     updateSidebar(event.currentSlide);
 
+    // Don't count the title slide
+    var titleSlide = document.getElementById('title-slide');
+    if (titleSlide) {
+      titleSlide.setAttribute('data-visibility', 'uncounted');
+    }
+
     // Mark all slides after the "Backup" transition as uncounted
     var slides = document.querySelectorAll('.reveal .slides > section');
     var pastBackup = false;

@@ -1,7 +1,5 @@
-## Step 3: Preference Learning {.nav-proposed}
+## Step 3: Find the Desired Policy {.nav-proposed}
 
-Use $\vec{e}$ to rapidly find human-preferred behavior using PBL with regret minimization.
+ETA finds the user's desired policy using APL. Specifically, utilizes a Gaussian Process to learn the user's utility $u(f)$ over $\mathcal{F}$,
 
-<div style="text-align: center;">
-![](images/ThompsonSampling2.gif){width="60%"}
-</div>
+explain POLAR?

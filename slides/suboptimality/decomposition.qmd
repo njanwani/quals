@@ -11,15 +11,21 @@ Human policy $\pi^{.}$ can be decomposed into a *planner-reward* pair $(p, R)$ v
 
 <div style="display: flex; gap: 1em;">
 <div style="flex: 1;">
-*Inverse reward design* accounts for suboptimality of hand-crafted rewards: adopting risk-averse behavior when needed.
-
-[@ird]{style="font-size: 0.6em;"}
-</div>
-<div style="border-left: 1px solid #ccc; margin: 0 0.5em;"></div>
-<div style="flex: 1;">
 MIND-MELD accounts for suboptimality by learning to adjust and correct for annotator skill.
 
 [@mindmeld]{style="font-size: 0.6em;"}
 </div>
+<div style="border-left: 1px solid #ccc; margin: 0 0.5em;"></div>
+<div style="flex: 1;">
+*Inverse reward design* accounts for suboptimality of hand-crafted rewards: adopting risk-averse behavior when needed.
+
+[@ird]{style="font-size: 0.6em;"}
 </div>
+</div>
+
+::: {.notes}
+Another interesting approach is IRD, which examines hand-crafted rewards. Here they develop an approach to use risk-averse behavior to stay in regions that the hand-crafted reward describes well.
+
+Another way the planner reward decomposition is helpful is in heterogeneity...
+:::
 

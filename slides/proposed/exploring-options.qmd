@@ -1,4 +1,4 @@
-## Motivation: Exploring Your Options {.nav-open}
+## Motivation: Exploring, then Answering {.nav-open}
 
 **Research Question**: Can enabling a person to *explore their options* before providing preferences reduce *inconsistency* in their feedback?
 
@@ -17,5 +17,5 @@
 </div>
 
 <div style="text-align: center;">
-**Idea**: develop an algorithm that enables informed *exploration* by actively querying where to *inform* the human.
+**Idea**: develop an algorithm with a dedicated exploration phase to allow people to construct their preferences.
 </div>

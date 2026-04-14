@@ -30,9 +30,10 @@ subtitle: "<span style='font-size: 0.7em;'>Committee: Prof. Matthew Gombolay (Ch
 {{< include slides/proposed/algorithmic-approach/step-1.qmd >}}
 {{< include slides/proposed/algorithmic-approach/step-2.qmd >}}
 {{< include slides/proposed/algorithmic-approach/step-3.qmd >}}
-{{< include slides/proposed/baseline-case.qmd >}}
-{{< include slides/proposed/experimental-validation.qmd >}}
-{{< include slides/proposed/potential-limitations.qmd >}}
+{{< include slides/proposed/synthetic-evaluation.qmd >}}
+{{< include slides/proposed/initial-results.qmd >}}
+{{< include slides/proposed/strengths.qmd >}}
+{{< include slides/proposed/limitations.qmd >}}
 
 {{< include slides/references.qmd >}}
 

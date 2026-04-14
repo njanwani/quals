@@ -4,8 +4,8 @@
 
 2. Can we improve the (real time) efficiency of reward learning algorithms for real-world tasks?
 
-3. How should we address non-stationary human preferences and rewards?
+3. Do human-human interactions with annotators change the quality of feedback they provide? 
 
-4. Do human-human interactions with annotators change the quality of feedback they provide? 
+4. How should we address non-stationary human preferences and rewards?
 
 **Research Objective**: to enable easy *exploration* and *personalization* of robotic systems, specifically towards assitive devices, like exoskeletons and legged locomotion.

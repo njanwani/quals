@@ -1,11 +1,9 @@
-## Step 2: Similarity Queries {.nav-proposed}
+## Step 2: Generating Samples for Exploration {.nav-proposed}
 
-Actively request *similarity queries* from the user to learn similarity embedding $\vec{e}$.
+Find $K$ high-quality and diverse samples for the user to explore. 
 
-Which one is more similar to $\pi_A$, $\pi_i$ or $\pi_j$?
+With $\pi_w$'s expected performance $f_w = \mathbb{E}_{\tau \sim \pi_w}[\phi(\tau)]$, identify $K$ centers via $k$-medoids.
 
-<div style="text-align: center; margin-top: -0.5em; margin-bottom: -0.5em;">
-![](images/sirl.png){width="80%"}
+<div style="text-align: center; margin-top: -3em;">
+![](images/objectives_3d.png){width="60%"}
 </div>
-
-The use of an anchor forces the comparison to be a *local* decision. 
