@@ -5,7 +5,7 @@
 <div style="display: flex; gap: 1em;">
 <div style="flex: 1;">
 ::: {.callout-tip title="Definition: Policy Family"}
-A policy family $\mathcal{F}: \Delta^{M-1} \rightarrow \Theta_\pi$ optimally trades off $M$ conflicting objectives $\phi: \mathcal{T} \rightarrow \mathbb{R}^M$.
+A policy family $\mathcal{F}: \Delta^{M-1} \rightarrow \Theta_\pi$ optimally trades off $M$ conflicting objectives $\phi: \mathcal{T} \rightarrow \mathbb{R}^M$. $\Delta^{M-1}$ is the *simplex* ($M=3$ is a triangle).
 :::
 
 Each $w \in \Delta^{M-1}$ represents a tradeoff of objectives and specifies the reward $R_w(\tau) = w^T\phi(\tau)$.

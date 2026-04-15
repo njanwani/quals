@@ -1,21 +1,21 @@
 ## Initial Results {.nav-proposed}
-We apply these oracles to a simulated PBL loop under a 2x2 study.
+We learn the preferences of these oracles using a simple ideal-point PBL model under a 2x2 study.
 
 <div style="display: flex; gap: 1em;">
 <div style="flex: 10;">
-<div style="margin-top: -1em;">
-![](images/cumulative_regret.svg){width="100%"}
+<div style="margin-top: -1.5em;">
+![](images/cumulative_regret.svg){width="90%"}
 </div>
 
 <div style="margin-top: -2em;">
-![](images/l2_distance.svg){width="100%"}
+![](images/l2_distance.svg){width="90%"}
 </div>
 </div>
 <div style="flex: 9;">
 We apply Wilcoxon signed-rank test to our results:
 
-1. We find that our oracle predicts better preferences after an exploration stage $(p < 0.0001)$.
-2. There is an inherent cost to an exploration stage for stationary agents in the form of additional regret $(p < 0.00001)$.
+1. $L_2$ distance was significantly lower with an exploration stage $(p < 0.0001,~W=38)$.
+2. Cummulative regret was significantly higher with an exploration stage $(p < 0.00001,~W=36)$.
 </div>
 </div>
 

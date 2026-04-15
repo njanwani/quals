@@ -1,6 +1,6 @@
 ## Preliminaries: Idealistic Behavior {.nav-feedback visibility="uncounted"}
 
-How can we model idealistic behavior?
+<!-- How can we model idealistic behavior? -->
 
 Agents optimize *cummulative return*, or value $V$, by adhering to optimal behavior $\pi^*$
 \begin{align}

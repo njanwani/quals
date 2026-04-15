@@ -8,6 +8,10 @@
 <div style="display: flex; gap: 1em; align-items: center;">
 <div style="flex: 1; margin-top: -3em;">
 With performance descriptor $f_w$, fit $K$ clusters via $k$-medoids and return their centers.
+
+<div style="margin-top: 0em; text-align: right;">
+[@moplayground]{style="font-size: 0.6em;"}
+</div>
 </div>
 <div style="flex: 1; margin-top: -3em;">
 ![](images/objectives_3d.png){width="80%"}

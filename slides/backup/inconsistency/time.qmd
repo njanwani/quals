@@ -9,9 +9,9 @@
 
 
 <div style="display: flex; gap: 1em;">
-<div style="flex: 1;">
+<div style="flex: 1; margin-top: -2em;">
 
-![](images/discounting.svg){width="100%"}
+![](images/discounting.svg){width="80%"}
 
 </div>
 <div style="flex: 1;">
