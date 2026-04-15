@@ -10,6 +10,7 @@ format:
 subtitle: "<span style='font-size: 0.7em;'>Committee: Prof. Matthew Gombolay (Chair), Prof. Maegan Tucker (Advisor), Prof. Sonia Chernova</span>"
 ---
 
+
 {{< include slides/introduction.qmd >}}
 {{< include slides/paradigms-1.qmd >}}
 <!-- {{< include slides/paradigms-2.qmd >}} -->
@@ -32,7 +33,7 @@ subtitle: "<span style='font-size: 0.7em;'>Committee: Prof. Matthew Gombolay (Ch
 {{< include slides/proposed/algorithmic-approach/step-3.qmd >}}
 {{< include slides/proposed/synthetic-evaluation.qmd >}}
 {{< include slides/proposed/initial-results.qmd >}}
-{{< include slides/proposed/strengths.qmd >}}
+<!-- {{< include slides/proposed/strengths.qmd >}} -->
 {{< include slides/proposed/limitations.qmd >}}
 
 {{< include slides/references.qmd >}}
@@ -52,3 +53,4 @@ subtitle: "<span style='font-size: 0.7em;'>Committee: Prof. Matthew Gombolay (Ch
 {{< include slides/backup/inconsistency-1.qmd >}}
 {{< include slides/backup/inconsistency-2.qmd >}}
 {{< include slides/backup/subopt-hetero-1.qmd >}}
+{{< include slides/backup/morlax.qmd >}}

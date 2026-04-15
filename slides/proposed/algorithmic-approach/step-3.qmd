@@ -1,5 +1,46 @@
-## Step 3: Find the Desired Policy {.nav-proposed}
+<!-- ## Step 3: Finding the Desired Policy {.nav-proposed}
 
-ETA finds the user's desired policy using APL. Specifically, utilizes a Gaussian Process to learn the user's utility $u(f)$ over $\mathcal{F}$,
+**Goal**: Use active PBL to efficiently discover the user's desired policy $\pi^*$.
 
-explain POLAR?
+- We model preferences according to the Bradley-Terry model for reward $\hat{R}(z_w)$
+- $z_w$ being the Isometric log-ratio (ILR) transform of $w \in \Delta^{M-1}$.
+
+We estimate $\hat{R}$ using MAP:
+\begin{align}
+\hat{R} = \operatorname*{arg\,max}_{R \in \mathbb{R}^{|A|}} P(R \mid D)
+\end{align}
+where $P(R \mid D)$ is approximated as a Gaussian $\mathcal{N}(\mu, \Sigma)$ with $\mu = \hat{R}$.
+
+We learn a Gaussian $\hat{R}$ as a 
+
+Since $w \in \Delta^{M-1}$, we transform the action space of $\mathcal{G}$ to be on the simplex via the Isometric log-ratio (ILR) transform.
+
+::: {.callout-tip title="Definition: Thompson Sampling"}
+According $\mathcal{G}$ we define a regret minimization acquistion strategy by choosing the best actions over sampled posteriors.
+
+$$
+\hat{R} = \mathcal{G}, w = \operatorname*{arg\,max}_w \hat{R}
+$$
+:::
+
+[@polar]{style="font-size: 0.6em;"} -->
+
+## Step 3: Finding the Desired Policy {.nav-proposed}
+
+**Goal**: Use active PBL to efficiently discover the user's desired policy $\pi^*$.
+
+<!-- Since $w \in \Delta^{M-1}$, we apply the ILR transform $\varphi: \Delta^{M-1} \to \mathbb{R}^{M-2}$ to obtain an unconstrained action space $\mathcal{A}_z = \{\varphi(w) \mid w \in \Delta^{M-1}\}$. This ensures the GP operates on the intrinsic $(M-2)$-dimensional geometry of the simplex. -->
+
+1. Model the latent reward $R: A \to \mathbb{R}$ as a Gaussian process.
+<!-- $$[\Sigma^{pr}]_{ij} = K_{SE}(\varphi(w_i),\, \varphi(w_j)), \quad K_{SE}(z, z') = \sigma^2 \exp\left(-\frac{\|z - z'\|^2}{2\ell^2}\right)$$ -->
+
+2. Given preference data $\mathcal{D}$, approximate the posterior $P(R \mid \mathcal{D})$ as $\mathcal{N}(\mu, \Sigma)$ centered on the MAP estimate: $\hat{R} = \operatorname*{arg\,max}_{R \in \mathbb{R}^{|A|}} P(R \mid \mathcal{D})$
+
+3. Apply Thompson sampling on the model to actively for new feedback
+
+::: {.callout-tip title="Acquisition: Thompson Sampling"}
+At each iteration $i$, we draw $n$ posterior samples and select actions maximizing each sample:
+$$R_i^k \sim \mathcal{N}(\mu_\mathcal{S},\, \Sigma_\mathcal{S}), \quad w_i^k = \varphi^{-1}\!\left(\operatorname*{arg\,max}_{z \in \mathcal{S}}\, R_i^k(z)\right) \quad \forall\, k = 1, \ldots, n$$
+:::
+
+[@polar]{style="font-size: 0.6em;"}

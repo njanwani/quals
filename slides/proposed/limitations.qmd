@@ -1,1 +1,7 @@
-## Future Challenges and Limitations {.nav-proposed}
+## Future Challenges and Limitations {.nav-limits}
+While [EtA]{style="font-variant: small-caps;"} results in improved preference alignment in simulation, and provides a pathway to join MORL with PBL, there are several key improvement areas.
+
+1. *Comprehensive user study.* How do we verify success if groundtruth preferences are unobservable?
+2. *Efficiency.* Can we gather feedback in the exploration stage to improve PBL efficiency or calibration?
+3. *Multiple preference constructions.* Can we detect *changepoints*, when preference constructions occur?
+4. *Interpretability.* MORL's performance measure $f_w$ may not be salient to humans, can we learn a *dissimilarity measure* from feedback instead?

@@ -1,6 +1,6 @@
 ## Step 1: Learning the Pareto-Optimal Policy Set {.nav-proposed}
 
-Learn *Pareto-optimal* Policy Family $\mathcal{F}$ via MORL.
+**Goal**: Learn *Pareto-optimal* Policy Family $\mathcal{F}$ via MORL.
 
 <div style="display: flex; gap: 1em;">
 <div style="flex: 1;">
