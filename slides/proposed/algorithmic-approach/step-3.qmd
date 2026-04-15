@@ -36,11 +36,11 @@ $$
 
 2. Given preference data $\mathcal{D}$, approximate the posterior $P(R \mid \mathcal{D})$ as $\mathcal{N}(\mu, \Sigma)$ centered on the MAP estimate: $\hat{R} = \operatorname*{arg\,max}_{R \in \mathbb{R}^{|A|}} P(R \mid \mathcal{D})$
 
-3. Apply Thompson sampling on the model to actively for new feedback
+3. Apply Thompson sampling on the model to query for new feedback
 
 ::: {.callout-tip title="Acquisition: Thompson Sampling"}
 At each iteration $i$, we draw $n$ posterior samples and select actions maximizing each sample:
-$$R_i^k \sim \mathcal{N}(\mu_\mathcal{S},\, \Sigma_\mathcal{S}), \quad w_i^k = \operatorname*{arg\,max}_{w \in \mathcal{S}}\, R_i^k(w) \quad \forall\, k = 1, \ldots, n$$
+$$R_i \sim \mathcal{N}(\mu,\, \Sigma), \quad w_i = \operatorname*{arg\,max}_{w \in \mathcal{S}}\, R_i(w) \quad \forall\, k = 1, \ldots, n$$
 
 in our case, we set $n=2$.
 :::

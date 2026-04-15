@@ -14,7 +14,7 @@ Human feedback is not always perfect. There exist three distinct kinds of imperf
 <!-- Each of these imperfections manifest in *systematic*, *non-random* ways. -->
 
 <!-- ::: {.fragment} -->
-<div style="margin-top: -0.5em;">
-Reward learning methods must account for these imperfections to accurately recover the true reward $R$.
+<div style="margin-top: -0.5em; text-align: center;">
+Reward learning methods, like IRL and PBL, must account for these imperfections to accurately recover the true reward $R$.
 </div>
 <!-- ::: -->

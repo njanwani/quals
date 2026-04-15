@@ -4,7 +4,7 @@ We construct synthetic oracles to test [EtA]{style="font-variant: small-caps;"} 
 
 <div style="display: flex; gap: 1em;">
 <div style="flex: 1;">
-::: {.callout-tip title="Stationary (S) Oracle [@rlhf]{style='font-size: 0.6em;'}."}
+::: {.callout-tip title="Stationary (S) Oracle"}
 The S oracle maintains a preference $w^*$ and reward $R(w) = ||w^* - w||^2$. The $S$ oracle noisely provides preference according to Boltzmann rationality
 $$
 P(w_i \succ w_j) = \frac{\exp(\beta R(w_i))}{\exp(\beta R(w_i)) + \exp(\beta R(w_i))},

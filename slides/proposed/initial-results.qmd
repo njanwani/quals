@@ -4,18 +4,18 @@ We learn the preferences of these oracles using a simple ideal-point PBL model u
 <div style="display: flex; gap: 1em;">
 <div style="flex: 10;">
 <div style="margin-top: -1.5em;">
-![](images/cumulative_regret.svg){width="90%"}
+![](images/l2_distance.svg){width="90%"}
 </div>
 
 <div style="margin-top: -2em;">
-![](images/l2_distance.svg){width="90%"}
+![](images/cumulative_regret.svg){width="90%"}
 </div>
 </div>
 <div style="flex: 9;">
 We apply Wilcoxon signed-rank test to our results:
 
-1. $L_2$ distance was significantly lower with an exploration stage $(p < 0.0001,~W=38)$.
-2. Cummulative regret was significantly higher with an exploration stage $(p < 0.00001,~W=36)$.
+1. For NS oracle, $L_2$ distance was significantly lower with an exploration stage $(p < 0.0001,~W=38)$.
+2. For S oracle, cummulative regret was significantly higher with an exploration stage $(p < 0.00001,~W=36)$.
 </div>
 </div>
 
