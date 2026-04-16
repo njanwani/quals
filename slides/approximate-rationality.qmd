@@ -1,7 +1,7 @@
 ## **Inconsistency**: Approximate Rationality {.nav-feedback}
 
 - Classic IRL assumes demonstrations are *approximately optimal* to the underlying reward $R$. [@maxent]{style="font-size: 0.6em;"}.
-- PBL assumes a rational preference is likely to the extent that it leads to *higher* utility under estimate $\hat{R}$.
+- PBL usually assumes a preference is likely to the extent that it leads to *higher* utility under estimate $\hat{R}$.
 
 <div style="display: flex; gap: 1em;">
 <div style="flex: 3;">
