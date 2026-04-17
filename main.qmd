@@ -4,9 +4,11 @@ author: "Neil Janwani"
 bibliography: references.bib
 csl: custom.csl
 format:
-  clean-revealjs:
+  clean-nav-revealjs:
     slide-number: "c/t"
-    include-before-body: nav-sidebar.html
+    include-in-header:
+      - text: |
+          <script src="nav-sections.js"></script>
 subtitle: "<span style='font-size: 0.7em;'>Committee: Prof. Matthew Gombolay (Chair), Prof. Maegan Tucker (Advisor), Prof. Sonia Chernova</span>"
 ---
 
