@@ -1,0 +1,4 @@
+## **Inconsistency**: Modeling Systematic Biases {.nav-feedback}
+
+{{< include slides/inconsistency/preamble.qmd >}}
+{{< include slides/inconsistency/time_belief.qmd >}}

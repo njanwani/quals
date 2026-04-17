@@ -1,0 +1,28 @@
+## Step 1: Learning the Pareto-Optimal Policy Set {.nav-proposed}
+
+**Goal**: Learn *Pareto-optimal* Policy Family $\mathcal{F}$ via MORL.
+
+<div style="display: flex; gap: 1em;">
+<div style="flex: 1;">
+::: {.callout-tip title="Definition: Policy Family"}
+A policy family $\mathcal{F}: \Delta^{M-1} \rightarrow \Theta_\pi$ optimally trades off $M$ conflicting objectives $\phi: \mathcal{T} \rightarrow \mathbb{R}^M$. $\Delta^{M-1}$ is the *simplex* (i.e. $M=3$ is a triangle).
+:::
+
+Each $w \in \Delta^{M-1}$ represents a tradeoff of objectives and specifies the reward $R_w(\tau) = w^T\phi(\tau)$.
+
+Lastly, $\pi_w \in \Theta_\pi$ optimizes $R_w$.
+</div>
+<div style="flex: 1;">
+::: {.callout-tip title="Definition: Pareto-Optimality"}
+A policy $\pi_w \in \mathcal{F}$ is Pareto-optimal if no other policy improves on one objective without worsening another. $\mathcal{F}$ is the Pareto Front.
+
+<div style="text-align: center;">
+![](images/MORL.png){width="100%"}
+</div>
+<div style="text-align: left;">
+[@moplayground]{style="font-size: 0.6em;"}
+</div>
+:::
+</div>
+</div>
+

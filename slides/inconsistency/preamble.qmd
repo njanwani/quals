@@ -1,10 +1,1 @@
-<!-- Assume agents take actions *approximately optimally*
-\begin{align}
-P(a' \mid s) \propto \exp(\alpha EU_s[a']), \qqua\sum_{n=0}^{100}d EU_s[a] = U(s,a) + \underset{s',~a'}{\mathbb{E}}[EU_{s'}[a']]
-\end{align}
-
-Rather than account for imperfections by scaling $\alpha$, we can encode *systematic* sources of inconsistency and sub-optimality: -->
-
-<!-- Varying $\alpha$ can model simple noise. -->
-
-Can we model *systematic* deviations to optimal behavior?
+<!-- [Users may provide different feedback for the same query at different times.]{.underline} -->

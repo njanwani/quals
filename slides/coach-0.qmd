@@ -1,0 +1,16 @@
+## Inconsistency: Online Policy Dependent Feedback {.nav-feedback}
+
+Rather than learning a reward function, can we skip straight to robotic decision-making?
+
+- Binary human feedback is *policy-dependent* 
+- Users judge current actions relative to other possible actions 
+
+This definition is synonymous with the *advantage function*
+
+::: {.callout-tip title="Definition: Advantage Function"}
+The advantage $A(s,a)$ measures the relative value of action $a$ at $s$ via $A(s,a) = Q(s,a) - V(s)$.
+:::
+
+COACH leverages this to learn new behaviors and unlearn old ones.
+
+<div style="margin-top: -0.0em;">[@coach]{style="font-size: 0.6em;"}.</div>

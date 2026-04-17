@@ -1,12 +1,11 @@
-## Open Problem: Multi-Objective Preferences {.nav-proposed}
+## Open Problems {.nav-open}
 
-*Heterogeneity* partially results from users having various *prioritizations* over ill-defined objectives.
+1. How can we adjust for or detect imperfections in human feedback?
 
-In the exoskeleton, can we
+2. Can we improve the (real time) efficiency of reward learning algorithms for real-world tasks?
 
-1. learn objectives for *naturalness* and *agileness*, and
-2. optimize user satisfaction over *Pareto Optimal* gaits
+3. Do human-human interactions with annotators change the quality of feedback they provide? 
 
-Some works have addressed multi-objective preferences, but have not validated this theory in practice or applied it to complex environments.
+4. How should we address non-stationary human preferences and rewards?
 
-**Central question**: How can modeling preferences as multi-objective improve our usage of human feedback?
+**Research Objective**: to enable easy *exploration* and *personalization* of robotic systems, specifically towards assitive devices, like exoskeletons, and legged locomotion.

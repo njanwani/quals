@@ -1,0 +1,11 @@
+
+1. People have *false beliefs* about system state $s$, which can influence feedback when those beliefs change. 
+[@inconsistent]{style="font-size: 0.6em;"}
+
+2. People may not have perfect knowledge of their own underlying utility function. [@constructed]{style="font-size: 0.6em;"}
+
+::: {.callout-tip title="Definition: Constructed preferences"}
+Constructed preferences refers to the idea that people don't have stable, or pre-existing preferences waiting to be revelead by feedback elicitation. Rather, people *build* their preferences when faced with decisions.
+
+[@constructed]{style="font-size: 0.6em;"}
+:::

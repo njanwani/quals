@@ -1,0 +1,25 @@
+[*Time inconsistency*]{.underline}: apply **hyperbolic discounting** to model the prioritization of immediate rewards over long-term ones.
+
+<div style="margin-top: -0.5em; margin-bottom: -0.5em;">
+\begin{aligned}
+&P(a' \mid s, {\color{red}d}) \propto \exp(\alpha Q(s, a' \mid {\color{red}d})) \\
+&Q(s, a \mid {\color{red}d}) = {\color{red}\frac{1}{1 + kd}}R(s,a) + \underset{s',~a'}{\mathbb{E}}[Q(s', a' \mid {\color{red}d + 1})]
+\end{aligned}
+</div>
+
+
+<div style="display: flex; gap: 1em;">
+<div style="flex: 1; margin-top: -2em;">
+
+![](images/discounting.svg){width="80%"}
+
+</div>
+<div style="flex: 1;">
+
+Naive: $a' \sim P(\cdot \mid s, d)$
+
+Sophisticated: $a' \sim P(\cdot \mid s, 0)$
+
+[@inconsistent]{style="font-size: 0.6em;"}.
+</div>
+</div>

@@ -1,0 +1,20 @@
+## Human Study: Atalante Exoskeleton {.nav-none}
+How can we validate results on humans who don't have groundtruth preferences?
+
+Run a 3-group study (no repeat users): Control, ETA, Random Exploration.
+
+- terminate runs when (1) preferences stabilize or (2) users tire
+- random phase may struggle in highly multi-objective scenarios
+
+<div style="display: flex; gap: 1em;">
+<div style="flex: 2;">
+
+Data collection plan:
+
+- Mental/physical load, frustration: Likert-scale questionnare like NASA-TLX
+- Efficiency: Queries required before preferences stabilized
+</div>
+<div style="flex: 1; margin-top: -2em;">
+![](images/Atalante-by-Wandercraft-Exoskeleton-Catalog-600.jpg){width="40%"}
+</div>
+</div>

@@ -1,0 +1,95 @@
+# Ideal point model
+
+## Ideal-Point Reward
+
+The central modelling choice:
+
+$$
+R(\pi \mid w) = -\|w - w_\pi\|_2^2
+$$
+
+- Reward = negative squared distance between evaluator's weight $w$ and the policy's tradeoff $w_\pi$.
+- Closer in tradeoff space $\Rightarrow$ more preferred.
+- Simpler than a GP and covers the possible preferences of the Synthetic Oracles
+<!-- - This is an **ideal-point model** (a.k.a. unfolding / Coombs model). -->
+
+---
+
+## Likelihood: Bradley–Terry with Temperature
+
+Given winner $\pi^+$ and loser $\pi^-$:
+
+$$
+P(\pi^+ \succ \pi^- \mid w) = \sigma\!\left(\frac{R(\pi^+ \mid w) - R(\pi^- \mid w)}{\beta}\right), \quad \sigma(z) = \frac{1}{1+e^{-z}}
+$$
+
+- Temperature $\beta > 0$ controls noise.
+  - $\beta \to 0$: deterministic argmax
+  - $\beta \to \infty$: uniform coin-flip
+
+---
+
+## Prior and Posterior
+
+**Prior:** Gaussian centered at the uniform simplex point:
+
+$$
+p(w) = \mathcal{N}\!\left(w \;\Big|\; \tfrac{1}{K}\mathbf{1},\; \sigma_0^2 I\right)
+$$
+
+**Negative log-posterior** given comparisons $\mathcal{D} = \{(w_+^{(n)}, w_-^{(n)})\}_{n=1}^N$:
+
+$$
+\ell(w) = \frac{1}{2}\left(w - \tfrac{1}{K}\mathbf{1}\right)^\top \Sigma_0^{-1}\left(w - \tfrac{1}{K}\mathbf{1}\right) + \sum_{n=1}^{N}\log\!\left(1 + e^{-z_n(w)}\right)
+$$
+
+## Laplace Approximation
+
+Approximate the posterior as Gaussian at the MAP:
+
+$$
+p(w \mid \mathcal{D}) \approx \mathcal{N}\!\left(w \;\Big|\; \hat{w}_{\text{MAP}},\; H^{-1}\right)
+$$
+
+$$
+\hat{w}_{\text{MAP}} = \arg\min_w \ell(w), \qquad H = \nabla^2 \ell\!\left(\hat{w}_{\text{MAP}}\right)
+$$
+
+- MAP found via **L-BFGS** (analytic gradient).
+- $\ell(w)$ is strictly convex $\Rightarrow$ Laplace approximation is well-justified.
+
+---
+
+## Acquisition: Thompson Sampling
+
+1. Draw $\tilde{w} \sim p(w \mid \mathcal{D})$ from the Laplace posterior.
+2. Select:
+   - $\pi_a = \arg\max_\pi R(\pi \mid \tilde{w})$ — best under the sample
+   - $\pi_b = \arg\max_\pi R(\pi \mid \hat{w})$ — best under posterior mean
+3. Compare "optimistic scenario" vs. "current best guess" $\Rightarrow$ queries near the decision boundary.
+
+## Summary
+
+1. **Reward model:** ideal-point $R(\pi \mid w) = -\|w - w_\pi\|^2$, both on the $K$-simplex.
+2. **Likelihood:** Bradley–Terry + squared-distance $\Rightarrow$ logit linear in $w$ $\Rightarrow$ Bayesian logistic regression.
+3. **Posterior:** Gaussian Laplace approximation at the MAP (L-BFGS + Hessian inversion).
+4. **Acquisition:** Thompson sampling using posterior mean and sample.
+5. **Prediction:** project posterior mean onto simplex, return nearest policy.
+
+
+
+## Simplification for Bayesian Log Regression
+
+Substituting and expanding:
+
+$$
+\frac{R(\pi^+) - R(\pi^-)}{\beta} = \frac{-\|w - w_+\|^2 + \|w - w_-\|^2}{\beta}
+$$
+
+$$
+= \frac{2w^\top(w_+ - w_-) + \|w_-\|^2 - \|w_+\|^2}{\beta}
+$$
+
+- The **quadratic-in-$w$ terms cancel**.
+- The logit is **linear in $w$** with effective feature $x_{+-} = 2(w_+ - w_-)/\beta$.
+- Inference reduces to **ordinary Bayesian logistic regression**.

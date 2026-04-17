@@ -1,4 +1,4 @@
-## Results and Discussion {.nav-rewards}
+## Results and Discussion {.nav-rewards visibility="uncounted"}
 
 <div style="display: flex; gap: 1em;">
 <div style="flex: 1;">

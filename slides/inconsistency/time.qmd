@@ -1,25 +1,22 @@
-[*Time inconsistency*]{.underline}: apply **hyperbolic discounting** to model the prioritization of immediate rewards over long-term ones.
-
-<div style="margin-top: -0.5em; margin-bottom: -0.5em;">
-\begin{aligned}
-&P(a' \mid s, {\color{red}d}) \propto \exp(\alpha Q(s, a' \mid {\color{red}d})) \\
-&Q(s, a \mid {\color{red}d}) = {\color{red}\frac{1}{1 + kd}}R(s,a) + \underset{s',~a'}{\mathbb{E}}[Q(s', a' \mid {\color{red}d + 1})]
-\end{aligned}
-</div>
-
+Time-inconsistency: users might suddenly change their preferences in non-random ways
 
 <div style="display: flex; gap: 1em;">
-<div style="flex: 1;">
+<div style="flex: 2; margin-bottom: -2em;">
+
+::: {.callout-tip title="Definition: Hyperbolic Discounting"}
+Hyperbolic discounting $\gamma(d) = \frac{1}{1 + kd}$ is used to model behaviors like procrastination in humans.
+$$
+Q(s,a \mid d) = \gamma(d) R(s,a) + \mathbb{E}_{s', a'}[Q(s', a' \mid d + 1)],
+$$
+where $s' \sim T(s, a), a' \sim \pi(\cdot \mid s)$.
+:::
+
+</div>
+<div style="flex: 1; margin-top: -1.5em; margin-bottom: -2em;">
 
 ![](images/discounting.svg){width="100%"}
 
 </div>
-<div style="flex: 1;">
-
-Naive: $a' \sim P(\cdot \mid s, d)$
-
-Sophisticated: $a' \sim P(\cdot \mid s, 0)$
-
-[@inconsistent]{style="font-size: 0.6em;"}.
 </div>
-</div>
+
+[@inconsistent]{style="font-size: 0.6em;"}

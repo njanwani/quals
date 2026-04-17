@@ -1,0 +1,5 @@
+## MORLAX {.nav-none}
+
+<div style="text-align: center;">
+![](images/morlax.svg){width="100%"}
+</div>

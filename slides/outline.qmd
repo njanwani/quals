@@ -6,7 +6,7 @@
 
 <!-- Learning *ill-defined* rewards from humans -->
 
-Highlight and validate the characteristics of human feedback in real human-robot systems.
+Examine the main categories of systematic bias in human feedback for real human-robot systems.
 
 [@inconsistent]{style="font-size: 0.8em;"}.
 
@@ -30,4 +30,4 @@ Examine how human data is tractably used to synthesize rewards and robotic decis
 </div>
 </div>
 
-[We'll end by examining an open problem in the field and proposing a new methodology to address it.]{style="display: block; text-align: center;"}
+[We'll end by examining an open problem in the field related to my research and proposing a new methodology to address it.]{style="display: block; text-align: center;"}

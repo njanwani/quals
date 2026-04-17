@@ -1,4 +1,4 @@
-## Leveraging Preferences in Deep RL {.nav-rewards}
+## Leveraging Preferences in Deep RL {.nav-rewards visibility="uncounted"}
 
 How can we tractably learn a reward $\hat{R_{\theta}}$ *consistent with preferences* over robot behaviors?
 \begin{align}

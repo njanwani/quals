@@ -1,0 +1,57 @@
+## Learning Rewards: the Canonical Paradigms {.nav-intro}
+
+<!-- **Inverse reinforcement learning** (IRL) learns a reward function consistent with provided demonstrations or other forms of feedback -->
+
+<!-- ::: {.callout-tip title="Definition: Markov Decision Process (MDP)"}
+The MDP is the tuple $M = \langle \mathcal{S}, \mathcal{A}, \mathcal{T}, \gamma, \mathcal{D}, R\rangle$, with states $s \in \mathcal{S}$, actions $a \in \mathcal{A}$, transitions $\mathcal{T}$, discount factor $\gamma$, initial state distribution $\mathcal{D}, and reward $R$. The MDP represents a way to model agents that are optimal to reward $R$ in their world specified by $M$.
+
+[@irl, @maxent]{style="font-size: 0.6em;"}.
+::: -->
+*How do we learn rewards from human data?*
+
+::: {.fragment}
+::: {.callout-tip title="Definition: Inverse Reinforcement Learning (IRL)"}
+IRL *recovers* the reward, $R$, that explains provided observations or demonstrations.
+
+<!-- **Assumption**: IRL methods often assume provided demonstrations are [approximately optimal]{.underline} with respect to the underlying reward $R$ -->
+
+[@irl, @maxent]{style="font-size: 0.6em;"}.
+:::
+:::
+
+<!-- IRL methods often assume provided demonstrations are [approximately optimal]{.underline} with respect to the underlying reward $R$. -->
+
+<div style="display: flex; gap: 1em;">
+<div style="flex: 1;">
+::: {.fragment}
+::: {.callout-tip title="Definition: Preference-Based Learning (PBL)"}
+Rather than directly collect demonstrations, PBL infers a reward $R$ from human preferences over pairs or sets of trajectories, actions, or outcomes.
+
+<!-- **Assumption**: PBL often does this by assuming that the provided preferences are approximately consistent to $R$. -->
+
+[@rlhf]{style="font-size: 0.6em;"}.
+:::
+
+Notably, PBL is less query efficient than IRL.
+:::
+</div>
+<div style="flex: 1;">
+::: {.fragment}
+::: {.callout-tip title="Definition: Active Preference Learning (APL)"}
+APL enables the learner to *actively* select which preference queries to ask the human via the *acquisition function*.
+
+Examples: regret minimization, discriminability, information gain, and volume removal.
+
+[@apl, @easy]{style="font-size: 0.6em;"}.
+:::
+:::
+</div>
+</div>
+
+
+<!-- However, human feedback is **imperfect**.
+
+- Inconsistency, suboptimality, and heterogeneity bias provided feedback.
+- Humans are not computers: they have finite energy and are risk-averse.
+
+Even pairwise comparisons, can vary over trials and individuals. [@exopbl]{style="font-size: 0.6em;"} -->

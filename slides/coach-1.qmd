@@ -1,4 +1,4 @@
-## Your Feedback is Secretly an Advantage Function {.nav-rewards}
+## Your Feedback is Secretly an Advantage Function {.nav-rewards visibility="uncounted"}
 
 Rather than learning a reward function, can we skip straight to robotic decision-making?
 

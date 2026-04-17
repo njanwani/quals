@@ -1,0 +1,15 @@
+- [Hyperbolic Discounting]{.underline}: users may prefer lower utility, sooner, than higher utility later. [@inconsistent]{style="font-size: 0.6em;"}
+- [False Beliefs]{.underline}: people only have *beliefs* about the system state, which updates with experience. [@inconsistent]{style="font-size: 0.6em;"}
+- [Non-Stationary Rewards]{.underline}: people's rewards may change as they gain experience. [@constructed]{style="font-size: 0.6em;"}
+
+COACH uniquely handles inconsistency by connecting feedback with *advantage*, and uses this to learn new behaviors or unlearn old ones.
+
+[Yet, COACH would struggle if feedback was consistently *bad*, or even adversarial.]{.fragment style="display: block; text-align: center;"}
+
+<div style="margin-top: -0.0em;">[@coach]{style="font-size: 0.6em;"}.</div>
+
+<!-- ::: {.callout-tip title="Definition: Constructed preferences"}
+Constructed preferences refers to the idea that people don't have stable, or pre-existing preferences waiting to be revelead by feedback elicitation. Rather, people *build* their preferences when faced with decisions.
+
+
+::: -->
