@@ -1,0 +1,16 @@
+## GP-based PBL on a Simplex {.nav-proposed}
+
+**Isometric Log-Ratio (ILR) Transform**: $\varphi: \Delta^{M-1} \to \mathbb{R}^{M-1}$, so that the GP operates on the intrinsic $(M-1)$-dimensional geometry of the simplex rather than the redundant $M$-dimensional ambient space.
+
+Given pairwise preference data $\mathcal{D}$, we approximate the posterior $P(R \mid \mathcal{D})$ as $\mathcal{N}(\mu, \Sigma)$.
+
+::: {.callout-tip title="Acquisition: Thompson Sampling"}
+At each iteration $i$, we draw $n$ posterior samples and select actions maximizing each sample:
+$$R_i^k \sim \mathcal{N}(\mu,\, \Sigma), \quad w_i^k = \varphi^{-1}\!\left(\operatorname*{arg\,max}_z{z \in A}\, R_i^k(z)\right) \quad \forall\, k = 1, \ldots, n$$
+
+where $n=2$ in our case.
+:::
+
+<div style="margin-top: -1em;">
+[@polar]{style="font-size: 0.6em;"}
+</div>

@@ -3,10 +3,10 @@
 {{< include slides/sample-efficiency/preamble.qmd >}}
 {{< include slides/sample-efficiency/why-sampling.qmd >}}
 
-## Sample Efficiency: Information Gain {.nav-feedback visibility="uncounted"}
+<!-- ## Sample Efficiency: Information Gain {.nav-feedback visibility="uncounted"}
 
 {{< include slides/sample-efficiency/preamble.qmd >}}
-{{< include slides/sample-efficiency/information-gain.qmd >}}
+{{< include slides/sample-efficiency/information-gain.qmd >}} -->
 
 ## Sample Efficiency: Thompson Sampling {.nav-feedback visibility="uncounted"}
 

@@ -1,0 +1,14 @@
+## Coverage Metric
+
+How well the **shown policies** span the full policy space in normalized performance coordinates.
+
+$$
+\text{coverage} = 1 - \frac{\bar{d}_{\min}}{\sqrt{K}}, \qquad
+\bar{d}_{\min} = \frac{1}{N}\sum_{i=1}^{N} \min_{j~\in \text{ seen}} \lVert p_i - p_j \rVert_2
+$$
+
+- $\bar{d}_{\min}$: average distance from each policy to its nearest shown policy
+- $\sqrt{K}$: diagonal of the $[0,1]^K$ hypercube (max possible distance on $\Delta$)
+- $C \in [0, 1]$ and cannot decrease as more policies are shown.
+- $C \rightarrow 1$ = every policy has a nearby seen neighbor
+- $C \rightarrow 0$ = many policies don't have a nearby seen neighbor

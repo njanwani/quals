@@ -6,10 +6,10 @@
 <hr>
 
 <div style="margin-top: -0.5em;">
-MIND-MELD learns operator styles by learning personalized embeddings and correction terms given calibration tasks [@mindmeld]{style="font-size: 0.6em;"}
+MIND-MELD learns to correct operator-specific suboptimality by learning personalized embeddings and correction terms given calibration tasks [@mindmeld]{style="font-size: 0.6em;"}
 
-Several approaches fail here.
+Many approaches fail here.
 
-- Example: COACH cannot learn from heterogeneous 'coaches'. [@coach]{style="font-size: 0.6em;"}
+- Example: COACH cannot learn from heterogeneous annotators. [@coach]{style="font-size: 0.6em;"}
 <!-- 1. Users may desire different *tradeoffs* of objectives 2. Different individuals may prioritize different goals (safety versus speed) -->
 </div>

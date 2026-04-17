@@ -1,1 +1,26 @@
 ## Synthetic Evaluation {.nav-proposed}
+
+We construct synthetic oracles to test [EtA]{style="font-variant: small-caps;"} on groundtruth preferences.
+
+<div style="display: flex; gap: 1em;">
+<div style="flex: 1;">
+::: {.callout-tip title="Stationary (S) Oracle"}
+The S oracle maintains a preference $w^*$ and reward $R(w) = ||w^* - w||^2$. The $S$ oracle noisely provides preference according to Boltzmann rationality
+$$
+P(w_i \succ w_j) = \frac{\exp(\beta R(w_i))}{\exp(\beta R(w_i)) + \exp(\beta R(w_i))},
+$$
+where $\beta$ is a temperature parameter.
+:::
+</div>
+<div style="flex: 1;">
+::: {.callout-tip title="Non-stationary (NS) Oracle"}
+The NS oracle has the same formulation as the S oracle, except that its preference is non-stationary: 
+
+$$w^*(C) = w_{\textrm{stable}} + \lambda(C) w_{\varepsilon}$$
+
+where $\lambda$ is a (monotonically decreasing) decay function, $C$ is a coverage metric of $\mathcal{F}$ given the oracle's past experience, and $w_{\varepsilon}$ represents initial preference corruption.
+:::
+</div>
+</div>
+
+As the exploration phase shows diverse policies, $C \rightarrow 1$ and $\lambda(C) \rightarrow 0$, so $w^* \rightarrow w_{\textrm{stable}}$. Several functions exist for $\lambda$, we choose exponential decay.

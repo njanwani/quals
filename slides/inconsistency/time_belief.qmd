@@ -4,7 +4,7 @@
 
 COACH uniquely handles inconsistency by connecting feedback with *advantage*, and uses this to learn new behaviors or unlearn old ones.
 
-[Yet, COACH would struggle if recieved feedback was consistenly *bad*, or even adversarial.]{.fragment style="display: block; text-align: center;"}
+[Yet, COACH would struggle if feedback was consistently *bad*, or even adversarial.]{.fragment style="display: block; text-align: center;"}
 
 <div style="margin-top: -0.0em;">[@coach]{style="font-size: 0.6em;"}.</div>
 

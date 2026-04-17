@@ -7,4 +7,4 @@ Rather than account for imperfections by scaling $\alpha$, we can encode *system
 
 <!-- Varying $\alpha$ can model simple noise. -->
 
-Can we model *systematic* deviations to optimal behavior?
+<!-- Can we model *systematic* deviations to optimal behavior? -->

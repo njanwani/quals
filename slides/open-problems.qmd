@@ -1,6 +1,6 @@
 ## Open Problems {.nav-open}
 
-1. How can we simulatenously adjust and detect imperfections in human feedback?
+1. How can we adjust for or detect imperfections in human feedback?
 
 2. Can we improve the (real time) efficiency of reward learning algorithms for real-world tasks?
 
@@ -8,4 +8,4 @@
 
 4. How should we address non-stationary human preferences and rewards?
 
-**Research Objective**: to enable easy *exploration* and *personalization* of robotic systems, specifically towards assitive devices, like exoskeletons and legged locomotion.
+**Research Objective**: to enable easy *exploration* and *personalization* of robotic systems, specifically towards assitive devices, like exoskeletons, and legged locomotion.
