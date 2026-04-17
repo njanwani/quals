@@ -38,10 +38,10 @@ npm install -g decktape
 
 ```bash
 quarto render main.qmd
-decktape reveal "file://$(pwd)/main.html" main.pdf --size 1280x720
+decktape reveal --fragments "file://$(pwd)/main.html" main.pdf --size 1280x720
 ```
 
-Output: `main.pdf` in the project root. Each slide becomes one page; each fragment step becomes an additional page (decktape captures fragments by default).
+Output: `main.pdf` in the project root. The `--fragments` flag makes each fragment step its own page (without it, decktape only captures the final state of each slide).
 
 ### Troubleshooting
 
