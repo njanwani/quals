@@ -13,21 +13,16 @@ subtitle: "<span style='font-size: 0.7em;'>Committee: Prof. Matthew Gombolay (Ch
 ---
 
 
-{{< include slides/introduction.qmd >}}
-{{< include slides/paradigms-1.qmd >}}
-<!-- {{< include slides/paradigms-2.qmd >}} -->
-{{< include slides/imperfect-overview.qmd >}}
-<!-- {{< include slides/transitions/transition-inconsistency.qmd >}} -->
-{{< include slides/approximate-rationality.qmd >}}
-<!-- {{< include slides/outline.qmd >}} -->
+<!-- {{< include slides/introduction.qmd >}} -->
+<!-- {{< include slides/paradigms-1.qmd >}} -->
+<!-- {{< include slides/imperfect-overview.qmd >}} -->
+<!-- {{< include slides/approximate-rationality.qmd >}} -->
 
-<!-- {{< include slides/transitions/transition-imperfect.qmd >}} -->
-{{< include slides/inconsistency.qmd >}}
-<!-- {{< include slides/coach-0.qmd >}} -->
-{{< include slides/suboptimality.qmd >}}
-{{< include slides/heterogeneity.qmd >}}
+<!-- {{< include slides/inconsistency.qmd >}} -->
+<!-- {{< include slides/suboptimality.qmd >}} -->
+<!-- {{< include slides/heterogeneity.qmd >}} -->
 
-{{< include slides/open-problems.qmd >}}
+<!-- {{< include slides/open-problems.qmd >}} -->
 {{< include slides/proposed/exploring-options.qmd >}}
 {{< include slides/proposed/algorithmic-approach.qmd >}}
 {{< include slides/proposed/algorithmic-approach/step-1.qmd >}}
@@ -35,7 +30,7 @@ subtitle: "<span style='font-size: 0.7em;'>Committee: Prof. Matthew Gombolay (Ch
 {{< include slides/proposed/algorithmic-approach/step-3.qmd >}}
 {{< include slides/proposed/synthetic-evaluation.qmd >}}
 {{< include slides/proposed/initial-results.qmd >}}
-<!-- {{< include slides/proposed/strengths.qmd >}} -->
+{{< include slides/proposed/questions.qmd >}}
 {{< include slides/proposed/limitations.qmd >}}
 
 {{< include slides/references.qmd >}}

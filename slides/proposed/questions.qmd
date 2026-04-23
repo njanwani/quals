@@ -1,0 +1,11 @@
+## Questions since my qualification exam {.nav-limits}
+
+1. What is needed to validate a synthetic study (i.e. theoretical PBL)?
+- Human study to show synthetic oracle can match human thought process.
+- A 'wizard of oz'-esque study (tell human to change internal reward) to showcase algorithm.
+
+<hr>
+
+2. What would make a good bite sized piece? Current idea: Showcasing this project for tuning RL on hardware.
+- Sim2real gap when training rewards
+- Use of preference and coactive feedback
