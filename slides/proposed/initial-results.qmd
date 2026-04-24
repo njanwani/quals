@@ -1,4 +1,4 @@
-## Initial Results {.nav-proposed}
+## Initial Results {.nav-results}
 We learn the preferences of these oracles using a simple ideal-point PBL model under a 2x2 study.
 
 <div style="display: flex; gap: 1em;">

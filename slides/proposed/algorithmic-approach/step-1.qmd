@@ -1,4 +1,4 @@
-## Step 1: Learning the Pareto-Optimal Policy Set {.nav-proposed}
+## Step 1: Learning the Pareto-Optimal Policy Set {.nav-approach}
 
 **Goal**: Learn *Pareto-optimal* Policy Family $\mathcal{F}$ via MORL.
 

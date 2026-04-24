@@ -1,6 +1,6 @@
-## Motivation: Exploring, then Answering {.nav-open}
+## Motivation: Exploring, then Answering {.nav-intro}
 
-**Research Question**: Can enabling a person to *explore their options* before providing preferences reduce *inconsistency* in their feedback?
+**Research Objective**: Reduce *inconsistency* in feedback by enabling a person to *explore their options* before eliciting their preferences.
 
 <div style="display: flex; gap: 1em; margin-bottom: -1em;">
 <div style="flex: 1.8;">
@@ -17,5 +17,5 @@
 </div>
 
 <div style="text-align: center;">
-**Idea**: develop an algorithm with a dedicated exploration phase to allow people to construct their preferences.
+**Idea**: develop an algorithm, with a dedicated exploration phase, that finds someones preferences in a multi-objective landscape. Reducing noise, while allowing diverse preferences.
 </div>

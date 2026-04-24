@@ -1,4 +1,4 @@
-## Proposed Approach {.nav-proposed}
+## Proposed Approach {.nav-approach}
 
 *Explore, then Answer* ([EtA]{style="font-variant: small-caps;"}).
 

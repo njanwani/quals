@@ -1,6 +1,6 @@
-## Types of Imperfect Feedback {.nav-feedback}
+## Human Feedback is Imperfect {.nav-intro}
 
-Human feedback is not always perfect. There exist three distinct kinds of imperfections
+In particular, exist three distinct kinds of imperfections.
 
 <table>
 <thead><tr><th>Type</th><th>Definition</th></tr></thead>
@@ -15,6 +15,6 @@ Human feedback is not always perfect. There exist three distinct kinds of imperf
 
 <!-- ::: {.fragment} -->
 <div style="margin-top: -0.5em; text-align: center;">
-Reward learning methods, like IRL and PBL, must account for these imperfections to accurately recover the true reward $R$.
+In order to learn preferences on a multi-objective space, we need to account for these imperfections in human feedback. Specifically, **inconsistency** and **heterogeneity**.
 </div>
 <!-- ::: -->

@@ -1,4 +1,4 @@
-## Step 2: Generating Samples for Exploration {.nav-proposed}
+## Step 2: Generating Samples for Exploration {.nav-approach}
 
 **Goal**: Find $K$ high-quality and diverse samples for the user to explore. 
 

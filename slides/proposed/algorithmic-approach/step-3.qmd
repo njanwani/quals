@@ -25,7 +25,7 @@ $$
 
 [@polar]{style="font-size: 0.6em;"} -->
 
-## Step 3: Finding the Desired Policy {.nav-proposed}
+## Step 3: Finding the Desired Policy {.nav-approach}
 
 **Goal**: Use active PBL to efficiently discover the user's desired policy $\pi^*$.
 

@@ -1,4 +1,4 @@
-## Introduction: why learn rewards? {.nav-intro}
+## Introduction: a Multi-Objective Perspective {.nav-intro}
 
 Reinforcement learning (RL) has yielded high performing robotic control.
 
@@ -32,14 +32,18 @@ Reinforcement learning (RL) has yielded high performing robotic control.
 ::::
 
 <div style="margin-top: -1.0em;">
-Yet, this process hinges on having a well-defined *reward function*.
+Yet, this process utilizes a single, well-defined *reward function*.
 </div>
 
-::: {.callout-tip title="Definition: Reward Function"}
-The reward function $R : \mathcal{S} \times \mathcal{A} \rightarrow \mathbb{R}$ maps (state, action) pairs to a scalar signal that is maximized when the agent achieves its *goal*. 
-The reward function could also encode *how* that behavior is achieved.
+:::: {.columns}
+::: {.column width="49%"}
+[*Diverse preferences cannot be described by a single, hand-crafted reward.*]{style="display: block; text-align: center;;"}
 :::
+::: {.column width="49%"}
+[*Non-experts may be unfamiliar with robot capabilities, and may not know their preferences.*]{style="display: block; text-align: center;;"}
+:::
+::::
 
-<div style="margin-top: -0.4em;">
+<!-- <div style="margin-top: -0.4em;">
 [*Not all objectives are easily describable via hand-crafted rewards.*]{style="display: block; text-align: center;;"}
-</div>
+</div> -->

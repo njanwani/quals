@@ -1,4 +1,4 @@
-## Synthetic Evaluation {.nav-proposed}
+## Synthetic Evaluation {.nav-results}
 
 We construct synthetic oracles to test [EtA]{style="font-variant: small-caps;"} on groundtruth preferences.
 

@@ -3,4 +3,4 @@
 ::: {#refs}
 :::
 
-# Questions? {visibility="uncounted"}
+# Thank you! {visibility="uncounted"}
