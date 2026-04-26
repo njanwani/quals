@@ -3,4 +3,5 @@ main.html
 main.pdf
 .quarto/
 .claude/
+.DS_Store
 
