@@ -1,0 +1,303 @@
+[
+  {
+    "objectID": "main.html#introduction-why-learn-rewards",
+    "href": "main.html#introduction-why-learn-rewards",
+    "title": "Learning reward functions from imperfect human feedback for robotic decision making",
+    "section": "Introduction: why learn rewards?",
+    "text": "Introduction: why learn rewards?\nReinforcement learning (RL) has yielded high performing robotic control.\n\n\n\n  \n\nJanwani et al. (2026, MO-playground: Massively parallelized multi-objective reinforcement learning for robotics)\n\n\n\n  \n\n\nJanwani et al. (2026, MO-playground: Massively parallelized multi-objective reinforcement learning for robotics)\n\n\n  \n\nZakka et al. (2025, Mujoco playground)\n\n\nYet, this process hinges on having a well-defined reward function.\n\n\n\n\n\n\n\n\nDefinition: Reward Function\n\n\nThe reward function \\(R : \\mathcal{S} \\times \\mathcal{A} \\rightarrow \\mathbb{R}\\) maps (state, action) pairs to a scalar signal that is maximized when the agent achieves its goal. The reward function could also encode how that behavior is achieved.\n\n\n\n\n\nNot all objectives are easily describable via hand-crafted rewards."
+  },
+  {
+    "objectID": "main.html#learning-rewards-the-canonical-paradigms",
+    "href": "main.html#learning-rewards-the-canonical-paradigms",
+    "title": "Learning reward functions from imperfect human feedback for robotic decision making",
+    "section": "Learning Rewards: the Canonical Paradigms",
+    "text": "Learning Rewards: the Canonical Paradigms\n\n\nHow do we learn rewards from human data?\n\n\n\n\n\n\n\n\nDefinition: Inverse Reinforcement Learning (IRL)\n\n\nIRL recovers the reward, \\(R\\), that explains provided observations or demonstrations.\n\nAbbeel et al. (2004, Apprenticeship learning via inverse reinforcement learning), Ziebart et al. (2008, Maximum entropy inverse reinforcement learning.).\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDefinition: Preference-Based Learning (PBL)\n\n\nRather than directly collect demonstrations, PBL infers a reward \\(R\\) from human preferences over pairs or sets of trajectories, actions, or outcomes.\n\nChristiano et al. (2017, Deep reinforcement learning from human preferences).\n\n\n\n\nNotably, PBL is less query efficient than IRL.\n\n\n\n\n\n\n\n\n\n\n\nDefinition: Active Preference Learning (APL)\n\n\nAPL enables the learner to actively select which preference queries to ask the human via the acquisition function.\nExamples: regret minimization, discriminability, information gain, and volume removal.\nSadigh et al. (2017, Active preference-based learning of reward functions), Bıyık et al. (2019, Asking easy questions: A user-friendly approach to active reward learning)."
+  },
+  {
+    "objectID": "main.html#types-of-imperfect-feedback",
+    "href": "main.html#types-of-imperfect-feedback",
+    "title": "Learning reward functions from imperfect human feedback for robotic decision making",
+    "section": "Types of Imperfect Feedback",
+    "text": "Types of Imperfect Feedback\nHuman feedback is not always perfect. There exist three distinct kinds of imperfections\n\n\n\n\nType\n\n\nDefinition\n\n\n\n\n\n\nInconsistency Evans et al. (2016, Learning the preferences of ignorant, inconsistent agents)\n\n\nNew feedback contradicts previous feedback in the same session.\n\n\n\n\nSuboptimality Schrum et al. (2021, Improving robot-centric learning from demonstration via personalized embeddings), Hadfield-Menell et al. (2017, Inverse reward design), Armstrong et al. (2018, Occam’s razor is insufficient to infer the preferences of irrational agents)\n\n\nProvided demonstrations consistently do not perfectly optimize the underlying reward \\(R\\).\n\n\n\n\nHeterogeneity Schrum et al. (2021, Improving robot-centric learning from demonstration via personalized embeddings), Armstrong et al. (2018, Occam’s razor is insufficient to infer the preferences of irrational agents)\n\n\nFeedback is influenced by the style, skill-set, and priorities of the particular demonstrator.\n\n\n\n\n\n\n\nReward learning methods, like IRL and PBL, must account for these imperfections to accurately recover the true reward \\(R\\)."
+  },
+  {
+    "objectID": "main.html#inconsistency-approximate-rationality",
+    "href": "main.html#inconsistency-approximate-rationality",
+    "title": "Learning reward functions from imperfect human feedback for robotic decision making",
+    "section": "Inconsistency: Approximate Rationality",
+    "text": "Inconsistency: Approximate Rationality\n\nClassic IRL assumes demonstrations are approximately optimal to the underlying reward \\(R\\). Ziebart et al. (2008, Maximum entropy inverse reinforcement learning.).\nPBL usually assumes a preference is likely to the extent that it leads to higher utility under estimate \\(\\hat{R}\\).\n\n\n\n\n\n\n\n\n\n\nDefinition: Bradley-Terry Model\n\n\nThe Bradley-Terry model provides a probabilistic framework for pairwise comparison \\((\\xi_1, \\xi_2)\\):\n\\[P(\\xi_1 \\succ \\xi_2) = \\frac{\\exp(\\hat{R}(\\xi_1))}{\\exp(\\hat{R}(\\xi_1)) + \\exp(\\hat{R}(\\xi_2))}\\]\nwhere \\(\\xi_1, \\xi_2\\) are sample robot trajectories.\n\nBRADLEY et al. (1952, Rank analysis of incomplete block designs: The method of paired comparisons), Christiano et al. (2017, Deep reinforcement learning from human preferences).\n\n\n\n\n\n\n\n\n\n\n\n\n\nLimitation: Approximate Rationality\n\n\n\nThere are systematic biases found in each type of feedback suboptimality, heterogeneity, and other forms of inconsistency\nNot addressed by approximate rationality alone.\n\nEvans et al. (2016, Learning the preferences of ignorant, inconsistent agents)."
+  },
+  {
+    "objectID": "main.html#inconsistency-modeling-systematic-biases",
+    "href": "main.html#inconsistency-modeling-systematic-biases",
+    "title": "Learning reward functions from imperfect human feedback for robotic decision making",
+    "section": "Inconsistency: Modeling Systematic Biases",
+    "text": "Inconsistency: Modeling Systematic Biases\n\n\nHyperbolic Discounting: users may prefer lower utility, sooner, than higher utility later. Evans et al. (2016, Learning the preferences of ignorant, inconsistent agents)\nFalse Beliefs: people only have beliefs about the system state, which updates with experience. Evans et al. (2016, Learning the preferences of ignorant, inconsistent agents)\nNon-Stationary Rewards: people’s rewards may change as they gain experience. (2006, The construction of preference)\n\nCOACH uniquely handles inconsistency by connecting feedback with advantage, and uses this to learn new behaviors or unlearn old ones.\nYet, COACH would struggle if feedback was consistently bad, or even adversarial.\n\nMacGlashan et al. (2017, Interactive learning from policy-dependent human feedback)."
+  },
+  {
+    "objectID": "main.html#suboptimality-adapting-to-human-errors",
+    "href": "main.html#suboptimality-adapting-to-human-errors",
+    "title": "Learning reward functions from imperfect human feedback for robotic decision making",
+    "section": "Suboptimality: Adapting to Human Errors",
+    "text": "Suboptimality: Adapting to Human Errors\n\nPolicy decomposition is a way to describe bounded-rationality and complex decision-making in humans.\n\n\n\n\n\n\n\nDefinition: Policy Decomposition\n\n\nHuman policy \\(\\pi^{.}\\) can be decomposed into a planner-reward pair \\((p, R)\\) via \\(p(R) = \\pi^.\\). Planner \\(p\\) encodes the (ir)rationality, biases, and style of the human, while reward \\(R\\) describes the human’s goal.\nArmstrong et al. (2018, Occam’s razor is insufficient to infer the preferences of irrational agents)\n\n\n\n\n\n\nMIND-MELD accounts for suboptimality by learning to adjust and correct for annotator skill.\nSchrum et al. (2021, Improving robot-centric learning from demonstration via personalized embeddings)\n\n\n\n\n\nInverse reward design accounts for suboptimality of hand-crafted rewards: adopting risk-averse behavior when needed.\nHadfield-Menell et al. (2017, Inverse reward design)\n\n\n\nAnother interesting approach is IRD, which examines hand-crafted rewards. Here they develop an approach to use risk-averse behavior to stay in regions that the hand-crafted reward describes well.\nAnother way the planner reward decomposition is helpful is in heterogeneity…"
+  },
+  {
+    "objectID": "main.html#heterogeneity-style-and-prioritization",
+    "href": "main.html#heterogeneity-style-and-prioritization",
+    "title": "Learning reward functions from imperfect human feedback for robotic decision making",
+    "section": "Heterogeneity: Style and Prioritization",
+    "text": "Heterogeneity: Style and Prioritization\n\nFor the same reward \\(R\\), the existence of a planner \\(p\\) can result in heterogenous feedback. Armstrong et al. (2018, Occam’s razor is insufficient to infer the preferences of irrational agents) \nPeople prioritize various objectives to different degrees. Astudillo et al. (2024, Preferential multi-objective bayesian optimization), Dautenhahn et al. (2002, Imitation in animals and artifacts)\n\n\n\nMIND-MELD learns to correct operator-specific suboptimality by learning personalized embeddings and correction terms given calibration tasks Schrum et al. (2021, Improving robot-centric learning from demonstration via personalized embeddings)\nMany approaches fail here.\n\nExample: COACH cannot learn from heterogeneous annotators. MacGlashan et al. (2017, Interactive learning from policy-dependent human feedback)"
+  },
+  {
+    "objectID": "main.html#open-problems",
+    "href": "main.html#open-problems",
+    "title": "Learning reward functions from imperfect human feedback for robotic decision making",
+    "section": "Open Problems",
+    "text": "Open Problems\n\nHow can we adjust for or detect imperfections in human feedback?\nCan we improve the (real time) efficiency of reward learning algorithms for real-world tasks?\nDo human-human interactions with annotators change the quality of feedback they provide?\nHow should we address non-stationary human preferences and rewards?\n\nResearch Objective: to enable easy exploration and personalization of robotic systems, specifically towards assitive devices, like exoskeletons, and legged locomotion."
+  },
+  {
+    "objectID": "main.html#motivation-exploring-then-answering",
+    "href": "main.html#motivation-exploring-then-answering",
+    "title": "Learning reward functions from imperfect human feedback for robotic decision making",
+    "section": "Motivation: Exploring, then Answering",
+    "text": "Motivation: Exploring, then Answering\nResearch Question: Can enabling a person to explore their options before providing preferences reduce inconsistency in their feedback?\n\n\n\n\nJanwani et al. (2026, MO-playground: Massively parallelized multi-objective reinforcement learning for robotics)\n\n\n\nConstructed preferences. People’s preferences may not formalize on first glance–especially for non-experts.\n(2006, The construction of preference)\n\n\n\nIdea: develop an algorithm with a dedicated exploration phase to allow people to construct their preferences."
+  },
+  {
+    "objectID": "main.html#proposed-approach",
+    "href": "main.html#proposed-approach",
+    "title": "Learning reward functions from imperfect human feedback for robotic decision making",
+    "section": "Proposed Approach",
+    "text": "Proposed Approach\nExplore, then Answer (EtA).\n\n  Algorithm EtA\n  1:  Learn Pareto-optimal policy family \\(\\mathcal{F}\\) using MORL\n  2:  Generate \\(K\\) high-quality and diverse examples to familiarize the human\n  3:  Use active PBL to find the human's desired policy \\(\\pi^*\\)"
+  },
+  {
+    "objectID": "main.html#step-1-learning-the-pareto-optimal-policy-set",
+    "href": "main.html#step-1-learning-the-pareto-optimal-policy-set",
+    "title": "Learning reward functions from imperfect human feedback for robotic decision making",
+    "section": "Step 1: Learning the Pareto-Optimal Policy Set",
+    "text": "Step 1: Learning the Pareto-Optimal Policy Set\nGoal: Learn Pareto-optimal Policy Family \\(\\mathcal{F}\\) via MORL.\n\n\n\n\n\n\n\n\n\nDefinition: Policy Family\n\n\nA policy family \\(\\mathcal{F}: \\Delta^{M-1} \\rightarrow \\Theta_\\pi\\) optimally trades off \\(M\\) conflicting objectives \\(\\phi: \\mathcal{T} \\rightarrow \\mathbb{R}^M\\). \\(\\Delta^{M-1}\\) is the simplex (i.e. \\(M=3\\) is a triangle).\n\n\n\n\nEach \\(w \\in \\Delta^{M-1}\\) represents a tradeoff of objectives and specifies the reward \\(R_w(\\tau) = w^T\\phi(\\tau)\\).\nLastly, \\(\\pi_w \\in \\Theta_\\pi\\) optimizes \\(R_w\\).\n\n\n\n\n\n\n\n\n\nDefinition: Pareto-Optimality\n\n\nA policy \\(\\pi_w \\in \\mathcal{F}\\) is Pareto-optimal if no other policy improves on one objective without worsening another. \\(\\mathcal{F}\\) is the Pareto Front.\n\n\n\n\nJanwani et al. (2026, MO-playground: Massively parallelized multi-objective reinforcement learning for robotics)"
+  },
+  {
+    "objectID": "main.html#step-2-generating-samples-for-exploration",
+    "href": "main.html#step-2-generating-samples-for-exploration",
+    "title": "Learning reward functions from imperfect human feedback for robotic decision making",
+    "section": "Step 2: Generating Samples for Exploration",
+    "text": "Step 2: Generating Samples for Exploration\nGoal: Find \\(K\\) high-quality and diverse samples for the user to explore.\n\nHigh-quality: \\(\\pi_w\\) is sourced from MORL, it is guaranteed to be Pareto optimal.\nDiverse: \\(\\pi_w\\)’s expected performance \\(f_w = \\mathbb{E}_{\\tau \\sim \\pi_w}[\\phi(\\tau)]\\) serves as a behavior descriptor.\n\n\n\nWith performance descriptor \\(f_w\\), fit \\(K\\) clusters via \\(k\\)-medoids and return their centers.\n\nJanwani et al. (2026, MO-playground: Massively parallelized multi-objective reinforcement learning for robotics)"
+  },
+  {
+    "objectID": "main.html#step-3-finding-the-desired-policy",
+    "href": "main.html#step-3-finding-the-desired-policy",
+    "title": "Learning reward functions from imperfect human feedback for robotic decision making",
+    "section": "Step 3: Finding the Desired Policy",
+    "text": "Step 3: Finding the Desired Policy\nGoal: Use active PBL to efficiently discover the user’s desired policy \\(\\pi^*\\).\n\n\nThe reward \\(R: \\mathbb{R}^{M} \\to \\mathbb{R}\\) is a Gaussian process, inputs lie in \\(\\Delta^{M-1}\\) \nGiven preference data \\(\\mathcal{D}\\), approximate the posterior \\(P(R \\mid \\mathcal{D})\\) as \\(\\mathcal{N}(\\mu, \\Sigma)\\) centered on the MAP estimate: \\(\\hat{R} = \\operatorname*{arg\\,max}_{R \\in \\mathbb{R}^{|A|}} P(R \\mid \\mathcal{D})\\)\nApply Thompson sampling on the model to query for new feedback\n\n\n\n\n\n\n\n\nAcquisition: Thompson Sampling\n\n\nAt each iteration \\(i\\), we draw \\(n\\) posterior samples and select actions maximizing each sample: \\[R_i \\sim \\mathcal{N}(\\mu,\\, \\Sigma), \\quad w_i = \\operatorname*{arg\\,max}_{w \\in \\mathcal{S}}\\, R_i(w) \\quad \\forall\\, k = 1, \\ldots, n\\]\nin our case, we set \\(n=2\\).\n\n\n\n\n\nTucker et al. (2022, Polar: Preference optimization and learning algorithms for robotics)"
+  },
+  {
+    "objectID": "main.html#synthetic-evaluation",
+    "href": "main.html#synthetic-evaluation",
+    "title": "Learning reward functions from imperfect human feedback for robotic decision making",
+    "section": "Synthetic Evaluation",
+    "text": "Synthetic Evaluation\nWe construct synthetic oracles to test EtA on groundtruth preferences.\n\n\n\n\n\n\n\n\n\nStationary (S) Oracle\n\n\nThe S oracle maintains a preference \\(w^*\\) and reward \\(R(w) = ||w^* - w||^2\\). The \\(S\\) oracle noisely provides preference according to Boltzmann rationality \\[\nP(w_i \\succ w_j) = \\frac{\\exp(\\beta R(w_i))}{\\exp(\\beta R(w_i)) + \\exp(\\beta R(w_i))},\n\\] where \\(\\beta\\) is a temperature parameter.\n\n\n\n\n\n\n\n\n\n\n\n\n\nNon-stationary (NS) Oracle\n\n\nThe NS oracle has the same formulation as the S oracle, except that its preference is non-stationary:\n\\[w^*(C) = w_{\\textrm{stable}} + \\lambda(C) w_{\\varepsilon}\\]\nwhere \\(\\lambda\\) is a (monotonically decreasing) decay function, \\(C\\) is a coverage metric of \\(\\mathcal{F}\\) given the oracle’s past experience, and \\(w_{\\varepsilon}\\) represents initial preference corruption.\n\n\n\n\n\n\nAs the exploration phase shows diverse policies, \\(C \\rightarrow 1\\) and \\(\\lambda(C) \\rightarrow 0\\), so \\(w^* \\rightarrow w_{\\textrm{stable}}\\). Several functions exist for \\(\\lambda\\), we choose exponential decay."
+  },
+  {
+    "objectID": "main.html#initial-results",
+    "href": "main.html#initial-results",
+    "title": "Learning reward functions from imperfect human feedback for robotic decision making",
+    "section": "Initial Results",
+    "text": "Initial Results\nWe learn the preferences of these oracles using a simple ideal-point PBL model under a 2x2 study.\n\n\n\n\n\n\n\n\n\n\nWe apply Wilcoxon signed-rank test to our results:\n\nFor NS oracle, \\(L_2\\) distance was significantly lower with an exploration stage \\((p &lt; 0.0001,~W=38)\\).\nFor S oracle, cummulative regret was significantly higher with an exploration stage \\((p &lt; 0.00001,~W=36)\\)."
+  },
+  {
+    "objectID": "main.html#future-challenges-and-limitations",
+    "href": "main.html#future-challenges-and-limitations",
+    "title": "Learning reward functions from imperfect human feedback for robotic decision making",
+    "section": "Future Challenges and Limitations",
+    "text": "Future Challenges and Limitations\nWhile EtA results in improved preference alignment in simulation, and provides a pathway to join MORL with PBL, there are several key improvement areas.\n\nComprehensive user study. Synthetic results may be circular. How do we verify success if groundtruth preferences are unobservable?\nMultiple preference constructions. Can we detect changepoints, when preference constructions occur?\nInterpretability. MORL’s performance measure \\(f_w\\) may not be salient to humans, can we learn a dissimilarity measure from feedback instead? Bobu et al. (2023, Sirl: Similarity-based implicit representation learning)\nEfficiency. Can we gather feedback in the exploration stage to improve PBL efficiency or calibration?"
+  },
+  {
+    "objectID": "main.html#references",
+    "href": "main.html#references",
+    "title": "Learning reward functions from imperfect human feedback for robotic decision making",
+    "section": "References",
+    "text": "References\n\n\nAbbeel, Pieter, and Andrew Y Ng. (2004). Apprenticeship learning via inverse reinforcement learning. Proceedings of the twenty-first international conference on machine learning.\n\n\nArmstrong, Stuart, and Sören Mindermann. (2018). Occam’s razor is insufficient to infer the preferences of irrational agents. Advances in neural information processing systems. vol. 31.\n\n\nAstudillo, Raul, Kejun Li, Maegan Tucker, Chu Xin Cheng, Aaron D Ames, and Yisong Yue. (2024). Preferential multi-objective bayesian optimization. arXiv preprint arXiv:2406.14699.\n\n\nBıyık, Erdem, Malayandi Palan, Nicholas C Landolfi, Dylan P Losey, and Dorsa Sadigh. (2019). Asking easy questions: A user-friendly approach to active reward learning. arXiv preprint arXiv:1910.04365.\n\n\nBobu, Andreea, Yi Liu, Rohin Shah, Daniel S Brown, and Anca D Dragan. (2023). Sirl: Similarity-based implicit representation learning. Proceedings of the 2023 ACM/IEEE international conference on human-robot interaction.\n\n\nBRADLEY, RALPH ALLAN, and MILTON E. TERRY. (1952). Rank analysis of incomplete block designs: The method of paired comparisons. Biometrika. vol. 39.\n\n\nChristiano, Paul F, Jan Leike, Tom Brown, Miljan Martic, Shane Legg, and Dario Amodei. (2017). Deep reinforcement learning from human preferences. Advances in neural information processing systems. vol. 30.\n\n\nDautenhahn, Kerstin, and Chrystopher L. Nehaniv. (2002). Imitation in animals and artifacts.\n\n\nEvans, Owain, Andreas Stuhlmüller, and Noah Goodman. (2016). Learning the preferences of ignorant, inconsistent agents. Proceedings of the AAAI conference on artificial intelligence. vol. 30.\n\n\nHadfield-Menell, Dylan, Smitha Milli, Pieter Abbeel, Stuart J Russell, and Anca Dragan. (2017). Inverse reward design. Advances in neural information processing systems. vol. 30.\n\n\nJanwani, Neil, Ellen Novoseller, Vernon J Lawhern, and Maegan Tucker. (2026). MO-playground: Massively parallelized multi-objective reinforcement learning for robotics. arXiv preprint arXiv:2603.09237.\n\n\nMacGlashan, James, Mark K Ho, Robert Loftin, Bei Peng, Guan Wang, David L Roberts, Matthew E Taylor, and Michael L Littman. (2017). Interactive learning from policy-dependent human feedback. International conference on machine learning.\n\n\nSadigh, Dorsa, Anca Dragan, Shankar Sastry, and Sanjit Seshia. (2017). Active preference-based learning of reward functions.\n\n\nSchrum, Mariah L, Erin Hedlund, and Matthew C Gombolay. (2021). Improving robot-centric learning from demonstration via personalized embeddings. arXiv preprint arXiv:2110.03134.\n\n\nTucker, Maegan, Kejun Li, Yisong Yue, and Aaron D Ames. (2022). Polar: Preference optimization and learning algorithms for robotics. arXiv preprint arXiv:2208.04404.\n\n\nZakka, Kevin, Baruch Tabanpour, Qiayuan Liao, Mustafa Haiderbhai, Samuel Holt, Jing Yuan Luo, Arthur Allshire, Erik Frey, Koushil Sreenath, Lueder A Kahrs, and others. (2025). Mujoco playground. arXiv preprint arXiv:2502.08844.\n\n\nZiebart, Brian D, Andrew L Maas, J Andrew Bagnell, Anind K Dey, and others. (2008). Maximum entropy inverse reinforcement learning. Aaai. vol. 8.\n\n\n(2006). The construction of preference."
+  },
+  {
+    "objectID": "main.html#collecting-imperfect-human-feedback",
+    "href": "main.html#collecting-imperfect-human-feedback",
+    "title": "Learning reward functions from imperfect human feedback for robotic decision making",
+    "section": "Collecting Imperfect Human Feedback",
+    "text": "Collecting Imperfect Human Feedback\nPBL (and IRL) can be made active from a well-tuned acquisition function.\n\n\n\n\n\n\n\nDefinition: Acquisition Function\n\n\nAn acquisition function \\(a\\) is a strategy for selecting what queries to provide to the human to collect feedback. It is the central mechanism of active learning, enabling the learner to optimize data collection rather than passively collect feedback.\n\n\n\n\nStrategic sampling can help minimize other sources of noise and imperfections in human feedback.\n\nUser fatigue: feedback quality can diminish after long trials.\nRegret minimization: constant, bad behaviors can be dangerous, or uncomfortable for physical human-robot systems."
+  },
+  {
+    "objectID": "main.html#sample-efficiency-thompson-sampling",
+    "href": "main.html#sample-efficiency-thompson-sampling",
+    "title": "Learning reward functions from imperfect human feedback for robotic decision making",
+    "section": "Sample Efficiency: Thompson Sampling",
+    "text": "Sample Efficiency: Thompson Sampling\nPBL (and IRL) can be made active from a well-tuned acquisition function.\n\n\n\n\n\n\n\nDefinition: Acquisition Function\n\n\nAn acquisition function \\(a\\) is a strategy for selecting what queries to provide to the human to collect feedback. It is the central mechanism of active learning, enabling the learner to optimize data collection rather than passively collect feedback.\n\n\n\n\nThompson Sampling: sample a reward function from the posterior and select the query that is optimal under that sample\n\\[\\theta^* \\sim p(\\theta \\mid \\mathcal{D}), \\qquad a^*(q) = \\arg\\max_q \\; R_{\\theta^*}(q)\\]"
+  },
+  {
+    "objectID": "main.html#leveraging-preferences-in-deep-rl",
+    "href": "main.html#leveraging-preferences-in-deep-rl",
+    "title": "Learning reward functions from imperfect human feedback for robotic decision making",
+    "section": "Leveraging Preferences in Deep RL",
+    "text": "Leveraging Preferences in Deep RL\nHow can we tractably learn a reward \\(\\hat{R_{\\theta}}\\) consistent with preferences over robot behaviors? \\[\\begin{align}\n\\sum_{(s,~a)~\\in~\\tau_1} \\hat{R}_{\\theta}(s,a) &gt; \\sum_{(s,~a)~\\in~\\tau_2} \\hat{R}_{\\theta}(s,a) \\implies \\tau_1 \\succ \\tau_2\n\\end{align}\\]\n\n\n\nOptimize \\(\\pi\\) for \\(\\hat{R}\\) using deep RL\nRollout \\(\\pi\\) to produce trajectory set \\(\\{\\tau_1, \\dots, \\tau_i\\}\\).\nSelect trajectory segments \\((\\sigma_1, \\sigma_2)\\) and query human for preference.\nOptimize \\(\\hat{R}\\) to be consistent with those preferences.\n\n\n\n\n\n\nChristiano et al. (2017, Deep reinforcement learning from human preferences)."
+  },
+  {
+    "objectID": "main.html#extracting-a-reward-from-preferences",
+    "href": "main.html#extracting-a-reward-from-preferences",
+    "title": "Learning reward functions from imperfect human feedback for robotic decision making",
+    "section": "Extracting a Reward from Preferences",
+    "text": "Extracting a Reward from Preferences\n\n\n\n\n\n\n\nDefinition: Bradley-Terry Preference Model\n\n\n\\[\\begin{align}\nP(\\sigma^1 \\succ \\sigma^2 \\mid \\theta) = \\frac{\\exp \\sum_{t} \\hat{R}_{\\theta}(s_t^1, a_t^1)}{\\exp \\sum_t \\hat{R}_{\\theta}(s_t^1, a_t^1) + \\exp \\sum_t \\hat{R}_{\\theta}(s_t^2, a_t^2)}, \\qquad (s^i_t, a^i_t) \\in \\sigma_i\n\\end{align}\\]\n\n\n\n\n\n\n\nQuerying\n\n\nLearn an ensemble \\(\\hat{R}_{\\theta_i}\\).\nQuery the human over \\(\\sigma^1\\), \\(\\sigma^2\\) that elicit the most disagreement over \\(\\hat{R}_{\\theta_i}\\).\n\\(\\mathcal{D} \\leftarrow (\\sigma^1, \\sigma^2, \\mu)\\)\n\n\\(\\mu\\) is a distribution over \\(\\{1, 2\\}\\) representing user’s feedback.\n\n\n\nOptimizing\n\n\\[\\begin{align}\n\\text{loss}(\\theta) = -\\sum_\\mathcal{D}~\\biggl[~&\\mu(1) \\log \\hat{P}(\\sigma^1 \\succ \\sigma^2 \\mid \\theta)\n\\\\+ &\\mu(2) \\log \\hat{P}(\\sigma^2 \\succ \\sigma^1 \\mid \\theta)\\biggr] \\\\\n\\theta \\leftarrow \\nabla_\\theta~\\text{loss}(\\theta)\n\\end{align}\\]\n\n\nChristiano et al. (2017, Deep reinforcement learning from human preferences)."
+  },
+  {
+    "objectID": "main.html#results-and-discussion",
+    "href": "main.html#results-and-discussion",
+    "title": "Learning reward functions from imperfect human feedback for robotic decision making",
+    "section": "Results and Discussion",
+    "text": "Results and Discussion\n\n\n\n\n\nThis approach works varyingly well. Non-stationarity somewhat clouds results.\nChristiano et al. (2017, Deep reinforcement learning from human preferences).\n\n\nAssumptions and Sources of Failure\n\nAssumes humans respond approximately optimally.\nAssumes annotators provide homogeneous preferences.\nAssumes preferences are made consistently over the whole learning process."
+  },
+  {
+    "objectID": "main.html#your-feedback-is-secretly-an-advantage-function",
+    "href": "main.html#your-feedback-is-secretly-an-advantage-function",
+    "title": "Learning reward functions from imperfect human feedback for robotic decision making",
+    "section": "Your Feedback is Secretly an Advantage Function",
+    "text": "Your Feedback is Secretly an Advantage Function\nRather than learning a reward function, can we skip straight to robotic decision-making?\n\nBinary human feedback is policy-dependent\nUsers judge current actions relative to other possible actions\n\nThis definition is synonymous with the advantage function\n\n\n\n\n\n\n\nDefinition: Advantage Function\n\n\nThe advantage function \\(A\\) roughly describes the relative utility of taking action \\(a\\) at state \\(s\\) in comparison to expected behavior.\n\\[A(s,a) = Q(s,a) - V(s)\\]\n\n\n\n\nMacGlashan et al. (2017, Interactive learning from policy-dependent human feedback)."
+  },
+  {
+    "objectID": "main.html#learning-from-feedback-without-a-reward-function",
+    "href": "main.html#learning-from-feedback-without-a-reward-function",
+    "title": "Learning reward functions from imperfect human feedback for robotic decision making",
+    "section": "Learning from Feedback without a Reward Function",
+    "text": "Learning from Feedback without a Reward Function\nWith feedback akin to advantage, “COACH” can be updated via policy gradient, forgoing a critic entirely.\n\n\n\\[\ng_\\theta = \\mathbb{E}_{\\pi_\\theta}\\left[\\nabla_\\theta \\log \\pi_\\theta(a \\mid s) \\, A^{\\pi_\\theta}(s, a)\\right]\n\\]\n\n\n\\[\ng_\\theta = \\mathbb{E}_{\\pi_\\theta}\\left[\\nabla_\\theta \\log \\pi_\\theta(a \\mid s) \\, f_t\\right]\n\\]\n\n\nCOACH deals with time-sensitive feedback.\n\nAccount for human reaction time using eligibility traces.\nAggregate feedback to account for successive responses.\n\nMacGlashan et al. (2017, Interactive learning from policy-dependent human feedback)."
+  },
+  {
+    "objectID": "main.html#discussion-of-assumptions",
+    "href": "main.html#discussion-of-assumptions",
+    "title": "Learning reward functions from imperfect human feedback for robotic decision making",
+    "section": "Discussion of Assumptions",
+    "text": "Discussion of Assumptions\n\nInconsistency can increase in this situation due to time-pressure, negatively influencing human decision making.\nThe correspondance problem can result in suboptimality if robot features are not well constructed.\nHeterogeneous feedback can lead the policy to ‘average’ its behavior.\n\nMacGlashan et al. (2017, Interactive learning from policy-dependent human feedback)."
+  },
+  {
+    "objectID": "main.html#revisiting-handcrafted-rewards",
+    "href": "main.html#revisiting-handcrafted-rewards",
+    "title": "Learning reward functions from imperfect human feedback for robotic decision making",
+    "section": "Revisiting Handcrafted Rewards",
+    "text": "Revisiting Handcrafted Rewards\nInverse Reward Design (IRD) reconsiders the human-crafted reward.\n\nReward hacking\nReward suboptimality\n\nIRD suggests that hand-crafted rewards should be interpreted in the context in which they were specified.\n\n\n\n\n\n“Human-specified rewards should be treated as an observation.”\nHadfield-Menell et al. (2017, Inverse reward design)."
+  },
+  {
+    "objectID": "main.html#boltzmann-rationality-applied-to-reward-design",
+    "href": "main.html#boltzmann-rationality-applied-to-reward-design",
+    "title": "Learning reward functions from imperfect human feedback for robotic decision making",
+    "section": "Boltzmann Rationality Applied to Reward Design",
+    "text": "Boltzmann Rationality Applied to Reward Design\nHand crafted rewards are likely to the extent that they lead to high true utility in the environment.\n\n\n\n\n\n\n\nDefinition: Approximately Optimal Designer\n\n\nAllow \\(w\\) to scalarize features \\(\\phi(\\tau)\\) for reward \\(R = w^T\\phi(\\tau)\\), then \\[\\begin{align}\nP(\\tilde{w} \\mid w^*, M) \\propto \\exp\\left(\\alpha~\\mathbb{E}[{w^*}^T\\phi(\\tau) \\mid \\tau \\sim \\pi(\\cdot \\mid \\tilde{w}, M)]\\right)\n\\end{align}\\]\n\n\n\n\nWe can then use Bayes rule to develop a posterior over reward functions, given hand-crafted \\(\\tilde{w}\\) and confidence \\(\\alpha\\).\nLastly, risk-averse planning can be used to select trajectories that would maximize return of the true reward in the worst case.\nHadfield-Menell et al. (2017, Inverse reward design)."
+  },
+  {
+    "objectID": "main.html#human-study-atalante-exoskeleton",
+    "href": "main.html#human-study-atalante-exoskeleton",
+    "title": "Learning reward functions from imperfect human feedback for robotic decision making",
+    "section": "Human Study: Atalante Exoskeleton",
+    "text": "Human Study: Atalante Exoskeleton\nHow can we validate results on humans who don’t have groundtruth preferences?\nRun a 3-group study (no repeat users): Control, ETA, Random Exploration.\n\nterminate runs when (1) preferences stabilize or (2) users tire\nrandom phase may struggle in highly multi-objective scenarios\n\n\n\nData collection plan:\n\nMental/physical load, frustration: Likert-scale questionnare like NASA-TLX\nEfficiency: Queries required before preferences stabilized"
+  },
+  {
+    "objectID": "main.html#preliminaries-idealistic-behavior",
+    "href": "main.html#preliminaries-idealistic-behavior",
+    "title": "Learning reward functions from imperfect human feedback for robotic decision making",
+    "section": "Preliminaries: Idealistic Behavior",
+    "text": "Preliminaries: Idealistic Behavior\n\nAgents optimize cummulative return, or value \\(V\\), by adhering to optimal behavior \\(\\pi^*\\) \\[\\begin{align}\nV_{\\pi^*}(s_0) = \\sum_t R(s_t,a_t), \\qquad s_{t+1} \\sim T(s_t, a_t) ,~a_{t} \\sim \\pi^*(s_t)\n\\end{align}\\]\nWe can model this via Boltzmann Rationality.\n\n\n\n\n\n\n\nDefinition: Boltzmann Rationality\n\n\nAn approximately rational agent can be modeled via the recursive relationship found in Boltzmann Rationality, \\[\\begin{align}\nP(a \\mid s) \\propto \\exp(\\alpha Q(s,a)), \\qquad Q(s, a) = R(s, a) + \\mathbb{E}[Q(s',a')]\n\\end{align}\\] where \\(s' \\sim T(\\cdot \\mid s,a),~a' \\sim P(\\cdot \\mid s')\\) and \\(Q\\) is the quality function."
+  },
+  {
+    "objectID": "main.html#imperfect-human-feedback-inconsistency",
+    "href": "main.html#imperfect-human-feedback-inconsistency",
+    "title": "Learning reward functions from imperfect human feedback for robotic decision making",
+    "section": "Imperfect Human Feedback: Inconsistency",
+    "text": "Imperfect Human Feedback: Inconsistency\n\n\n\nTime inconsistency: apply hyperbolic discounting to model the prioritization of immediate rewards over long-term ones.\n\n\\[\\begin{aligned}\n&P(a' \\mid s, {\\color{red}d}) \\propto \\exp(\\alpha Q(s, a' \\mid {\\color{red}d})) \\\\\n&Q(s, a \\mid {\\color{red}d}) = {\\color{red}\\frac{1}{1 + kd}}R(s,a) + \\underset{s',~a'}{\\mathbb{E}}[Q(s', a' \\mid {\\color{red}d + 1})]\n\\end{aligned}\\]\n\n\n\n\n\n\nNaive: \\(a' \\sim P(\\cdot \\mid s, d)\\)\nSophisticated: \\(a' \\sim P(\\cdot \\mid s, 0)\\)\nEvans et al. (2016, Learning the preferences of ignorant, inconsistent agents)."
+  },
+  {
+    "objectID": "main.html#imperfect-human-feedback-inconsistency-1",
+    "href": "main.html#imperfect-human-feedback-inconsistency-1",
+    "title": "Learning reward functions from imperfect human feedback for robotic decision making",
+    "section": "Imperfect Human Feedback: Inconsistency",
+    "text": "Imperfect Human Feedback: Inconsistency\n\n\n\nFalse beliefs: update state knowledge with a prior belief \\(p(s)\\) and likelihood function \\(p( o \\mid s)\\): \\[p(s \\mid o) \\propto p(s)p(o \\mid s)\\]\nThen, we can redefine our agent’s behavior in terms of belief \\(p(s)\\).\n\\[\\begin{aligned}\n&P(a' \\mid {\\color{red}p(s)}, o, d) \\propto \\exp \\left(\\alpha Q({\\color{red}p(s)}, a' \\mid o, d) \\right), \\\\\n&Q({\\color{red}p(s)}, a \\mid o, d) = \\underset{{\\color{red}s \\sim p(s | o)}}{\\mathbb{E}} \\left[ \\frac{1}{1 + kd}R(s,a) + \\underset{s',~{\\color{red}o'},~a'}{\\mathbb{E}}[Q({\\color{red}p(s | o)}, a' \\mid o', d + 1)] \\right].\n\\end{aligned}\\]\nEvans et al. (2016, Learning the preferences of ignorant, inconsistent agents)."
+  },
+  {
+    "objectID": "main.html#imperfect-human-feedback-inconsistency-2",
+    "href": "main.html#imperfect-human-feedback-inconsistency-2",
+    "title": "Learning reward functions from imperfect human feedback for robotic decision making",
+    "section": "Imperfect Human Feedback: Inconsistency",
+    "text": "Imperfect Human Feedback: Inconsistency\nThe paper demonstrated that their enhanced model with time-inconsistency and false beliefs aligned with humans.\nThey asked humans \\((n=50)\\) to explain observed behaviors, and fit their own model to those behaviors.\n\n\n\n\nFound a large similarities between model and human explanations.\nEvans et al. (2016, Learning the preferences of ignorant, inconsistent agents)"
+  },
+  {
+    "objectID": "main.html#imperfect-human-feedback-suboptimality-and-heterogeneity",
+    "href": "main.html#imperfect-human-feedback-suboptimality-and-heterogeneity",
+    "title": "Learning reward functions from imperfect human feedback for robotic decision making",
+    "section": "Imperfect Human Feedback: Suboptimality and Heterogeneity",
+    "text": "Imperfect Human Feedback: Suboptimality and Heterogeneity\nHumans deviate from optimal behavior \\(\\pi^*\\) due to bounded-rationality and complex decision-making: Boltzmann rationality is not necessarily correct.\n\n\n\n\n\n\n\n\nDefinition: Policy Decomposition\n\n\nHuman policy \\(\\pi^{.}\\) can be decomposed into a planner-reward pair \\((p, R)\\) via \\(p(R) = \\pi^.\\). Planner \\(p\\) encodes the (ir)rationality, biases, and style of the human, while reward \\(R\\) describes the human’s goal.\n\n\n\n\nPolicy decomposition is an underdetermined problem–additional constraints are needed to find unique solutions.\n\nHeterogeneity and suboptimality can be modeled via a planner.\nSimpler is not always better–degenerate decompositions have lower complexity than “reasonable” ones.\n\n\nArmstrong et al. (2018, Occam’s razor is insufficient to infer the preferences of irrational agents)"
+  },
+  {
+    "objectID": "main.html#morlax",
+    "href": "main.html#morlax",
+    "title": "Learning reward functions from imperfect human feedback for robotic decision making",
+    "section": "MORLAX",
+    "text": "MORLAX"
+  },
+  {
+    "objectID": "main.html#gp-based-pbl-on-a-simplex",
+    "href": "main.html#gp-based-pbl-on-a-simplex",
+    "title": "Learning reward functions from imperfect human feedback for robotic decision making",
+    "section": "GP-based PBL on a Simplex",
+    "text": "GP-based PBL on a Simplex\nIsometric Log-Ratio (ILR) Transform: \\(\\varphi: \\Delta^{M-1} \\to \\mathbb{R}^{M-1}\\), so that the GP operates on the intrinsic \\((M-1)\\)-dimensional geometry of the simplex rather than the redundant \\(M\\)-dimensional ambient space.\nGiven pairwise preference data \\(\\mathcal{D}\\), we approximate the posterior \\(P(R \\mid \\mathcal{D})\\) as \\(\\mathcal{N}(\\mu, \\Sigma)\\).\n\n\n\n\n\n\n\nAcquisition: Thompson Sampling\n\n\nAt each iteration \\(i\\), we draw \\(n\\) posterior samples and select actions maximizing each sample: \\[R_i^k \\sim \\mathcal{N}(\\mu,\\, \\Sigma), \\quad w_i^k = \\varphi^{-1}\\!\\left(\\operatorname*{arg\\,max}_z{z \\in A}\\, R_i^k(z)\\right) \\quad \\forall\\, k = 1, \\ldots, n\\]\nwhere \\(n=2\\) in our case.\n\n\n\n\n\nTucker et al. (2022, Polar: Preference optimization and learning algorithms for robotics)"
+  },
+  {
+    "objectID": "main.html#ideal-point-reward",
+    "href": "main.html#ideal-point-reward",
+    "title": "Learning reward functions from imperfect human feedback for robotic decision making",
+    "section": "Ideal-Point Reward",
+    "text": "Ideal-Point Reward\nThe central modelling choice:\n\\[\nR(\\pi \\mid w) = -\\|w - w_\\pi\\|_2^2\n\\]\n\nReward = negative squared distance between evaluator’s weight \\(w\\) and the policy’s tradeoff \\(w_\\pi\\).\nCloser in tradeoff space \\(\\Rightarrow\\) more preferred.\nSimpler than a GP and covers the possible preferences of the Synthetic Oracles"
+  },
+  {
+    "objectID": "main.html#likelihood-bradleyterry-with-temperature",
+    "href": "main.html#likelihood-bradleyterry-with-temperature",
+    "title": "Learning reward functions from imperfect human feedback for robotic decision making",
+    "section": "Likelihood: Bradley–Terry with Temperature",
+    "text": "Likelihood: Bradley–Terry with Temperature\nGiven winner \\(\\pi^+\\) and loser \\(\\pi^-\\):\n\\[\nP(\\pi^+ \\succ \\pi^- \\mid w) = \\sigma\\!\\left(\\frac{R(\\pi^+ \\mid w) - R(\\pi^- \\mid w)}{\\beta}\\right), \\quad \\sigma(z) = \\frac{1}{1+e^{-z}}\n\\]\n\nTemperature \\(\\beta &gt; 0\\) controls noise.\n\n\\(\\beta \\to 0\\): deterministic argmax\n\\(\\beta \\to \\infty\\): uniform coin-flip"
+  },
+  {
+    "objectID": "main.html#prior-and-posterior",
+    "href": "main.html#prior-and-posterior",
+    "title": "Learning reward functions from imperfect human feedback for robotic decision making",
+    "section": "Prior and Posterior",
+    "text": "Prior and Posterior\nPrior: Gaussian centered at the uniform simplex point:\n\\[\np(w) = \\mathcal{N}\\!\\left(w \\;\\Big|\\; \\tfrac{1}{K}\\mathbf{1},\\; \\sigma_0^2 I\\right)\n\\]\nNegative log-posterior given comparisons \\(\\mathcal{D} = \\{(w_+^{(n)}, w_-^{(n)})\\}_{n=1}^N\\):\n\\[\n\\ell(w) = \\frac{1}{2}\\left(w - \\tfrac{1}{K}\\mathbf{1}\\right)^\\top \\Sigma_0^{-1}\\left(w - \\tfrac{1}{K}\\mathbf{1}\\right) + \\sum_{n=1}^{N}\\log\\!\\left(1 + e^{-z_n(w)}\\right)\n\\]"
+  },
+  {
+    "objectID": "main.html#laplace-approximation",
+    "href": "main.html#laplace-approximation",
+    "title": "Learning reward functions from imperfect human feedback for robotic decision making",
+    "section": "Laplace Approximation",
+    "text": "Laplace Approximation\nApproximate the posterior as Gaussian at the MAP:\n\\[\np(w \\mid \\mathcal{D}) \\approx \\mathcal{N}\\!\\left(w \\;\\Big|\\; \\hat{w}_{\\text{MAP}},\\; H^{-1}\\right)\n\\]\n\\[\n\\hat{w}_{\\text{MAP}} = \\arg\\min_w \\ell(w), \\qquad H = \\nabla^2 \\ell\\!\\left(\\hat{w}_{\\text{MAP}}\\right)\n\\]\n\nMAP found via L-BFGS (analytic gradient).\n\\(\\ell(w)\\) is strictly convex \\(\\Rightarrow\\) Laplace approximation is well-justified."
+  },
+  {
+    "objectID": "main.html#acquisition-thompson-sampling",
+    "href": "main.html#acquisition-thompson-sampling",
+    "title": "Learning reward functions from imperfect human feedback for robotic decision making",
+    "section": "Acquisition: Thompson Sampling",
+    "text": "Acquisition: Thompson Sampling\n\nDraw \\(\\tilde{w} \\sim p(w \\mid \\mathcal{D})\\) from the Laplace posterior.\nSelect:\n\n\\(\\pi_a = \\arg\\max_\\pi R(\\pi \\mid \\tilde{w})\\) — best under the sample\n\\(\\pi_b = \\arg\\max_\\pi R(\\pi \\mid \\hat{w})\\) — best under posterior mean\n\nCompare “optimistic scenario” vs. “current best guess” \\(\\Rightarrow\\) queries near the decision boundary."
+  },
+  {
+    "objectID": "main.html#summary",
+    "href": "main.html#summary",
+    "title": "Learning reward functions from imperfect human feedback for robotic decision making",
+    "section": "Summary",
+    "text": "Summary\n\nReward model: ideal-point \\(R(\\pi \\mid w) = -\\|w - w_\\pi\\|^2\\), both on the \\(K\\)-simplex.\nLikelihood: Bradley–Terry + squared-distance \\(\\Rightarrow\\) logit linear in \\(w\\) \\(\\Rightarrow\\) Bayesian logistic regression.\nPosterior: Gaussian Laplace approximation at the MAP (L-BFGS + Hessian inversion).\nAcquisition: Thompson sampling using posterior mean and sample.\nPrediction: project posterior mean onto simplex, return nearest policy."
+  },
+  {
+    "objectID": "main.html#simplification-for-bayesian-log-regression",
+    "href": "main.html#simplification-for-bayesian-log-regression",
+    "title": "Learning reward functions from imperfect human feedback for robotic decision making",
+    "section": "Simplification for Bayesian Log Regression",
+    "text": "Simplification for Bayesian Log Regression\nSubstituting and expanding:\n\\[\n\\frac{R(\\pi^+) - R(\\pi^-)}{\\beta} = \\frac{-\\|w - w_+\\|^2 + \\|w - w_-\\|^2}{\\beta}\n\\]\n\\[\n= \\frac{2w^\\top(w_+ - w_-) + \\|w_-\\|^2 - \\|w_+\\|^2}{\\beta}\n\\]\n\nThe quadratic-in-\\(w\\) terms cancel.\nThe logit is linear in \\(w\\) with effective feature \\(x_{+-} = 2(w_+ - w_-)/\\beta\\).\nInference reduces to ordinary Bayesian logistic regression."
+  },
+  {
+    "objectID": "main.html#coverage-metric",
+    "href": "main.html#coverage-metric",
+    "title": "Learning reward functions from imperfect human feedback for robotic decision making",
+    "section": "Coverage Metric",
+    "text": "Coverage Metric\nHow well the shown policies span the full policy space in normalized performance coordinates.\n\\[\n\\text{coverage} = 1 - \\frac{\\bar{d}_{\\min}}{\\sqrt{K}}, \\qquad\n\\bar{d}_{\\min} = \\frac{1}{N}\\sum_{i=1}^{N} \\min_{j~\\in \\text{ seen}} \\lVert p_i - p_j \\rVert_2\n\\]\n\n\\(\\bar{d}_{\\min}\\): average distance from each policy to its nearest shown policy\n\\(\\sqrt{K}\\): diagonal of the \\([0,1]^K\\) hypercube (max possible distance on \\(\\Delta\\))\n\\(C \\in [0, 1]\\) and cannot decrease as more policies are shown.\n\\(C \\rightarrow 1\\) = every policy has a nearby seen neighbor\n\\(C \\rightarrow 0\\) = many policies don’t have a nearby seen neighbor"
+  }
+]
