@@ -1,0 +1,44 @@
+---
+title: "My Presentation"
+author: "Your Name"
+format:
+  clean-nav-revealjs:
+    slide-number: "c/t"
+    # Point at a project-local nav-sections.js to override the default
+    # sidebar sections. Remove this block to use the default sections
+    # shipped with the extension.
+    include-in-header:
+      - text: |
+          <script src="nav-sections.js"></script>
+subtitle: "A starter template for the clean-nav theme"
+---
+
+# Introduction
+
+## Welcome {.nav-intro}
+
+This is a starter slide in the **Introduction** section.
+
+- Bullet one
+- Bullet two
+
+## Another intro slide {.nav-intro}
+
+Math works too: $E = mc^2$.
+
+# Methods
+
+## Our approach {.nav-methods}
+
+Add `{.nav-<key>}` to a heading to place it in that sidebar section, where
+`<key>` matches an entry in `nav-sections.js`.
+
+# Results
+
+## Findings {.nav-results}
+
+Add `{.nav-none}` to hide the sidebar on a slide.
+
+## Backup slide {.nav-none}
+
+This slide has no sidebar.

@@ -1,0 +1,89 @@
+<div id="nav-sidebar"></div>
+
+<script>
+// If the user hasn't defined NAV_SECTIONS (via a project-root nav-sections.js
+// loaded through `include-in-header`), fall back to a generic default.
+if (typeof NAV_SECTIONS === 'undefined') {
+  var NAV_SECTIONS = [
+    { key: "intro",    label: "Introduction" },
+    { key: "methods",  label: "Methods" },
+    { key: "results",  label: "Results" },
+    { key: "future",   label: "Future Work" },
+  ];
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  var sidebar = document.getElementById('nav-sidebar');
+
+  // Build sidebar from NAV_SECTIONS config
+  NAV_SECTIONS.forEach(function(section, i) {
+    if (i > 0) {
+      var line = document.createElement('div');
+      line.className = 'nav-line';
+      sidebar.appendChild(line);
+    }
+    var box = document.createElement('div');
+    box.className = 'nav-box';
+    box.dataset.section = section.key;
+    box.textContent = section.label;
+    sidebar.appendChild(box);
+  });
+
+  var boxes = sidebar.querySelectorAll('.nav-box');
+
+  function updateSidebar(slide) {
+    // Hide on title slide, transition slides (h1-only), nav-none slides
+    var isTitle = slide.id === 'title-slide';
+    var isTransition = slide.querySelector('h1') && !slide.querySelector('h2');
+    var isHidden = slide.classList.contains('nav-none');
+
+    if (isTitle || isTransition || isHidden) {
+      sidebar.style.display = 'none';
+      return;
+    }
+
+    sidebar.style.display = 'flex';
+
+    // Find which section this slide belongs to
+    var activeKey = null;
+    NAV_SECTIONS.forEach(function(section) {
+      if (slide.classList.contains('nav-' + section.key)) {
+        activeKey = section.key;
+      }
+    });
+
+    boxes.forEach(function(box) {
+      if (box.dataset.section === activeKey) {
+        box.classList.add('active');
+      } else {
+        box.classList.remove('active');
+      }
+    });
+  }
+
+  Reveal.on('ready', function(event) {
+    updateSidebar(event.currentSlide);
+
+    // Don't count the title slide
+    var titleSlide = document.getElementById('title-slide');
+    if (titleSlide) {
+      titleSlide.setAttribute('data-visibility', 'uncounted');
+    }
+
+    // Mark all slides after the "Backup" transition as uncounted
+    var slides = document.querySelectorAll('.reveal .slides > section');
+    var pastBackup = false;
+    slides.forEach(function(slide) {
+      if (slide.querySelector('h1') && slide.textContent.trim() === 'Backup') {
+        pastBackup = true;
+      } else if (pastBackup) {
+        slide.setAttribute('data-visibility', 'uncounted');
+      }
+    });
+  });
+
+  Reveal.on('slidechanged', function(event) {
+    updateSidebar(event.currentSlide);
+  });
+});
+</script>
